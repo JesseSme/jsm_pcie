@@ -1,3 +1,5 @@
+> **Superseded 2026-11-07.** The project now targets SkyWater SKY130 with an on-chip PHY; see [ASIC target](../asic-target.md) and [PHY architecture](../phy-architecture.md). Kept for history only; links in this file may point to documents that no longer exist.
+
 # Approved external serialization architecture
 
 Status: **accepted by the user, 2026-11-07**. This locks the physical-interface direction for the Tang Nano 20K endpoint. Component selection, pin assignments and circuit feasibility remain implementation work.

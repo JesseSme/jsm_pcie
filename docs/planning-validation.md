@@ -38,3 +38,23 @@ Regeneration left all 498 section summaries byte-identical; `TRACEABILITY.csv` c
 ## Public-repository hygiene, 2026-11-07
 
 Because the GitHub repository is public, the PCI-SIG PDF/TXT, all spec-derived text in `specification/` and `graphify-out/` are git-ignored; only `specification/README.md`, `INDEX.md`, `manifest.json` and `TRACEABILITY.csv` (metadata) remain tracked. The pushed history was checked and contains only `README.md`, so no specification content had been published. `tools/tickets.py check` now validates section references against `manifest.json`, `tools/deconstruct_spec.py` reports missing local sources clearly, and `tools/build_pcie_plan.py --summaries-only` rebuilds local summaries without touching tickets. A simulated fresh clone passed `tickets.py check`; `--summaries-only` reproduced all 498 summaries byte-identically.
+
+## SKY130 ASIC track, 2026-11-07
+
+At the user's request, an additive ASIC track was planned in `docs/asic-target.md` and tickets PCIE-049 to PCIE-058 (SkyWater SKY130 PDK, OpenLane 2/LibreLane, OpenROAD, Magic/KLayout/netgen). PCIE-052 (on-chip PHY), PCIE-057 (harness and fabrication route) and PCIE-058 (tapeout) are conditional. PCIE-013 and PCIE-021 now depend on PCIE-051 portable wrappers. The key open question for PCIE-049 is the ASIC physical interface, because SKY130 general-purpose pads are expected to be far slower than the FPGA route's 625 Mb/s streams. No ASIC tools were installed by this planning change: Docker and Podman were present; Nix, OpenROAD, OpenLane, Magic, netgen, KLayout and xschem were not. `tickets.py check` passed for 58 tickets; the 498 section summaries were unchanged.
+
+## Retarget to SKY130 with an on-chip PHY, 2026-11-07
+
+At the user's direction the FPGA target was dropped and the project now targets the SkyWater SKY130 process. Asked where the 2.5 Gb/s circuits should live, the user chose an on-chip SKY130 PHY with a digital-only fallback. `tools/pcie_plan.py` was rewritten as a single-layer plan (previous layered version and tickets backed up outside the repository before the change); ticket IDs were kept so protocol tickets 005 and 010–039, 042, 047 and 048 keep their numbers. Repurposed tickets: PCIE-003 chip architecture, clocking and pins; 007 on-chip TX; 008 on-chip RX/CDR; 040 mixed-signal top; 041 lint/synthesis/CDC signoff in SKY130; 043 on-chip electrical qualification; 044 silicon bring-up (conditional); 045 SKY130 transistor-level building blocks; 046 on-chip CDR feasibility; 049 PLL; 052 high-speed pads, ESD and package; 057 chip top (now baseline). New docs: `asic-target.md` (rewritten) and `phy-architecture.md`; the Tang Nano 20K, external-serializer and discrete-transistor documents moved to `docs/superseded/` with a banner. `tickets.py check` passed for 58 tickets with no residual FPGA references in generated tickets.
+
+## Soundness-review fixes, 2026-11-07
+
+A review of the retargeted plan found structural gaps, which were fixed in `tools/pcie_plan.py` before any ticket was claimed:
+
+- PCIE-003 sets the PHY architecture and PCIE-004 now depends on it and owns the detailed digital-to-PMA contract (previously both defined it).
+- Missing dependencies added: PCIE-007 on PCIE-052 (pad/package loads); PCIE-007/008/049 on new PCIE-059; PCIE-042 on PCIE-033/034/037 so optional-feature decisions gate coverage closure. PCIE-017/031 now keep N_FTS, Extended Synch and L0s exit latency as parameters that PCIE-040 binds to the receive relock budget.
+- PCIE-001 now classifies applicability per section; candidate-level requirement review belongs to each section's primary-owner ticket.
+- New PCIE-059 (bias, references, termination calibration) and PCIE-060 (early PHY loopback top, co-simulation method, intermediate milestone at dependency depth 8 instead of 20 for the full mixed-signal top).
+- REFCLK input receiver assigned to PCIE-049, with the CEM specification recorded as a required input; off-chip AC-coupling capacitors and other board parts recorded in PCIE-003; the beacon-versus-WAKE# decision moved to PCIE-003 for both PCIE-017 and PCIE-007; ticket template no longer mentions PCB evidence.
+
+`tickets.py check` passes for 60 tickets; a dependency scan shows no remaining backward references other than intended forward hand-offs.

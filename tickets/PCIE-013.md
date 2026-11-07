@@ -8,7 +8,7 @@ claimed_at: null
 base_commit: null
 priority: P1
 gate: baseline
-depends_on: ["PCIE-004", "PCIE-012"]
+depends_on: ["PCIE-004", "PCIE-012", "PCIE-051"]
 spec_sections: ["4.2.7", "4.2.4.8"]
 ---
 
@@ -16,7 +16,7 @@ spec_sections: ["4.2.7", "4.2.4.8"]
 
 ## Agent handoff and scope
 
-Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and repository AGENTS.md. Claim with `python3 tools/tickets.py claim PCIE-013 --agent <unique-agent-id>` before editing implementation. Do not begin until dependencies are done; conditional dependencies require a reviewed disposition. Implement digital logic in synthesizable SystemVerilog; external circuits require schematics, ngspice netlists/models and PCB evidence as specified by the ticket.
+Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and repository AGENTS.md. Claim with `python3 tools/tickets.py claim PCIE-013 --agent <unique-agent-id>` before editing implementation. Do not begin until dependencies are done; conditional dependencies require a reviewed disposition. Implement digital logic in synthesizable SystemVerilog; PHY circuits require schematics, layout, extracted ngspice results and macro abstracts as specified by the ticket.
 
 ## Source evidence
 
@@ -32,6 +32,7 @@ Primary ownership: 4 sections; [section/candidate traceability](../specification
 - [ ] Calculate FIFO depth for frequency offset, SSC assumptions, bursts and recovery latency; x1 does not need multilane deskew.
 - [ ] Document overflow/underflow handling and avoid impossible physical-stream backpressure.
 - [ ] Size elasticity for the PCIE-001/003 reference-clock policy; a free-running local clock against an SSC host violates the section 4.3.1.1 600 ppm requirement and is not a supported elastic-buffer operating case.
+- [ ] Use the PCIE-051 technology-portable memory and synchronizer wrappers so simulation and SKY130 builds use identical RTL.
 
 ## pyuvm verification
 

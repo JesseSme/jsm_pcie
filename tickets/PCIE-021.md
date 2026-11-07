@@ -8,7 +8,7 @@ claimed_at: null
 base_commit: null
 priority: P1
 gate: baseline
-depends_on: ["PCIE-018", "PCIE-019"]
+depends_on: ["PCIE-018", "PCIE-019", "PCIE-051"]
 spec_sections: ["3.5.2"]
 ---
 
@@ -16,7 +16,7 @@ spec_sections: ["3.5.2"]
 
 ## Agent handoff and scope
 
-Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and repository AGENTS.md. Claim with `python3 tools/tickets.py claim PCIE-021 --agent <unique-agent-id>` before editing implementation. Do not begin until dependencies are done; conditional dependencies require a reviewed disposition. Implement digital logic in synthesizable SystemVerilog; external circuits require schematics, ngspice netlists/models and PCB evidence as specified by the ticket.
+Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and repository AGENTS.md. Claim with `python3 tools/tickets.py claim PCIE-021 --agent <unique-agent-id>` before editing implementation. Do not begin until dependencies are done; conditional dependencies require a reviewed disposition. Implement digital logic in synthesizable SystemVerilog; PHY circuits require schematics, layout, extracted ngspice results and macro abstracts as specified by the ticket.
 
 ## Source evidence
 
@@ -29,6 +29,7 @@ Primary ownership: 2 sections; [section/candidate traceability](../specification
 - [ ] Assign TX sequence numbers and LCRC; retain each sent TLP until valid acknowledgment.
 - [ ] Implement replay timer/count, ACK/NAK processing, retry-buffer admission and recovery escalation.
 - [ ] Handle sequence wrap, stale/invalid ACKs, link loss and concurrent enqueue/replay without double-credit charging.
+- [ ] Use the PCIE-051 technology-portable memory and synchronizer wrappers so simulation and SKY130 builds use identical RTL.
 
 ## pyuvm verification
 

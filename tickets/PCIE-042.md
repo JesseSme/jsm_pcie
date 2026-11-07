@@ -8,7 +8,7 @@ claimed_at: null
 base_commit: null
 priority: P1
 gate: baseline
-depends_on: ["PCIE-039", "PCIE-041"]
+depends_on: ["PCIE-039", "PCIE-041", "PCIE-033", "PCIE-034", "PCIE-037"]
 spec_sections: ["2", "3", "4.2", "5", "6", "7"]
 ---
 
@@ -16,7 +16,7 @@ spec_sections: ["2", "3", "4.2", "5", "6", "7"]
 
 ## Agent handoff and scope
 
-Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and repository AGENTS.md. Claim with `python3 tools/tickets.py claim PCIE-042 --agent <unique-agent-id>` before editing implementation. Do not begin until dependencies are done; conditional dependencies require a reviewed disposition. Implement digital logic in synthesizable SystemVerilog; external circuits require schematics, ngspice netlists/models and PCB evidence as specified by the ticket.
+Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and repository AGENTS.md. Claim with `python3 tools/tickets.py claim PCIE-042 --agent <unique-agent-id>` before editing implementation. Do not begin until dependencies are done; conditional dependencies require a reviewed disposition. Implement digital logic in synthesizable SystemVerilog; PHY circuits require schematics, layout, extracted ngspice results and macro abstracts as specified by the ticket.
 
 ## Source evidence
 

@@ -16,7 +16,7 @@ spec_sections: ["1", "1.3.2.2", "5.1.1", "6", "7", "4.3.1.1"]
 
 ## Agent handoff and scope
 
-Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and repository AGENTS.md. Claim with `python3 tools/tickets.py claim PCIE-001 --agent <unique-agent-id>` before editing implementation. Do not begin until dependencies are done; conditional dependencies require a reviewed disposition. Implement digital logic in synthesizable SystemVerilog; external circuits require schematics, ngspice netlists/models and PCB evidence as specified by the ticket.
+Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and repository AGENTS.md. Claim with `python3 tools/tickets.py claim PCIE-001 --agent <unique-agent-id>` before editing implementation. Do not begin until dependencies are done; conditional dependencies require a reviewed disposition. Implement digital logic in synthesizable SystemVerilog; PHY circuits require schematics, layout, extracted ngspice results and macro abstracts as specified by the ticket.
 
 ## Source evidence
 
@@ -31,12 +31,12 @@ Primary ownership: 15 sections; [section/candidate traceability](../specificatio
 
 ## Deliverables and behavior
 
-- [ ] Produce docs/endpoint-profile.md: Gen1 x1, one PCI Express Endpoint function, Type 0 header, VC0/TC0, 128-byte advertised MPS initially, 64-bit non-prefetchable memory BAR, MSI, fabric-owned TL/DL/logical PHY.
+- [ ] Produce docs/endpoint-profile.md: Gen1 x1, one PCI Express Endpoint function, Type 0 header, VC0/TC0, 128-byte advertised MPS initially, 64-bit non-prefetchable memory BAR, MSI, digital TL/DL/logical PHY with an on-chip SKY130 PMA.
 - [ ] Distinguish first L0 bring-up from complete baseline; L0s and PCI-PM obligations cannot be removed merely by disabling ASPM in a prototype.
-- [ ] Review every section and candidate in specification/TRACEABILITY.csv; split applicable paragraphs into atomic reviewed requirements including table fields, conditions, device roles and implementation-note classification.
+- [ ] Classify every section in specification/TRACEABILITY.csv as applicable, conditional or not applicable to the endpoint, with citations; detailed atomic requirements are written by each section's primary-owner ticket, not here.
 - [ ] Record optional capability omissions and required response behavior; identify missing normative companion specifications (PCI configuration, PM, MSI, CEM/form factor) without inventing their contents.
-- [ ] Freeze the fabric datapath width and logical clock before any RTL ticket starts. Proposed default: 16 bits per cycle (two symbols, each with a K flag) at 125 MHz. One 8-bit symbol at 250 MHz is unlikely to close timing on GW2AR-18 C8/I7 and may be kept only with synthesis evidence from a representative block. Changing width after RTL begins touches framing, CRC, DLLP and ordered-set logic in every layer.
-- [ ] Freeze the reference-clock policy. Section 4.3.1.1 requires both link ends to transmit within 600 ppm of each other, and host spread-spectrum clocking exceeds what SKP compensation can absorb against a free-running local oscillator. Default: derive the TX bit clock, CDR reference and FPGA gearbox clock from the host 100 MHz REFCLK; any separate-clock mode requires an explicit no-SSC host condition.
+- [ ] Freeze the digital datapath width and logical clock before any RTL ticket starts. Proposed default: 16 bits per cycle (two symbols, each with a K flag) at 125 MHz. One 8-bit symbol at 250 MHz is unlikely to close timing in SKY130 standard cells at the slow corner and may be kept only with synthesis evidence from a representative block. Changing width after RTL begins touches framing, CRC, DLLP and ordered-set logic in every layer.
+- [ ] Freeze the reference-clock policy. Section 4.3.1.1 requires both link ends to transmit within 600 ppm of each other, and host spread-spectrum clocking exceeds what SKP compensation can absorb against a free-running local oscillator. Default: derive the on-chip PLL serializer clock, CDR reference and digital clocks from the host 100 MHz REFCLK; any separate-clock mode requires an explicit no-SSC host condition.
 - [ ] Before declaring companion specifications missing, record what Rev1.1 sections 7.5 (PCI-compatible registers), 7.6 (PCI-PM capability) and 7.7 (MSI/MSI-X capability) already define; list the remaining gaps per register field and which of PCIE-027/029/030 each gap blocks.
 
 ## pyuvm verification
@@ -52,7 +52,7 @@ No ticket-local circuit simulation is required: these are protocol, control or p
 ## Acceptance criteria
 
 - [ ] Profile and mandatory/optional matrix have source citations and no unexplained exclusions.
-- [ ] Every candidate has an applicability disposition or an explicit tracked review item; later signoff requires no unresolved applicable rules.
+- [ ] Every section has an applicability classification; candidate-level review is assigned to its primary-owner ticket and PCIE-042 confirms none remain unresolved.
 - [ ] Datapath width, logical clock and reference-clock/SSC policy are recorded with rationale before any RTL ticket becomes ready.
 - [ ] Reviewed requirements have implementation/test links and dispositions; relevant checks pass and limitations are recorded.
 - [ ] Update graph with `graphify update .` after code changes; record any tool failure explicitly.

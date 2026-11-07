@@ -8,7 +8,7 @@ claimed_at: null
 base_commit: null
 priority: P0
 gate: baseline
-depends_on: ["PCIE-001", "PCIE-002"]
+depends_on: ["PCIE-001", "PCIE-002", "PCIE-050"]
 spec_sections: ["4.3.1", "4.3.2", "4.3.3", "4.3.4"]
 ---
 
@@ -16,7 +16,7 @@ spec_sections: ["4.3.1", "4.3.2", "4.3.3", "4.3.4"]
 
 ## Agent handoff and scope
 
-Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and repository AGENTS.md. Claim with `python3 tools/tickets.py claim PCIE-006 --agent <unique-agent-id>` before editing implementation. Do not begin until dependencies are done; conditional dependencies require a reviewed disposition. Implement digital logic in synthesizable SystemVerilog; external circuits require schematics, ngspice netlists/models and PCB evidence as specified by the ticket.
+Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and repository AGENTS.md. Claim with `python3 tools/tickets.py claim PCIE-006 --agent <unique-agent-id>` before editing implementation. Do not begin until dependencies are done; conditional dependencies require a reviewed disposition. Implement digital logic in synthesizable SystemVerilog; PHY circuits require schematics, layout, extracted ngspice results and macro abstracts as specified by the ticket.
 
 ## Source evidence
 
@@ -33,8 +33,8 @@ Primary ownership: 24 sections; [section/candidate traceability](../specificatio
 - [ ] Separate transmitter mask, receiver tolerance mask, measurement load and clock recovery measurement assumptions.
 - [ ] Define ngspice-supported driver/receiver/package/channel models; if only IBIS is supplied document a validated conversion or alternate characterization rather than assuming native IBIS support.
 - [ ] Assign confidence levels to ideal, behavioral, manufacturer and measured models; require PVT and model provenance.
-- [ ] Capture Tang Nano 20K GW2AR-18 I/O limits and their datasheet revision alongside PCIe limits; retain them even if core resource fit fails, and do not infer board bank voltage from a device-supported I/O standard.
-- [ ] Qualify nonlinear RF transistor models and solderable package parasitics for PCIE-045; S-parameters alone are insufficient for large-signal switching evidence.
+- [ ] Capture SKY130 device limits from the pinned PDK (supplies, breakdown, reliability and electromigration rules) alongside the PCIe limits, with PDK revision.
+- [ ] Qualify the pinned SKY130 ngspice device models, corners and mismatch data for PCIE-045, and define extracted-parasitic, pad and package model conventions.
 
 ## pyuvm verification
 

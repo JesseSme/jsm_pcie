@@ -37,8 +37,8 @@ for n in range(9, 15):
 
 CONTEXT = {
     1: 'Establish the PCI Express Endpoint role and separate mandatory endpoint behavior from root-complex, bridge and switch context.',
-    4: 'Define explicit layer services and a replaceable physical interface so fabric logic can be verified before board selection.',
-    6: 'Translate electrical requirements, measurement fixtures and footnotes into sourced limits. These constrain the hardware path even though implementation work is digital SystemVerilog.',
+    4: 'Define explicit layer services and a replaceable physical interface so digital logic can be verified before the on-chip SKY130 PMA exists.',
+    6: 'Translate electrical requirements, measurement fixtures and footnotes into sourced limits. These constrain the on-chip SKY130 PMA and its transistor-level verification.',
     10: 'Map bytes and control symbols to valid 10-bit codes, with running disparity and receive error detection; serial bit order is observable behavior.',
     11: 'Maintain the exact scrambler state evolution across data, special symbols, training and reset; independent reference vectors are essential.',
     12: 'Preserve the prescribed symbol and ordered-set structure at the physical stream boundary, including packet delimiters and training patterns.',
@@ -155,8 +155,8 @@ def main():
                    "Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and repository AGENTS.md. "
                    f"Claim with `python3 tools/tickets.py claim {t['id']} --agent <unique-agent-id>` before editing implementation. "
                    "Do not begin until dependencies are done; conditional dependencies require a reviewed disposition. "
-                   "Implement digital logic in synthesizable SystemVerilog; external circuits require schematics, "
-                   "ngspice netlists/models and PCB evidence as specified by the ticket.\n\n"
+                   "Implement digital logic in synthesizable SystemVerilog; PHY circuits require schematics, "
+                   "layout, extracted ngspice results and macro abstracts as specified by the ticket.\n\n"
                    "## Source evidence\n\n")
         for ref in t['refs']:
             if ref not in by_id:

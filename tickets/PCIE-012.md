@@ -16,7 +16,7 @@ spec_sections: ["4.2.2", "4.2.4.1", "4.2.4.3", "4.2.8"]
 
 ## Agent handoff and scope
 
-Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and repository AGENTS.md. Claim with `python3 tools/tickets.py claim PCIE-012 --agent <unique-agent-id>` before editing implementation. Do not begin until dependencies are done; conditional dependencies require a reviewed disposition. Implement digital logic in synthesizable SystemVerilog; external circuits require schematics, ngspice netlists/models and PCB evidence as specified by the ticket.
+Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and repository AGENTS.md. Claim with `python3 tools/tickets.py claim PCIE-012 --agent <unique-agent-id>` before editing implementation. Do not begin until dependencies are done; conditional dependencies require a reviewed disposition. Implement digital logic in synthesizable SystemVerilog; PHY circuits require schematics, layout, extracted ngspice results and macro abstracts as specified by the ticket.
 
 ## Source evidence
 
@@ -32,7 +32,6 @@ Primary ownership: 4 sections; [section/candidate traceability](../specification
 - [ ] Implement STP/SDP/END/EDB framing, idle and TS1/TS2/FTS/SKP ordered sets for x1.
 - [ ] Validate training fields, lane/link number PAD handling, consecutive-set recognition and malformed frames.
 - [ ] Coordinate scrambling, encoding and packet arbitration without dropping or duplicating symbols.
-- [ ] Run an early open-flow synthesis of framing, 8b/10b and scrambling on GW2AR-18 and report achieved Fmax against the PCIE-001 logical clock; escalate a miss to the PCIE-001 datapath decision before more RTL depends on it.
 
 ## pyuvm verification
 

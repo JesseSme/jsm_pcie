@@ -15,3 +15,9 @@ oss-cad-suite/
 
 # Generated knowledge graph; built from the specification text, so local-only too.
 /graphify-out/
+
+# SKY130 PDK installs and OpenLane/OpenROAD run outputs (large, reproducible).
+/asic/**/runs/
+/asic/pdk/
+*.gds
+*.gds.gz

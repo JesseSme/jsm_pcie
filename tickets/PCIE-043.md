@@ -8,7 +8,7 @@ claimed_at: null
 base_commit: null
 priority: P1
 gate: baseline
-depends_on: ["PCIE-007", "PCIE-008", "PCIE-009", "PCIE-040"]
+depends_on: ["PCIE-007", "PCIE-008", "PCIE-009", "PCIE-040", "PCIE-049", "PCIE-052"]
 spec_sections: ["4.3"]
 ---
 
@@ -16,7 +16,7 @@ spec_sections: ["4.3"]
 
 ## Agent handoff and scope
 
-Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and repository AGENTS.md. Claim with `python3 tools/tickets.py claim PCIE-043 --agent <unique-agent-id>` before editing implementation. Do not begin until dependencies are done; conditional dependencies require a reviewed disposition. Implement digital logic in synthesizable SystemVerilog; external circuits require schematics, ngspice netlists/models and PCB evidence as specified by the ticket.
+Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and repository AGENTS.md. Claim with `python3 tools/tickets.py claim PCIE-043 --agent <unique-agent-id>` before editing implementation. Do not begin until dependencies are done; conditional dependencies require a reviewed disposition. Implement digital logic in synthesizable SystemVerilog; PHY circuits require schematics, layout, extracted ngspice results and macro abstracts as specified by the ticket.
 
 ## Source evidence
 
@@ -30,7 +30,7 @@ Primary ownership: 0 sections; [section/candidate traceability](../specification
 - [ ] Audit mask measurement, de-emphasis, jitter transfer, idle, detect and receive tolerance at supported corners.
 - [ ] Separate modeled results from hardware compliance; estimate BER evidence needed and plan equipment measurements.
 - [ ] Reject circuit if compliant arbitrary-data TX/RX cannot be demonstrated; do not lower link speed and label it Gen1.
-- [ ] Under the I/O-reference fallback, qualify modeled GW2AR pin schedules and external circuitry without requiring a board bitstream; retain all Gen1 electrical limits and report infeasible candidates honestly.
+- [ ] Under the PCIE-003 digital-only fallback, record the electrical path as not implemented rather than qualified.
 
 ## pyuvm verification
 

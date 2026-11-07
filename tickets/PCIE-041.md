@@ -1,6 +1,6 @@
 ---
 id: PCIE-041
-title: "Run synthesis, resource, timing and CDC signoff"
+title: "Run lint, synthesis, CDC and reset signoff for the integrated core"
 status: todo
 owner: null
 branch: null
@@ -8,15 +8,15 @@ claimed_at: null
 base_commit: null
 priority: P1
 gate: baseline
-depends_on: ["PCIE-039"]
+depends_on: ["PCIE-039", "PCIE-050", "PCIE-051"]
 spec_sections: ["1.5.4", "4.2", "4.3.1.1"]
 ---
 
-# PCIE-041 — Run synthesis, resource, timing and CDC signoff
+# PCIE-041 — Run lint, synthesis, CDC and reset signoff for the integrated core
 
 ## Agent handoff and scope
 
-Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and repository AGENTS.md. Claim with `python3 tools/tickets.py claim PCIE-041 --agent <unique-agent-id>` before editing implementation. Do not begin until dependencies are done; conditional dependencies require a reviewed disposition. Implement digital logic in synthesizable SystemVerilog; external circuits require schematics, ngspice netlists/models and PCB evidence as specified by the ticket.
+Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and repository AGENTS.md. Claim with `python3 tools/tickets.py claim PCIE-041 --agent <unique-agent-id>` before editing implementation. Do not begin until dependencies are done; conditional dependencies require a reviewed disposition. Implement digital logic in synthesizable SystemVerilog; PHY circuits require schematics, layout, extracted ngspice results and macro abstracts as specified by the ticket.
 
 ## Source evidence
 
@@ -28,19 +28,15 @@ Primary ownership: 0 sections; [section/candidate traceability](../specification
 
 ## Deliverables and behavior
 
-- [ ] Add lint and synthesis targets for supported OSS CAD Suite tools; document vendor-tool dependency if selected FPGA needs it.
-- [ ] Measure FIFO/BRAM/LUT/FF use, critical paths and logical-clock feasibility at the width and clock frozen in PCIE-001.
-- [ ] Run CDC/reset analysis and audit generated clocks, false paths and multi-cycle constraints.
-- [ ] Separate board-independent synthesis from final board timing closure dependent on PCIE-040.
-- [ ] Attempt synthesis and place-and-route for GW2AR-LV18QN88C8/I7; report LUT4, FF, BSRAM, PLL, I/O and clock/timing use against actual available resources.
-- [ ] Try bounded storage and equivalent wider/slower fabric pipelines without removing mandatory endpoint behavior; record tool/device support separately from capacity or timing failure.
-- [ ] If the core cannot fit after documented optimization, activate the user-authorized I/O-reference fallback: continue the full digital core and pyuvm tests with GW2AR I/O-constrained ngspice models, preserving the failed-fit report.
-- [ ] Use the open flow validated in PCIE-002 (yosys, nextpnr-himbaechel, gowin_pack) for synthesis and place-and-route; cross-check timing with vendor Gowin EDA where the open timing model is not adequate for signoff, recording versions of both.
+- [ ] Add lint and Yosys synthesis targets with the SKY130 standard-cell library for the integrated core; record versions.
+- [ ] Run CDC and reset-domain analysis for the logical, PLL-derived TX and recovered RX clocks; audit generated clocks, false paths and multicycle constraints for PCIE-055.
+- [ ] Report pre-layout timing at all selected corners with OpenSTA and area estimates; try equivalent wider or slower pipelines without removing mandatory endpoint behavior.
+- [ ] Escalate a pre-layout timing miss to the PCIE-001 datapath decision.
 
 ## pyuvm verification
 
-- [ ] Run pyuvm regression on synthesizable top after lint fixes.
-- [ ] Check post-synthesis reset/encoding/packet behavior where supported and flag unsupported primitives.
+- [ ] Run the pyuvm regression on the synthesizable top after lint fixes.
+- [ ] Run the regression on the post-synthesis netlist with SKY130 functional cell models where the simulator supports them.
 - [ ] Use independent expected results, bounded watchdogs and reproducible seeds; record reviewed requirement IDs, functional coverage and exact command.
 
 ## ngspice verification
@@ -50,7 +46,7 @@ No ticket-local circuit simulation is required: these are protocol, control or p
 ## Acceptance criteria
 
 - [ ] No inferred latches, unintended memories or unexplained unconstrained paths.
-- [ ] Report either actual routed timing/resource fit or a reviewed failed-fit decision activating I/O-reference fallback; never label an unplaced design hardware-ready.
+- [ ] CDC constraints and reports are complete and handed to PCIE-055.
 - [ ] Reviewed requirements have implementation/test links and dispositions; relevant checks pass and limitations are recorded.
 - [ ] Update graph with `graphify update .` after code changes; record any tool failure explicitly.
 

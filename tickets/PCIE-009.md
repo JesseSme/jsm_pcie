@@ -16,7 +16,7 @@ spec_sections: ["4.2.8", "4.3.3.1", "4.3.3.2", "4.3.3.4"]
 
 ## Agent handoff and scope
 
-Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and repository AGENTS.md. Claim with `python3 tools/tickets.py claim PCIE-009 --agent <unique-agent-id>` before editing implementation. Do not begin until dependencies are done; conditional dependencies require a reviewed disposition. Implement digital logic in synthesizable SystemVerilog; external circuits require schematics, ngspice netlists/models and PCB evidence as specified by the ticket.
+Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and repository AGENTS.md. Claim with `python3 tools/tickets.py claim PCIE-009 --agent <unique-agent-id>` before editing implementation. Do not begin until dependencies are done; conditional dependencies require a reviewed disposition. Implement digital logic in synthesizable SystemVerilog; PHY circuits require schematics, layout, extracted ngspice results and macro abstracts as specified by the ticket.
 
 ## Source evidence
 
@@ -33,7 +33,7 @@ Primary ownership: 0 sections; [section/candidate traceability](../specification
 - [ ] Create machine-readable analog results with source stream hash, seed, model hashes, corners and electrical limit IDs.
 - [ ] Add eye folding using the specified measurement clock recovery method, mask checks and amplitude/jitter/de-emphasis measurements.
 - [ ] Keep short transient eye checks distinct from statistically meaningful BER qualification.
-- [ ] Model parallel FPGA pin events plus serializer clocks through the external circuit rather than replacing the circuit with an ideal 2.5 Gb/s source.
+- [ ] Drive the PMA parallel interface and PLL clocks into the transistor-level serializer rather than replacing it with an ideal 2.5 Gb/s source.
 
 ## pyuvm verification
 

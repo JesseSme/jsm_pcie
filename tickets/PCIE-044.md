@@ -1,6 +1,6 @@
 ---
 id: PCIE-044
-title: "Validate hardware bring-up and host interoperability"
+title: "Validate silicon bring-up and host interoperability"
 status: todo
 owner: null
 branch: null
@@ -8,15 +8,15 @@ claimed_at: null
 base_commit: null
 priority: P1
 gate: conditional
-depends_on: ["PCIE-040", "PCIE-041", "PCIE-042", "PCIE-043"]
+depends_on: ["PCIE-058"]
 spec_sections: ["1.4", "4.3", "6.6", "7"]
 ---
 
-# PCIE-044 — Validate hardware bring-up and host interoperability
+# PCIE-044 — Validate silicon bring-up and host interoperability
 
 ## Agent handoff and scope
 
-Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and repository AGENTS.md. Claim with `python3 tools/tickets.py claim PCIE-044 --agent <unique-agent-id>` before editing implementation. Do not begin until dependencies are done; conditional dependencies require a reviewed disposition. Implement digital logic in synthesizable SystemVerilog; external circuits require schematics, ngspice netlists/models and PCB evidence as specified by the ticket.
+Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and repository AGENTS.md. Claim with `python3 tools/tickets.py claim PCIE-044 --agent <unique-agent-id>` before editing implementation. Do not begin until dependencies are done; conditional dependencies require a reviewed disposition. Implement digital logic in synthesizable SystemVerilog; PHY circuits require schematics, layout, extracted ngspice results and macro abstracts as specified by the ticket.
 
 ## Source evidence
 
@@ -29,11 +29,10 @@ Primary ownership: 0 sections; [section/candidate traceability](../specification
 
 ## Deliverables and behavior
 
-- [ ] Document safe board-specific programming, reset, refclock and test connections after physical feasibility approval.
-- [ ] Verify real host enumeration, BAR probing/MMIO, MSI, power transitions and reset/recovery.
-- [ ] Capture negotiated x1 Gen1 link status, host logs, error counters and measured physical evidence.
-- [ ] Record host/platform and instrument limits; companion form-factor specification review is required before attachment.
-- [ ] If the documented fit-failure fallback is active, record host interoperability and board measurements as not performed; a reviewed not-applicable disposition can close this conditional ticket, but cannot count as hardware verification.
+- [ ] Design or select a test board carrying the packaged chip with a PCIe edge connector or adapter, REFCLK, PERST#, supplies and test access, after reviewing the companion form-factor specification.
+- [ ] Bring up silicon through the test interface and PHY loopback before host attachment; then verify host enumeration, BAR/MMIO, MSI, power transitions and reset/recovery.
+- [ ] Measure TX eye, receiver tolerance, lock time and power against PCIE-043 predictions and update models with provenance.
+- [ ] Record host, platform and instrument limits; certified compliance is not implied.
 
 ## pyuvm verification
 
@@ -47,8 +46,8 @@ Compare measured board waveforms with final ngspice predictions and update model
 
 ## Acceptance criteria
 
-- [ ] For the hardware route, all preceding hardware criteria and tests pass with board evidence; for documented core fit failure, a signed not-applicable disposition identifies unperformed hardware checks and retained I/O-reference models.
-- [ ] Fallback is enabled only by a documented fit decision, not by a tool installation failure or an unsupported electrical assumption.
+- [ ] Repeatable bring-up and host demo commands are documented, or the ticket closes with a reviewed not-performed disposition if no silicon is fabricated.
+- [ ] Outstanding compliance and electrical gaps are explicit; project completion is not confused with certified compliance.
 - [ ] Reviewed requirements have implementation/test links and dispositions; relevant checks pass and limitations are recorded.
 - [ ] Update graph with `graphify update .` after code changes; record any tool failure explicitly.
 

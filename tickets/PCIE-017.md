@@ -16,7 +16,7 @@ spec_sections: ["4.2.6.6", "4.2.6.7", "4.2.6.8", "5.2"]
 
 ## Agent handoff and scope
 
-Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and repository AGENTS.md. Claim with `python3 tools/tickets.py claim PCIE-017 --agent <unique-agent-id>` before editing implementation. Do not begin until dependencies are done; conditional dependencies require a reviewed disposition. Implement digital logic in synthesizable SystemVerilog; external circuits require schematics, ngspice netlists/models and PCB evidence as specified by the ticket.
+Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and repository AGENTS.md. Claim with `python3 tools/tickets.py claim PCIE-017 --agent <unique-agent-id>` before editing implementation. Do not begin until dependencies are done; conditional dependencies require a reviewed disposition. Implement digital logic in synthesizable SystemVerilog; PHY circuits require schematics, layout, extracted ngspice results and macro abstracts as specified by the ticket.
 
 ## Source evidence
 
@@ -31,8 +31,8 @@ Primary ownership: 16 sections; [section/candidate traceability](../specificatio
 
 - [ ] Implement independent TX/RX L0s entry/exit including idle and FTS; maintain appropriate higher-layer timers.
 - [ ] Implement required software-PM L1 and L2/L3-ready control behavior and wake/reset paths with power manager.
-- [ ] Define beacon support/applicability and hardware power/lock acknowledgments.
-- [ ] Advertise N_FTS and the Extended Synch behavior only within the receive relock budget recorded by PCIE-046/008; section 4.2.4.3 gives about 4 µs of FTS at N_FTS 255.
+- [ ] Implement the beacon-versus-WAKE# decision frozen in PCIE-003, and hardware power/lock acknowledgments.
+- [ ] Make N_FTS, Extended Synch use and L0s exit latency build parameters; their final values must stay within the receive relock budget from PCIE-046/008 and are bound and checked in PCIE-040.
 
 ## pyuvm verification
 

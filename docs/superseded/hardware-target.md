@@ -1,3 +1,5 @@
+> **Superseded 2026-11-07.** The project now targets SkyWater SKY130 with an on-chip PHY; see [ASIC target](../asic-target.md) and [PHY architecture](../phy-architecture.md). Kept for history only; links in this file may point to documents that no longer exist.
+
 # Tang Nano 20K hardware target and I/O-reference fallback
 
 User-selected target: **Sipeed Tang Nano 20K**, with **GW2AR-LV18QN88C8/I7**. If the complete digital core cannot fit, the user authorizes continuing with this device's I/O specifications as the electrical reference while the complete SystemVerilog core remains board-independent. Board selection is resolved; fit and link feasibility are not yet established.

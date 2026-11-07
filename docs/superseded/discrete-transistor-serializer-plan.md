@@ -1,3 +1,5 @@
+> **Superseded 2026-11-07.** The project now targets SkyWater SKY130 with an on-chip PHY; see [ASIC target](../asic-target.md) and [PHY architecture](../phy-architecture.md). Kept for history only; links in this file may point to documents that no longer exist.
+
 # First implementation plan: solderable discrete-transistor serializer
 
 This is the required first TX serializer design route, following the user's instruction. It refines the [accepted external serialization architecture](physical-interface-decision.md). The deliverable at this stage is a construction and verification plan, not a released schematic or an assertion of 2.5 Gb/s operation. Packaged serializer IC selection must follow the discrete-transistor evaluation rather than replace it at the outset.

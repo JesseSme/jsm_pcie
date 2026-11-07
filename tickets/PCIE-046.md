@@ -1,6 +1,6 @@
 ---
 id: PCIE-046
-title: "Assess external RX clock recovery feasibility before TX hardware spending"
+title: "Assess on-chip CDR feasibility and lock-time budget before PHY layout"
 status: todo
 owner: null
 branch: null
@@ -8,15 +8,15 @@ claimed_at: null
 base_commit: null
 priority: P0
 gate: baseline
-depends_on: ["PCIE-003", "PCIE-006"]
+depends_on: ["PCIE-003", "PCIE-006", "PCIE-050"]
 spec_sections: ["4.2.4.3", "4.2.6.6", "4.3.1.1", "4.3.1.8", "4.3.4"]
 ---
 
-# PCIE-046 — Assess external RX clock recovery feasibility before TX hardware spending
+# PCIE-046 — Assess on-chip CDR feasibility and lock-time budget before PHY layout
 
 ## Agent handoff and scope
 
-Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and repository AGENTS.md. Claim with `python3 tools/tickets.py claim PCIE-046 --agent <unique-agent-id>` before editing implementation. Do not begin until dependencies are done; conditional dependencies require a reviewed disposition. Implement digital logic in synthesizable SystemVerilog; external circuits require schematics, ngspice netlists/models and PCB evidence as specified by the ticket.
+Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and repository AGENTS.md. Claim with `python3 tools/tickets.py claim PCIE-046 --agent <unique-agent-id>` before editing implementation. Do not begin until dependencies are done; conditional dependencies require a reviewed disposition. Implement digital logic in synthesizable SystemVerilog; PHY circuits require schematics, layout, extracted ngspice results and macro abstracts as specified by the ticket.
 
 ## Source evidence
 
@@ -30,11 +30,11 @@ Primary ownership: 0 sections; [section/candidate traceability](../specification
 
 ## Deliverables and behavior
 
-- [ ] Perform a paper and behavioral feasibility study of the approved external receive path: input conditioning and termination, CDR topology (discrete PLL or DLL, phase-picking oversampler or another justified approach), 2.5 Gb/s sampler and deserializer to a GW2AR-supported parallel width, and recovered-clock delivery to the FPGA.
-- [ ] Budget CDR lock and relock time against protocol deadlines: L0s exit within the advertised N_FTS FTS ordered sets (section 4.2.4.3: about 4 µs at N_FTS 255), Polling and Recovery timers and electrical-idle exit; record the N_FTS and L0s exit latency the receive path can honestly support for PCIE-017/031.
+- [ ] Study candidate SKY130 CDR architectures (PLL-based, bang-bang with phase interpolator, oversampling) at behavioral level and at transistor level for the critical sampler and phase-detector blocks.
+- [ ] Budget CDR lock and relock time against protocol deadlines: L0s exit within the advertised N_FTS FTS ordered sets (section 4.2.4.3: about 4 µs at N_FTS 255), Polling and Recovery timers and electrical-idle exit; record the N_FTS and L0s exit latency the receiver can honestly support for PCIE-017/031.
 - [ ] Budget jitter tolerance and frequency tracking against section 4.3.4 receiver limits under the PCIE-001/003 reference-clock and SSC policy.
-- [ ] Identify candidate discrete or component building blocks with model provenance under the same model-quality rules as PCIE-045; a high-speed sampler or comparator without a trustworthy model is a blocker, not an assumption.
-- [ ] Produce a go, no-go or unknown recommendation and report a no-go or unknown result to the user before money is spent on TX coupon fabrication.
+- [ ] Identify which receive blocks need transistor-level qualification in PCIE-045.
+- [ ] Produce a go, no-go or unknown recommendation and report a no-go or unknown result to the user before full PHY layout begins.
 
 ## pyuvm verification
 

@@ -16,7 +16,7 @@ spec_sections: ["5.4", "4.2.6.6", "4.2.6.7"]
 
 ## Agent handoff and scope
 
-Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and repository AGENTS.md. Claim with `python3 tools/tickets.py claim PCIE-031 --agent <unique-agent-id>` before editing implementation. Do not begin until dependencies are done; conditional dependencies require a reviewed disposition. Implement digital logic in synthesizable SystemVerilog; external circuits require schematics, ngspice netlists/models and PCB evidence as specified by the ticket.
+Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and repository AGENTS.md. Claim with `python3 tools/tickets.py claim PCIE-031 --agent <unique-agent-id>` before editing implementation. Do not begin until dependencies are done; conditional dependencies require a reviewed disposition. Implement digital logic in synthesizable SystemVerilog; PHY circuits require schematics, layout, extracted ngspice results and macro abstracts as specified by the ticket.
 
 ## Source evidence
 
@@ -31,7 +31,7 @@ Primary ownership: 10 sections; [section/candidate traceability](../specificatio
 - [ ] Implement mandatory L0s support, transmit idle entry policy, independent receive tolerance and FTS exit.
 - [ ] Advertise measured/budgeted L0s exit latency and preserve higher-layer timer rules.
 - [ ] Implement ASPM L1 only if explicitly selected and supported; otherwise advertise its absence while maintaining software-PM behavior.
-- [ ] Derive advertised L0s exit latency from the PCIE-046/008 receive relock budget rather than from logical timing alone.
+- [ ] Keep advertised L0s exit latency a build parameter; PCIE-040 binds it to the PCIE-046/008 receive relock budget rather than to logical timing alone.
 
 ## pyuvm verification
 

@@ -2,11 +2,13 @@
 
 ## Objective and scope
 
-Build a complete PCI Express **Gen1 x1 digital endpoint** in synthesizable
-SystemVerilog, using the supplied **PCI Express Base Specification Revision 1.1**.
-The hardware target is **Sipeed Tang Nano 20K, GW2AR-LV18QN88C8/I7**.
+Build a complete PCI Express **Gen1 x1 endpoint** on the **SkyWater SKY130** process,
+using the supplied **PCI Express Base Specification Revision 1.1**. The digital core
+(transaction layer, data link layer, logical PHY) is synthesizable SystemVerilog
+hardened with **OpenLane and OpenROAD**; the PHY (PLL, serializer, transmitter,
+receiver, CDR, deserializer) is designed at transistor level **on the same die**.
 Digital verification uses **pyuvm through cocotb** with the local OSS CAD Suite.
-External circuit verification uses **ngspice**.
+Circuit verification uses **ngspice with SKY130 models**.
 
 Preserve the approved architecture and user decisions below. A functioning training
 sequence or MMIO demonstration is a milestone; it does not replace the complete
@@ -18,10 +20,9 @@ configuration, reset or error behavior to make a prototype appear complete.
 Read these before implementing a ticket:
 
 1. [Endpoint profile](docs/endpoint-profile.md): scope and proposed protocol defaults.
-2. [Hardware target](docs/hardware-target.md): board constraints and authorized fit fallback.
-3. [Physical-interface decision](docs/physical-interface-decision.md): accepted partition.
-4. [Discrete-transistor serializer plan](docs/discrete-transistor-serializer-plan.md): required first TX route.
-5. [Ticket workflow](tickets/README.md), [ticket index](tickets/INDEX.md), and the selected ticket's full source references and dependency evidence.
+2. [ASIC target](docs/asic-target.md): SKY130 process, flows, ticket map and digital-only fallback.
+3. [PHY architecture](docs/phy-architecture.md): on-chip PMA partition, proposed rates and method.
+4. [Ticket workflow](tickets/README.md), [ticket index](tickets/INDEX.md), and the selected ticket's full source references and dependency evidence.
 
 Source authority and traceability:
 
@@ -54,15 +55,17 @@ Keep planning and generated source material separate from implementation:
 |---|---|
 | `specification/` | Local-only source decomposition, summaries and candidates; tracked metadata: README, INDEX, manifest and traceability |
 | `tickets/` | Authoritative file-based work queue, ownership, status and evidence |
-| `docs/` | Architecture decisions, hardware plans and design rationale |
+| `docs/` | Architecture decisions and design rationale; `docs/superseded/` holds the retired FPGA plans for history only |
 | `tools/` | Specification/ticket tooling and reproducible automation |
 | `src/jsm_pcie/` | Existing Python package; preserve its role when adding tools |
 | `oss-cad-suite/` | Bundled third-party toolchain; do not edit its implementation |
 | `graphify-out/` | Generated knowledge graph; local-only and git-ignored because it contains spec text |
 
 As implementation is introduced, place synthesizable modules in `rtl/`, pyuvm and
-cocotb infrastructure in `verification/`, circuit schematics/netlists/models in
-`analog/`, and board-specific adapters/constraints in `boards/tang-nano-20k/`.
+cocotb infrastructure in `verification/`, PHY schematics, layouts, netlists and
+ngspice fixtures in `analog/`, and OpenLane/OpenROAD configurations, constraints,
+SKY130 wrappers and chip-top integration in `asic/sky130/`. Keep the SKY130 PDK
+install, flow run directories and GDS outputs outside Git.
 Respect any more specific instructions in those directories. Record exact commands
 and generated-output locations in the owning ticket; do not scatter undocumented
 scripts or commit large simulator waveforms and build caches by default.
@@ -85,32 +88,28 @@ Rules:
 Before starting implementation, read [tickets/README.md](tickets/README.md),
 [tickets/INDEX.md](tickets/INDEX.md), and [docs/endpoint-profile.md](docs/endpoint-profile.md).
 The file-based tickets are the authoritative work queue. The scope is a single-lane
-Gen1 digital PCI Express endpoint in synthesizable SystemVerilog; hardware feasibility
-must not be assumed from ideal simulated FPGA outputs.
+Gen1 PCI Express endpoint on SKY130: a digital core plus an on-chip PHY. PHY
+feasibility must not be assumed from ideal sources or schematic-only simulation.
 
-The user-selected target is Tang Nano 20K (GW2AR-LV18QN88C8/I7). Read
-[docs/hardware-target.md](docs/hardware-target.md). If documented core resource/timing
-fit fails after optimization, the user authorizes a board-independent core using
-the same device's I/O specifications as the simulation reference. Preserve Gen1
-rate/electrical requirements and mark unperformed hardware tests explicitly.
+The user-selected target is the **SkyWater SKY130 process with an on-chip PHY**
+(2026-11-07). Read [docs/asic-target.md](docs/asic-target.md) and
+[docs/phy-architecture.md](docs/phy-architecture.md). The earlier Tang Nano 20K
+FPGA target, external serializer and discrete-transistor board plan are retired;
+`docs/superseded/` is history, not guidance.
 
-The approved physical architecture is parallel FPGA I/O with external clocked TX
-serialization and external RX clock recovery/deserialization. Read
-[docs/physical-interface-decision.md](docs/physical-interface-decision.md).
-Keep scrambling/8b10b in the FPGA. Four 625 Mb/s streams are the initial TX
-candidate, not a proven pin assignment or locked component choice. Preserve
-this direction in tickets and models; acceptance of the architecture does not
-mean its electrical feasibility has already passed.
+The PHY follows a transistor-level, building-blocks-first method: PCIE-045 qualifies
+SKY130 cells on extracted layout, PCIE-046 assesses CDR feasibility and lock time
+before PHY layout, PCIE-059 supplies bias and references, then PCIE-049 (PLL and
+REFCLK receiver), PCIE-007 (TX), PCIE-008 (RX) and PCIE-052 (pads, ESD, package)
+integrate. PCIE-060 joins logical PHY and PMA early in a loopback top. If these reject the on-chip PHY with quantitative
+evidence, the documented digital-only fallback applies: keep every mandatory protocol
+obligation, record the PHY rejection and unmet electrical requirements, report it to
+the user, and never call the result a working PCIe endpoint.
 
-For TX serialization, the user requires a **solderable discrete-transistor plan
-and evaluation first**. Read
-[docs/discrete-transistor-serializer-plan.md](docs/discrete-transistor-serializer-plan.md).
-PCIE-045 qualifies transistor building blocks before PCIE-007 full integration.
-PCIE-046 assesses external RX clock-recovery feasibility before parts are bought or
-coupons fabricated; a transmitter without a feasible receiver does not produce a link.
-Do not bypass this route by selecting a packaged serializer. Record measured or
-modeled limitations explicitly; propose an alternative only after the discrete
-evaluation and explicit agreement on the changed direction.
+Technology-specific memories, synchronizers, reset synchronizers and clock gates
+live only behind the PCIE-051 wrappers; shared RTL has no initial-value resets or
+technology primitives. Timing signoff covers every selected corner, not only typical.
+Never submit a design for fabrication or incur cost without explicit user approval.
 
 An agent **must sign a ticket and create its own branch before implementation**:
 
@@ -149,24 +148,24 @@ mandatory endpoint behavior cannot be deferred to make a demonstration appear co
 
 ## SystemVerilog implementation rules
 
-- Keep transaction, data-link, logical-PHY, physical-interface adapter and application
-  responsibilities explicit. Scrambling and 8b/10b remain in the FPGA; external
-  raw-bit serialization must not encode them a second time.
+- Keep transaction, data-link, logical-PHY, PMA-interface and application
+  responsibilities explicit. Scrambling and 8b/10b remain in the digital core; the
+  on-chip serializer carries raw encoded bits and must not encode them a second time.
 - Use explicit widths, signedness, units and byte/bit order. Derive timer and FIFO
   parameters from source-cited limits. Handle modulo sequence/credit counters,
   wraparound and infinite-credit encodings intentionally.
 - Use clear sequential/combinational separation, complete combinational assignments,
   and defined reset behavior. Avoid inferred latches and simulation-only constructs
-  in synthesizable modules. Keep vendor primitives behind board adapters.
+  in synthesizable modules. Keep technology primitives behind the PCIE-051 wrappers.
 - Specify ready/valid handshakes, latency and backpressure boundaries. A physical
   serial stream cannot pause because an internal consumer is not ready; account for
   buffering, credit advertisement and overflow behavior.
 - Identify every clock domain and reset crossing. Use appropriate synchronization
   and asynchronous FIFOs; synchronize reset release. Do not sample recovered-clock
-  signals directly in the fabric clock domain without a justified crossing.
-- Gen1 remains 2.5 GT/s, 400 ps per serial bit. Four 625 Mb/s FPGA streams are an
-  initial serializer interface candidate, not four PCIe lanes. Preserve encoded
-  bit order when four-bit groups cross ten-bit symbol boundaries.
+  signals directly in the core clock domain without a justified crossing.
+- Gen1 remains 2.5 GT/s, 400 ps per serial bit. The proposed PMA interface carries
+  20 encoded bits per 125 MHz cycle; preserve encoded bit order across ten-bit symbol
+  and parallel-word boundaries.
 - Advertised configuration/capability fields must match implemented behavior.
   Optional omissions need explicit applicability and unsupported/absence tests.
   The supplied Rev1.1's mandatory L0s support is part of the complete baseline.
@@ -186,20 +185,20 @@ environment: the project's Python requirement and bundled simulator Python ABI m
 differ. Do not assume pyuvm is installed or a simulator integration is working
 because a binary exists. Capture tool versions and actual executed commands.
 
-For circuit changes, follow the discrete-transistor plan and PCIE-006/009/045:
+For circuit changes, follow [docs/phy-architecture.md](docs/phy-architecture.md) and
+PCIE-006/009/045:
 
-- Use sourced nonlinear transistor models with known pin mapping, bias range and
-  package parasitics. S-parameters alone are not large-signal switching models.
-- Model finite FPGA edge rates, supported I/O modes, common modes, skew, loading,
-  clock phases, board parasitics and measurement loading. Check device stress,
-  saturation, power and select-path timing as well as data-port bandwidth.
+- Use the pinned SKY130 ngspice models; record model, corner, temperature, supply and
+  mismatch settings. Qualify cells on extracted layout, not schematic alone.
+- Include pad, ESD, package, channel and measurement loading from PCIE-052. Check
+  device voltage stress, electromigration, power and select-path timing as well as
+  data-path bandwidth.
 - Evaluate retiming/latch races and clock generation explicitly. Do not replace the
-  serializer with an ideal 2.5 Gb/s source or assume ordinary FPGA outputs can
-  produce the required GHz select clock.
+  serializer, PLL or CDR with an ideal 2.5 Gb/s source when claiming feasibility.
 - Run DC, truth-table, transient and justified corner studies with timestep
   convergence. Use pyuvm-generated bit/pin manifests and compare analog output
   bits against the independent expected stream. Preserve deliberately failing cases.
-- Distinguish modeled feasibility from physical measurements, BER qualification,
+- Distinguish modeled feasibility from silicon measurements, BER qualification,
   host interoperability and certified compliance. An eye plot or a transistor's
   transition-frequency rating alone does not prove a working PCIe endpoint.
 
@@ -221,7 +220,7 @@ ticket ownership/evidence work begins. Maintain lifecycle changes directly.
 Before handoff, record changed files, reviewed requirement IDs, exact commands,
 versions, seeds, observed results, coverage or numerical margins, unexecuted checks,
 limitations and a precise next action in the ticket. Run relevant lint, synthesis,
-timing and CDC checks for RTL/board changes as they become available. Update the
+timing, CDC, DRC and LVS checks for RTL and layout changes as they become available. Update the
 knowledge graph after code changes. Never mark unavailable verification as passed.
 
 ## Preserve user work and distinguish decisions from results
@@ -232,8 +231,9 @@ use broad staging, reset or cleanup commands that sweep in user work.
 
 Carry out routine work within the claimed scope without asking to reconfirm already
 accepted decisions. Record unresolved requirements or feasibility limits honestly.
-Changing the discrete-transistor-first direction, absorbing logical-PHY functions
-into a packaged PHY, or replacing the selected hardware requires a documented
-architecture proposal and explicit user agreement. The already-authorized core-fit
-I/O-reference fallback does not require another approval; apply its evidence rules
-and label physical tests that were not performed.
+Changing the on-chip PHY direction, absorbing logical-PHY functions into a third-party
+PHY or hard IP, or replacing the SKY130 target requires a documented architecture
+proposal and explicit user agreement. The digital-only fallback in
+[docs/asic-target.md](docs/asic-target.md) is pre-authorized but must be reported to
+the user when triggered, with its evidence rules applied and unperformed physical
+tests labeled.
