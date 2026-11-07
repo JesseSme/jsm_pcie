@@ -1,6 +1,6 @@
 # On-chip SKY130 PHY architecture
 
-Status: **direction selected by the user, 2026-11-07** (on-chip PHY, with digital-only fallback). Rates, partitions and circuit topologies below are proposals that PCIE-003 freezes and PCIE-045/046/049/007/008 must qualify. Nothing here asserts that SKY130 meets the 2.5 Gb/s requirements.
+Status: **direction selected by the user, 2026-11-07** (on-chip PHY, with digital-only fallback). Rates, partitions and circuit topologies below are proposals that PCIE-003 freezes and PCIE-045/046/049/007/008 must qualify. Nothing here asserts that SKY130 meets the 2.5 Gb/s requirements. The PHY macros are delivered as part of a verified core; pads and packaging are modeled, not designed.
 
 ## Partition
 
@@ -10,7 +10,7 @@ flowchart LR
     DL --> LP[Logical PHY: framing, scrambling, 8b/10b, LTSSM]
     LP -->|20 bits per 125 MHz cycle| SER[Serializer]
     SER --> TXD[TX driver: swing, de-emphasis, idle, receiver detect]
-    TXD --> PADS[High-speed pads, ESD, package]
+    TXD --> PADS[Pads, ESD, package: integrator-provided, modeled by PCIE-052]
     PADS --> RXF[RX termination and front end]
     RXF --> CDR[Clock and data recovery]
     CDR --> DES[Deserializer]
@@ -24,7 +24,7 @@ flowchart LR
 - **Digital core** (standard cells, OpenLane): transaction layer, data link layer and logical PHY, including scrambling, 8b/10b, ordered sets, LTSSM and elastic buffering. Encoding and scrambling happen exactly once, here.
 - **PMA** (custom transistor-level macros): PLL, serializer, TX driver, RX front end, CDR and deserializer, plus electrical-idle and receiver-detect circuits. Each is delivered as a DRC/LVS-clean macro with GDS, LEF and timing abstracts for PCIE-040.
 - **Support blocks:** bias and references, plus termination calibration if needed (PCIE-059); the REFCLK input receiver belongs with the PLL (PCIE-049). REFCLK electrical requirements come from the PCI Express CEM specification, which was not supplied and must be obtained.
-- **Off-chip parts** (recorded in PCIE-003, provided by the PCIE-044 test board): TX AC-coupling capacitors, which receiver detection relies on; any precision calibration resistor; REFCLK termination; supply decoupling.
+- **Outside the core** (recorded in PCIE-003, stated in the PCIE-058 integration guide): pads and ESD within the PCIE-052 limits, TX AC-coupling capacitors, which receiver detection relies on; any precision calibration resistor; REFCLK termination; supply decoupling.
 - **Interface** (PCIE-004): proposed 20 encoded bits per 125 MHz cycle each way, with explicit bit order across 10-bit symbol boundaries, plus control and status for electrical idle, receiver detect, polarity, lock, power states and reset.
 
 ## Proposed rate architecture (to be qualified)

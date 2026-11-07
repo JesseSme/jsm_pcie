@@ -32,7 +32,7 @@ Primary ownership: 0 sections; [section/candidate traceability](../specification
 - [ ] Floorplan the top with analog macro placeholders, analog and digital supply domains and the digital-to-PMA interface; close timing on that interface with preliminary abstracts.
 - [ ] Select and set up the mixed-signal co-simulation method for PCIE-040 (for example ngspice d_cosim with Verilator) and record what it covers.
 - [ ] Swap qualified PCIE-045 cells or early PMA macros in as they become available; the same top must accept final macros by replacing abstracts, with final integration in PCIE-040.
-- [ ] Serve as the intermediate milestone between the verified digital core and the signed-off chip, and as a candidate first test chip.
+- [ ] Serve as the intermediate milestone between the verified digital core and the signed-off core macro.
 
 ## pyuvm verification
 

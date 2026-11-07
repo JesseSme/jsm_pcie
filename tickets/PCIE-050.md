@@ -27,11 +27,10 @@ Primary ownership: 0 sections; [section/candidate traceability](../specification
 ## Deliverables and behavior
 
 - [ ] Install a pinned SKY130 PDK build with the PDK version manager used by the selected OpenLane release (volare or ciel); record the exact PDK commit and keep the PDK outside the repository.
-- [ ] Install OpenLane 2 (or LibreLane, its continuation) using Docker or Podman, which are available on this machine, or Nix; use classic OpenLane only if a fabrication harness requires it; record the exact release.
+- [ ] Install OpenLane 2 (or LibreLane, its continuation) using Docker or Podman, which are available on this machine, or Nix; record the exact release.
 - [ ] Install standalone OpenROAD and OpenSTA at the version bundled by the selected OpenLane release for interactive floorplan, timing and debug work; document any version difference.
 - [ ] Install signoff tools used by the flow (Magic, KLayout, netgen) and xschem for SKY130 schematics; keep OpenLane-bundled Yosys separate from oss-cad-suite Yosys and record both versions.
 - [ ] Add documented one-command launchers, git-ignore run directories and PDK caches, and record machine limits (16 cores, 14 GB RAM) that may constrain full-core runs.
-- [ ] If a ChipFoundry harness is the likely route, set up its user-project template (Caravel, Caravan or OpenFrame) with the OpenLane version it requires and record any conflict with the pinned versions.
 
 ## pyuvm verification
 

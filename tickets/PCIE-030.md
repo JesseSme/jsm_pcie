@@ -48,7 +48,7 @@ No ticket-local circuit simulation is required: these are protocol, control or p
 ## Acceptance criteria
 
 - [ ] Mandatory PM transitions complete without packet loss or deadlock.
-- [ ] Capabilities match chip and system support and companion definitions are resolved.
+- [ ] Capabilities match core and system support and companion definitions are resolved.
 - [ ] Reviewed requirements have implementation/test links and dispositions; relevant checks pass and limitations are recorded.
 - [ ] Update graph with `graphify update .` after code changes; record any tool failure explicitly.
 

@@ -1,18 +1,18 @@
 ---
 id: PCIE-058
-title: "Prepare ASIC tapeout signoff and post-silicon test plan"
+title: "Assemble the verified core signoff and integration package"
 status: todo
 owner: null
 branch: null
 claimed_at: null
 base_commit: null
 priority: P1
-gate: conditional
-depends_on: ["PCIE-043", "PCIE-056", "PCIE-057"]
-spec_sections: ["4.3"]
+gate: baseline
+depends_on: ["PCIE-040", "PCIE-042", "PCIE-043", "PCIE-056"]
+spec_sections: ["1.5.4.4", "4.3", "6.6"]
 ---
 
-# PCIE-058 — Prepare ASIC tapeout signoff and post-silicon test plan
+# PCIE-058 — Assemble the verified core signoff and integration package
 
 ## Agent handoff and scope
 
@@ -20,31 +20,33 @@ Read [workflow](README.md), [profile](../docs/endpoint-profile.md), and reposito
 
 ## Source evidence
 
+- [1.5.4.4 — Inter-Layer Interfaces](../specification/1/5/4/4/summary.md): direct pp. 40–40; follow child sections and PDF tables.
 - [4.3 — Electrical Sub-block](../specification/4/3/summary.md): direct pp. 213–213; follow child sections and PDF tables.
+- [6.6 — PCI Express Reset - Rules](../specification/6/6/summary.md): direct pp. 316–319; follow child sections and PDF tables.
 
 Primary ownership: 0 sections; [section/candidate traceability](../specification/TRACEABILITY.csv) lists exact IDs. Source references above also include shared prerequisites.
 
 ## Deliverables and behavior
 
-- [ ] Assemble final GDS, signoff reports, versions, waivers and documentation for the chosen fabrication route.
-- [ ] Confirm the chosen route's submission format (GDS or OASIS), required DRC deck (open tools or Cadence Pegasus), legal agreement, price and commitment deadline well before tapeout.
-- [ ] Write a post-silicon bring-up and test plan: board, supplies, clocks, test interface, loopback, and later link tests.
-- [ ] Do not submit for fabrication or incur cost without explicit user approval.
+- [ ] Collect signoff evidence for the core macro: static timing at all corners, DRC, LVS and antenna (PCIE-040/055), gate-level and equivalence results (PCIE-056), electrical qualification (PCIE-043) and protocol coverage closure (PCIE-042).
+- [ ] Deliver core views: GDS, LEF, timing abstracts, gate-level netlist, RTL and behavioral models, and pin and interface documentation.
+- [ ] Write the integration guide: interface timing, clocks and resets, supplies, pad/ESD/package and off-chip requirements from PCIE-003/052, loopback and test modes, and known limitations.
+- [ ] Produce a verification summary linking every reviewed requirement to passing checks or justified waivers, and list what cannot be verified without silicon.
 
 ## pyuvm verification
 
-- [ ] Map each post-silicon test to its pre-silicon pyuvm counterpart and expected result.
-- [ ] Define pass/fail criteria for first-silicon bring-up.
+- [ ] Re-run the full regression and signoff flow from a clean checkout with the recorded commands and confirm identical results.
+- [ ] Confirm the delivered behavioral model passes the same core-boundary interface tests as the RTL.
 - [ ] Use independent expected results, bounded watchdogs and reproducible seeds; record reviewed requirement IDs, functional coverage and exact command.
 
 ## ngspice verification
 
-No ticket-local circuit simulation is required: these are protocol, control or planning rules. Verify them in pyuvm/review. Any change to physical pin timing, clocks, idle, detection or signal levels must provide pattern manifests to PCIE-009 and re-run the applicable electrical cases in PCIE-043; ngspice cannot establish digital packet correctness.
+Re-run the PCIE-043 electrical regression from a clean checkout and confirm the archived margins.
 
 ## Acceptance criteria
 
-- [ ] Tapeout package is complete and reproducible from recorded commands.
-- [ ] Submission happens only after explicit user approval.
+- [ ] Every signoff check passes or carries a justified waiver, reproducible from recorded commands.
+- [ ] The integration guide states every requirement an integrator must meet for the verified results to hold.
 - [ ] Reviewed requirements have implementation/test links and dispositions; relevant checks pass and limitations are recorded.
 - [ ] Update graph with `graphify update .` after code changes; record any tool failure explicitly.
 

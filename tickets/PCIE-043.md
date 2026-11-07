@@ -28,7 +28,7 @@ Primary ownership: 0 sections; [section/candidate traceability](../specification
 
 - [ ] Run final chosen driver/channel/RX model suite and archive configuration, plots and numerical margins.
 - [ ] Audit mask measurement, de-emphasis, jitter transfer, idle, detect and receive tolerance at supported corners.
-- [ ] Separate modeled results from hardware compliance; estimate BER evidence needed and plan equipment measurements.
+- [ ] Separate modeled results from silicon BER and compliance, which are out of scope; state the limits of the modeled evidence.
 - [ ] Reject circuit if compliant arbitrary-data TX/RX cannot be demonstrated; do not lower link speed and label it Gen1.
 - [ ] Under the PCIE-003 digital-only fallback, record the electrical path as not implemented rather than qualified.
 
@@ -44,7 +44,7 @@ Batch all PVT/model corners; verify timestep convergence and reproducibility. In
 
 ## Acceptance criteria
 
-- [ ] Every applicable electrical requirement has a model result or explicit pending laboratory measurement.
+- [ ] Every applicable electrical requirement has a model result or an explicit statement that it needs silicon measurement, which is out of scope.
 - [ ] No full PCIe compliance claim from transient ngspice alone.
 - [ ] Reviewed requirements have implementation/test links and dispositions; relevant checks pass and limitations are recorded.
 - [ ] Update graph with `graphify update .` after code changes; record any tool failure explicitly.

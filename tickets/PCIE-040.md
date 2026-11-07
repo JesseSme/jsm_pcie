@@ -1,6 +1,6 @@
 ---
 id: PCIE-040
-title: "Integrate PHY macros and digital core into the mixed-signal top"
+title: "Integrate the digital core and PHY macros into the core macro"
 status: todo
 owner: null
 branch: null
@@ -12,7 +12,7 @@ depends_on: ["PCIE-007", "PCIE-008", "PCIE-049", "PCIE-055", "PCIE-059", "PCIE-0
 spec_sections: ["4.1", "4.3", "6.6"]
 ---
 
-# PCIE-040 — Integrate PHY macros and digital core into the mixed-signal top
+# PCIE-040 — Integrate the digital core and PHY macros into the core macro
 
 ## Agent handoff and scope
 
@@ -28,16 +28,17 @@ Primary ownership: 0 sections; [section/candidate traceability](../specification
 
 ## Deliverables and behavior
 
-- [ ] Integrate the hardened digital core and the PCIE-007/008/049 PMA macros in a mixed-signal top: macro placement, analog and digital supply separation, guard rings and power-domain boundaries.
+- [ ] Integrate the hardened digital core and the PCIE-007/008/049/059 PMA macros into one hard core macro: macro placement, analog and digital supply separation, guard rings and power-domain boundaries.
 - [ ] Close timing on the digital-to-PMA parallel interfaces and the recovered-clock crossing using macro timing abstracts.
-- [ ] Verify the top with the PCIE-060 co-simulation method (digital RTL or gate level with behavioral or extracted PMA models) and record what each run covers.
-- [ ] Pass top-level DRC, LVS and antenna checks with documented waivers.
+- [ ] Verify the core macro with the PCIE-060 co-simulation method (digital RTL or gate level with behavioral or extracted PMA models) and record what each run covers.
 - [ ] Bind N_FTS, Extended Synch use and L0s exit latency parameters to the PCIE-046/008 receive relock budget and verify them in co-simulation.
+- [ ] Provide PMA near-end loopback and status visibility at the core boundary so integrators can test the core without a link partner.
+- [ ] Pass core-level DRC, LVS and antenna checks with documented waivers.
 
 ## pyuvm verification
 
-- [ ] Run the PCIE-039 enumeration regression through behavioral PMA models connected at the integrated top.
-- [ ] Assert idle, detect, polarity, recovered clock and reset mapping between core and PMA macros.
+- [ ] Run the PCIE-039 enumeration regression through behavioral PMA models connected at the core macro boundary.
+- [ ] Assert idle, detect, polarity, recovered clock, loopback and reset mapping between the digital core and PMA macros.
 - [ ] Use independent expected results, bounded watchdogs and reproducible seeds; record reviewed requirement IDs, functional coverage and exact command.
 
 ## ngspice verification
@@ -46,7 +47,7 @@ Re-simulate the PMA macros with top-level supply, substrate and coupling parasit
 
 ## Acceptance criteria
 
-- [ ] Integrated top is DRC/LVS clean with waivers documented.
+- [ ] Core macro is DRC/LVS clean with waivers documented.
 - [ ] Digital-to-PMA interface timing closes at all corners.
 - [ ] Reviewed requirements have implementation/test links and dispositions; relevant checks pass and limitations are recorded.
 - [ ] Update graph with `graphify update .` after code changes; record any tool failure explicitly.

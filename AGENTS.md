@@ -6,7 +6,8 @@ Build a complete PCI Express **Gen1 x1 endpoint** on the **SkyWater SKY130** pro
 using the supplied **PCI Express Base Specification Revision 1.1**. The digital core
 (transaction layer, data link layer, logical PHY) is synthesizable SystemVerilog
 hardened with **OpenLane and OpenROAD**; the PHY (PLL, serializer, transmitter,
-receiver, CDR, deserializer) is designed at transistor level **on the same die**.
+receiver, CDR, deserializer) is designed at transistor level as hard macros. The
+deliverable is a **fully verified ASIC core** combining both, not a taped-out chip.
 Digital verification uses **pyuvm through cocotb** with the local OSS CAD Suite.
 Circuit verification uses **ngspice with SKY130 models**.
 
@@ -110,9 +111,9 @@ the user, and never call the result a working PCIe endpoint.
 Technology-specific memories, synchronizers, reset synchronizers and clock gates
 live only behind the PCIE-051 wrappers; shared RTL has no initial-value resets or
 technology primitives. Timing signoff covers every selected corner, not only typical.
-Never submit a design for fabrication or incur cost without explicit user approval.
-[docs/fabrication-routes.md](docs/fabrication-routes.md) records the shuttle options checked on
-2026-11-07; re-verify them before relying on dates, prices or pad options.
+Tapeout, fabrication, packaging and silicon testing are out of scope. Pads and ESD
+are outside the core and are modeled (PCIE-052), not designed. Never present
+modeled results as silicon evidence.
 
 An agent **must sign a ticket and create its own branch before implementation**:
 

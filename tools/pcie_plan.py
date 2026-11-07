@@ -1,6 +1,7 @@
 """Authored work packages for the PCI Express Gen1 x1 endpoint on SkyWater SKY130.
 
-Digital core plus on-chip SKY130 PHY; see docs/asic-target.md and docs/phy-architecture.md.
+Deliverable: a fully verified ASIC core (digital core plus on-chip SKY130 PHY macros), not a
+taped-out chip; see docs/asic-target.md and docs/phy-architecture.md.
 Generated tickets must not be regenerated after any ticket is claimed."""
 TICKETS = []
 
@@ -54,18 +55,17 @@ ticket(2, 'Reproduce OSS CAD Suite, pyuvm and ngspice tool environment',
        spice='Run ngspice -b on a known RC transient and compare measured settling time with analytic RC tolerance; exercise failure handling too.')
 
 
-ticket(3, 'Freeze SKY130 chip architecture, clocking, pins and PHY partition',
+ticket(3, 'Freeze SKY130 core architecture, clocking, interfaces and PHY partition',
        '4.3 4.3.1.1 4.3.1.8 4.3.2.2 6.6', [1, 2],
        work=[
-           'Freeze docs/asic-target.md and docs/phy-architecture.md: digital core (transaction layer, data link layer and logical PHY including scrambling and 8b/10b) plus an on-chip SKY130 PMA (PLL, serializer, TX driver, RX front end, CDR and deserializer) on one die',
+           'Freeze docs/asic-target.md and docs/phy-architecture.md: digital core (transaction layer, data link layer and logical PHY including scrambling and 8b/10b) plus on-chip SKY130 PMA macros (PLL, serializer, TX driver, RX front end, CDR and deserializer) integrated as one hard core macro; the deliverable is a fully verified core, not a taped-out chip',
            'Own the reference-clock architecture under the PCIE-001 policy: host 100 MHz REFCLK input, PLL multiplication to the serializer clock, CDR reference and digital clocks; budget jitter, SSC tracking and phase relations',
            'Choose the PMA rate architecture (full-rate 2.5 GHz clocks, or half-rate 1.25 GHz clocks with a double-edge final stage) and the split of serializer/deserializer stages between standard cells and custom current-mode logic, as hypotheses for PCIE-045 to qualify',
            'Choose the digital-to-PMA parallel width consistent with the PCIE-001 datapath (proposed 20 encoded bits per 125 MHz cycle) and list the required PMA controls (electrical idle, receiver detect, polarity, lock, power states, reset); PCIE-004 owns the detailed interface contract and timing',
-           'Budget chip pins (PCIe TX/RX pairs, REFCLK, PERST#, any wake signal, supplies, test access); select standard-cell library (sky130_fd_sc_hd by default), operating corners, supplies and a preliminary die area',
-           'Take area and pad assumptions from docs/fabrication-routes.md (checked 2026-11-07): about 10-15 mm² user area on ChipFoundry harnesses, or a 3.588 x 5.188 mm full-custom box on the Cadence aggregation route; PCIE-057 re-verifies and chooses the route, and no commitment or cost is implied',
-           'Define the digital-only fallback: if PCIE-045/046/007/008/049 reject the on-chip PHY, the chip proceeds as a digital core with PHY-boundary loopback and the PHY failure is reported, not hidden',
+           'Define the core boundary: PCIe TX/RX pad connections, REFCLK input, PERST# and any wake signal, supplies, application and test interfaces; select standard-cell library (sky130_fd_sc_hd by default), operating corners, supplies and a core area budget',
+           'Define the digital-only fallback: if PCIE-045/046/007/008/049 reject the on-chip PHY, the deliverable becomes the verified digital core with its PHY interface and behavioral PMA model, and the PHY failure is reported, not hidden',
            'Assign every PHY support block an owner: bias and references (PCIE-059), REFCLK input receiver and PLL (PCIE-049), pads and ESD (PCIE-052)',
-           'Record off-chip parts the PHY relies on: TX AC-coupling capacitors (receiver detection depends on them), any precision calibration resistor, REFCLK termination and supply decoupling; the PCIE-044 test board must provide them',
+           'Record integration requirements outside the core: TX AC-coupling capacitors (receiver detection depends on them), pads and ESD within the PCIE-052 limits, any precision calibration resistor, REFCLK termination and supply decoupling; they go into the PCIE-058 integration guide',
            'Decide beacon support for wake from L2 versus a WAKE# signal, because it affects both PCIE-017 and the PCIE-007 transmitter',
        ],
        tests=[
@@ -73,7 +73,7 @@ ticket(3, 'Freeze SKY130 chip architecture, clocking, pins and PHY partition',
            'Compute encoded-data throughput and clock budgets independently of the RTL',
        ],
        accept=[
-           'Chip architecture, clocking, PMA rate architecture, pins and corners are recorded with sources and rationale',
+           'Core architecture, clocking, PMA rate architecture, interfaces and corners are recorded with sources and rationale',
            'No PHY feasibility is asserted before PCIE-045/046/007/008/049 evidence; the fallback boundary is explicit',
        ],
        spice='No circuit qualification here. Record circuit hypotheses, rates and budgets that PCIE-045, PCIE-049, PCIE-007 and PCIE-008 must confirm with SKY130 transistor-level simulation.')
@@ -173,7 +173,7 @@ ticket(8, 'Qualify the extracted RX and deliver the receiver macro',
        ],
        accept=[
            'Extracted RX macro meets modeled receiver limits and the lock-time budget at all corners, or the shortfall is quantified',
-           'Behavioral CDR results are labeled assumptions until extracted-layout or silicon evidence exists',
+           'Behavioral CDR results are labeled assumptions until extracted-layout evidence exists',
        ],
        spice='Sweep input amplitude, common mode, jitter, frequency offset, termination and idle-detection thresholds on schematic and extracted netlists at all corners; simulate detection loads and bias startup; verify timestep convergence.')
 
@@ -565,7 +565,7 @@ ticket(30, 'Implement required PCI-PM capability and device power states',
        ],
        accept=[
            'Mandatory PM transitions complete without packet loss or deadlock',
-           'Capabilities match chip and system support and companion definitions are resolved',
+           'Capabilities match core and system support and companion definitions are resolved',
        ])
 
 
@@ -648,7 +648,7 @@ ticket(35, 'Implement reset domains and link-down cleanup',
            'Implement Fundamental Reset/PERST# and Hot Reset with exact per-register sticky/retained/reset attributes',
            'Synchronize deassertion per clock domain and gate activity while clocks/PHY are not ready',
            'Flush or fail pending requests, retry entries, credits, interrupts and application state according to reset type',
-           'Define link-down software-visible outcomes independently of full chip reset',
+           'Define link-down software-visible outcomes independently of full core reset',
        ],
        tests=[
            'Assert resets at each LTSSM/DL phase and during config, MSI, replay and requester activity',
@@ -731,21 +731,22 @@ ticket(39, 'Integrate endpoint top and run enumeration-to-MMIO regression',
        ])
 
 
-ticket(40, 'Integrate PHY macros and digital core into the mixed-signal top',
+ticket(40, 'Integrate the digital core and PHY macros into the core macro',
        '4.1 4.3 6.6', [7, 8, 49, 55, 59, 60],
        work=[
-           'Integrate the hardened digital core and the PCIE-007/008/049 PMA macros in a mixed-signal top: macro placement, analog and digital supply separation, guard rings and power-domain boundaries',
+           'Integrate the hardened digital core and the PCIE-007/008/049/059 PMA macros into one hard core macro: macro placement, analog and digital supply separation, guard rings and power-domain boundaries',
            'Close timing on the digital-to-PMA parallel interfaces and the recovered-clock crossing using macro timing abstracts',
-           'Verify the top with the PCIE-060 co-simulation method (digital RTL or gate level with behavioral or extracted PMA models) and record what each run covers',
-           'Pass top-level DRC, LVS and antenna checks with documented waivers',
+           'Verify the core macro with the PCIE-060 co-simulation method (digital RTL or gate level with behavioral or extracted PMA models) and record what each run covers',
            'Bind N_FTS, Extended Synch use and L0s exit latency parameters to the PCIE-046/008 receive relock budget and verify them in co-simulation',
+           'Provide PMA near-end loopback and status visibility at the core boundary so integrators can test the core without a link partner',
+           'Pass core-level DRC, LVS and antenna checks with documented waivers',
        ],
        tests=[
-           'Run the PCIE-039 enumeration regression through behavioral PMA models connected at the integrated top',
-           'Assert idle, detect, polarity, recovered clock and reset mapping between core and PMA macros',
+           'Run the PCIE-039 enumeration regression through behavioral PMA models connected at the core macro boundary',
+           'Assert idle, detect, polarity, recovered clock, loopback and reset mapping between the digital core and PMA macros',
        ],
        accept=[
-           'Integrated top is DRC/LVS clean with waivers documented',
+           'Core macro is DRC/LVS clean with waivers documented',
            'Digital-to-PMA interface timing closes at all corners',
        ],
        spice='Re-simulate the PMA macros with top-level supply, substrate and coupling parasitics where extractable; report any degradation against PCIE-007/008/049 results.')
@@ -792,7 +793,7 @@ ticket(43, 'Qualify electrical path across corners and expose limits of simulati
        work=[
            'Run final chosen driver/channel/RX model suite and archive configuration, plots and numerical margins',
            'Audit mask measurement, de-emphasis, jitter transfer, idle, detect and receive tolerance at supported corners',
-           'Separate modeled results from hardware compliance; estimate BER evidence needed and plan equipment measurements',
+           'Separate modeled results from silicon BER and compliance, which are out of scope; state the limits of the modeled evidence',
            'Reject circuit if compliant arbitrary-data TX/RX cannot be demonstrated; do not lower link speed and label it Gen1',
            'Under the PCIE-003 digital-only fallback, record the electrical path as not implemented rather than qualified',
        ],
@@ -801,30 +802,10 @@ ticket(43, 'Qualify electrical path across corners and expose limits of simulati
            'Correlate digital symbol events with analog decoded bits and lock/drop events',
        ],
        accept=[
-           'Every applicable electrical requirement has a model result or explicit pending laboratory measurement',
+           'Every applicable electrical requirement has a model result or an explicit statement that it needs silicon measurement, which is out of scope',
            'No full PCIe compliance claim from transient ngspice alone',
        ],
        spice='Batch all PVT/model corners; verify timestep convergence and reproducibility. Include deliberately bad channels and skew so limit checks are demonstrated to fail.')
-
-
-ticket(44, 'Validate silicon bring-up and host interoperability',
-       '1.4 4.3 6.6 7', [58],
-       work=[
-           'Design or select a test board carrying the packaged chip with a PCIe edge connector or adapter, REFCLK, PERST#, supplies and test access, after reviewing the companion form-factor specification',
-           'Bring up silicon through the test interface and PHY loopback before host attachment; then verify host enumeration, BAR/MMIO, MSI, power transitions and reset/recovery',
-           'Measure TX eye, receiver tolerance, lock time and power against PCIE-043 predictions and update models with provenance',
-           'Record host, platform and instrument limits; certified compliance is not implied',
-       ],
-       tests=[
-           'Replay host-observed transactions as pyuvm regressions and add any interoperability corner cases',
-           'Compare real read/write/interrupt outcomes with simulation reference expectations',
-       ],
-       accept=[
-           'Repeatable bring-up and host demo commands are documented, or the ticket closes with a reviewed not-performed disposition if no silicon is fabricated',
-           'Outstanding compliance and electrical gaps are explicit; project completion is not confused with certified compliance',
-       ],
-       spice='Compare measured board waveforms with final ngspice predictions and update model parameters with provenance; rerun margins after fitting.',
-       gate='conditional')
 
 
 ticket(45, 'Qualify extracted SKY130 PHY building blocks',
@@ -926,11 +907,10 @@ ticket(50, 'Reproduce SKY130 PDK, OpenROAD and OpenLane implementation environme
        '1.5.4.4', [2],
        work=[
            'Install a pinned SKY130 PDK build with the PDK version manager used by the selected OpenLane release (volare or ciel); record the exact PDK commit and keep the PDK outside the repository',
-           'Install OpenLane 2 (or LibreLane, its continuation) using Docker or Podman, which are available on this machine, or Nix; use classic OpenLane only if a fabrication harness requires it; record the exact release',
+           'Install OpenLane 2 (or LibreLane, its continuation) using Docker or Podman, which are available on this machine, or Nix; record the exact release',
            'Install standalone OpenROAD and OpenSTA at the version bundled by the selected OpenLane release for interactive floorplan, timing and debug work; document any version difference',
            'Install signoff tools used by the flow (Magic, KLayout, netgen) and xschem for SKY130 schematics; keep OpenLane-bundled Yosys separate from oss-cad-suite Yosys and record both versions',
            'Add documented one-command launchers, git-ignore run directories and PDK caches, and record machine limits (16 cores, 14 GB RAM) that may constrain full-core runs',
-           'If a ChipFoundry harness is the likely route, set up its user-project template (Caravel, Caravan or OpenFrame) with the OpenLane version it requires and record any conflict with the pinned versions',
        ],
        tests=[
            'Harden a trivial registered SystemVerilog block through the full flow and run a pyuvm test against both its RTL and its gate-level netlist',
@@ -961,24 +941,23 @@ ticket(51, 'Define technology wrappers for memories, synchronizers and clock gat
        ])
 
 
-ticket(52, 'Design high-speed I/O pads, ESD protection and package model',
+ticket(52, 'Define pad, ESD, package and channel models for PHY verification',
        '4.3.1.8 4.3.3 4.3.4', [3, 6, 50],
        work=[
-           'Select or design pads for the PCIe TX/RX pairs and REFCLK with ESD protection whose capacitance and series resistance suit 2.5 Gb/s; standard SKY130 GPIO pads are not assumed adequate; the REFCLK input receiver circuit itself belongs to PCIE-049',
-           'Evaluate ChipFoundry Caravan bare pads and OpenFrame GPIO pads as PCIe TX/RX/REFCLK pad options, and custom high-speed pads for bare-die routes (docs/fabrication-routes.md); model QFN or bare-die bond-wire packaging accordingly',
-           'Model bond-wire or package, pad and ESD parasitics for PCIE-007/008/043 simulations, with provenance',
-           'Check ESD structures against PDK rules and document protection as modeled, not certified',
-           'Deliver pad cells with DRC/LVS and abstracts for PCIE-057',
+           'Define the electrical environment the PHY macros drive and receive through: representative high-speed pad and ESD capacitance and resistance, bond-wire or package parasitics, AC-coupling capacitors and channel, with documented provenance and ranges',
+           'Provide a nominal and a worst-case integrator environment so PCIE-007/008/043 results state which environment they assume',
+           'Specify the pad and package limits an integrator must meet for the verified results to hold; these go into the PCIE-058 integration guide',
+           'Pad cells, ESD design and a pad ring are outside the core and are not designed here',
        ],
        tests=[
            'Include pad and package model identifiers in PCIE-009 manifests so electrical results trace to the pad configuration',
            'Confirm a deliberately degraded pad model makes PCIE-043 limit checks fail',
        ],
        accept=[
-           'Pad and package models used by PCIE-007/008/043 have documented provenance',
-           'Pads pass DRC/LVS with abstracts delivered',
+           'Pad, ESD, package and channel models used by PCIE-007/008/043 have documented provenance and ranges',
+           'Integrator pad and package requirements are stated quantitatively',
        ],
-       spice='Simulate pad, ESD and package loading in transient with SKY130 models and extracted parasitics at corners; report the effect on the TX eye and the RX input.')
+       spice='Simulate the pad, ESD, package and channel models in transient with SKY130 driver and receiver loads at corners; report the effect on the TX eye and the RX input for the nominal and worst-case environments.')
 
 
 ticket(53, 'Select SKY130 memories and map endpoint buffers',
@@ -1051,41 +1030,23 @@ ticket(56, 'Verify gate-level ASIC netlist and RTL equivalence',
        ])
 
 
-ticket(57, 'Integrate chip top: pad ring, harness, test access and fabrication route',
-       '4.3 6.6', [40, 52],
+ticket(58, 'Assemble the verified core signoff and integration package',
+       '1.5.4.4 4.3 6.6', [40, 42, 43, 56],
        work=[
-           'Re-verify the fabrication routes in docs/fabrication-routes.md (checked 2026-11-07) and choose one; record clearly if none fits the design, schedule or budget',
-           'Integrate the design into the harness or pad frame of the chosen route (ChipFoundry Caravel, Caravan or OpenFrame, or a custom pad ring for bare-die routes) with clock, reset (PERST#), power and I/O assignments matching the PCIE-003 chip architecture',
-           'Add test access: PHY-boundary loopback, pattern generator and checker, and status registers reachable through a slow interface, so the core can be exercised without a working 2.5 Gb/s link',
-           'Re-run full-chip DRC, LVS, STA and the route-specific precheck',
+           'Collect signoff evidence for the core macro: static timing at all corners, DRC, LVS and antenna (PCIE-040/055), gate-level and equivalence results (PCIE-056), electrical qualification (PCIE-043) and protocol coverage closure (PCIE-042)',
+           'Deliver core views: GDS, LEF, timing abstracts, gate-level netlist, RTL and behavioral models, and pin and interface documentation',
+           'Write the integration guide: interface timing, clocks and resets, supplies, pad/ESD/package and off-chip requirements from PCIE-003/052, loopback and test modes, and known limitations',
+           'Produce a verification summary linking every reviewed requirement to passing checks or justified waivers, and list what cannot be verified without silicon',
        ],
        tests=[
-           'Run the integrated regression through the harness test interface and loopback paths',
-           'Confirm a broken loopback or misassigned pin is detected',
+           'Re-run the full regression and signoff flow from a clean checkout with the recorded commands and confirm identical results',
+           'Confirm the delivered behavioral model passes the same core-boundary interface tests as the RTL',
        ],
        accept=[
-           'Integration passes route-specific prechecks or blockers are recorded',
-           'Test access lets silicon be evaluated without a host link',
-       ])
-
-
-ticket(58, 'Prepare ASIC tapeout signoff and post-silicon test plan',
-       '4.3', [43, 56, 57],
-       work=[
-           'Assemble final GDS, signoff reports, versions, waivers and documentation for the chosen fabrication route',
-           "Confirm the chosen route's submission format (GDS or OASIS), required DRC deck (open tools or Cadence Pegasus), legal agreement, price and commitment deadline well before tapeout",
-           'Write a post-silicon bring-up and test plan: board, supplies, clocks, test interface, loopback, and later link tests',
-           'Do not submit for fabrication or incur cost without explicit user approval',
+           'Every signoff check passes or carries a justified waiver, reproducible from recorded commands',
+           'The integration guide states every requirement an integrator must meet for the verified results to hold',
        ],
-       tests=[
-           'Map each post-silicon test to its pre-silicon pyuvm counterpart and expected result',
-           'Define pass/fail criteria for first-silicon bring-up',
-       ],
-       accept=[
-           'Tapeout package is complete and reproducible from recorded commands',
-           'Submission happens only after explicit user approval',
-       ],
-       gate='conditional')
+       spice='Re-run the PCIE-043 electrical regression from a clean checkout and confirm the archived margins.')
 
 
 ticket(59, 'Design bias, reference and termination-calibration circuits',
@@ -1114,7 +1075,7 @@ ticket(60, 'Build an early PHY loopback top with logical PHY and PMA placeholder
            'Floorplan the top with analog macro placeholders, analog and digital supply domains and the digital-to-PMA interface; close timing on that interface with preliminary abstracts',
            'Select and set up the mixed-signal co-simulation method for PCIE-040 (for example ngspice d_cosim with Verilator) and record what it covers',
            'Swap qualified PCIE-045 cells or early PMA macros in as they become available; the same top must accept final macros by replacing abstracts, with final integration in PCIE-040',
-           'Serve as the intermediate milestone between the verified digital core and the signed-off chip, and as a candidate first test chip',
+           'Serve as the intermediate milestone between the verified digital core and the signed-off core macro',
        ],
        tests=[
            'Run TX-to-RX loopback of training sequences, SKP and random encoded data through behavioral and, where available, transistor-level PMA models',

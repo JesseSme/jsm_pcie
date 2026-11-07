@@ -46,7 +46,7 @@ Sweep input amplitude, common mode, jitter, frequency offset, termination and id
 ## Acceptance criteria
 
 - [ ] Extracted RX macro meets modeled receiver limits and the lock-time budget at all corners, or the shortfall is quantified.
-- [ ] Behavioral CDR results are labeled assumptions until extracted-layout or silicon evidence exists.
+- [ ] Behavioral CDR results are labeled assumptions until extracted-layout evidence exists.
 - [ ] Reviewed requirements have implementation/test links and dispositions; relevant checks pass and limitations are recorded.
 - [ ] Update graph with `graphify update .` after code changes; record any tool failure explicitly.
 

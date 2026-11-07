@@ -31,7 +31,7 @@ Primary ownership: 4 sections; [section/candidate traceability](../specification
 - [ ] Implement Fundamental Reset/PERST# and Hot Reset with exact per-register sticky/retained/reset attributes.
 - [ ] Synchronize deassertion per clock domain and gate activity while clocks/PHY are not ready.
 - [ ] Flush or fail pending requests, retry entries, credits, interrupts and application state according to reset type.
-- [ ] Define link-down software-visible outcomes independently of full chip reset.
+- [ ] Define link-down software-visible outcomes independently of full core reset.
 
 ## pyuvm verification
 

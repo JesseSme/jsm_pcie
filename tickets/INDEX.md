@@ -6,7 +6,7 @@ Generated initial backlog; no tickets are claimed or implemented. See [workflow]
 |---|---|---|
 | [PCIE-001 — Freeze endpoint profile and audit normative applicability](PCIE-001.md) | baseline | none |
 | [PCIE-002 — Reproduce OSS CAD Suite, pyuvm and ngspice tool environment](PCIE-002.md) | baseline | none |
-| [PCIE-003 — Freeze SKY130 chip architecture, clocking, pins and PHY partition](PCIE-003.md) | baseline | PCIE-001, PCIE-002 |
+| [PCIE-003 — Freeze SKY130 core architecture, clocking, interfaces and PHY partition](PCIE-003.md) | baseline | PCIE-001, PCIE-002 |
 | [PCIE-004 — Create PHY boundary and cycle-accurate simulation contract](PCIE-004.md) | baseline | PCIE-001, PCIE-003 |
 | [PCIE-005 — Build pyuvm framework, symbol-level root-port agent and PHY reference models](PCIE-005.md) | baseline | PCIE-002, PCIE-004 |
 | [PCIE-006 — Extract electrical limits and ngspice model assumptions](PCIE-006.md) | baseline | PCIE-001, PCIE-002, PCIE-050 |
@@ -43,11 +43,10 @@ Generated initial backlog; no tickets are claimed or implemented. See [workflow]
 | [PCIE-037 — Disposition out-of-profile topology and optional capabilities](PCIE-037.md) | baseline | PCIE-001, PCIE-027, PCIE-028 |
 | [PCIE-038 — Implement endpoint system messages and slot power-limit handling](PCIE-038.md) | baseline | PCIE-022, PCIE-023, PCIE-028, PCIE-030, PCIE-032 |
 | [PCIE-039 — Integrate endpoint top and run enumeration-to-MMIO regression](PCIE-039.md) | baseline | PCIE-016, PCIE-026, PCIE-028, PCIE-029, PCIE-030, PCIE-031, PCIE-032, PCIE-035, PCIE-036, PCIE-038 |
-| [PCIE-040 — Integrate PHY macros and digital core into the mixed-signal top](PCIE-040.md) | baseline | PCIE-007, PCIE-008, PCIE-049, PCIE-055, PCIE-059, PCIE-060 |
+| [PCIE-040 — Integrate the digital core and PHY macros into the core macro](PCIE-040.md) | baseline | PCIE-007, PCIE-008, PCIE-049, PCIE-055, PCIE-059, PCIE-060 |
 | [PCIE-041 — Run lint, synthesis, CDC and reset signoff for the integrated core](PCIE-041.md) | baseline | PCIE-039, PCIE-050, PCIE-051 |
 | [PCIE-042 — Close digital protocol coverage and stress recovery](PCIE-042.md) | baseline | PCIE-039, PCIE-041, PCIE-033, PCIE-034, PCIE-037 |
 | [PCIE-043 — Qualify electrical path across corners and expose limits of simulation](PCIE-043.md) | baseline | PCIE-007, PCIE-008, PCIE-009, PCIE-040, PCIE-049, PCIE-052 |
-| [PCIE-044 — Validate silicon bring-up and host interoperability](PCIE-044.md) | conditional | PCIE-058 |
 | [PCIE-045 — Qualify extracted SKY130 PHY building blocks](PCIE-045.md) | baseline | PCIE-062 |
 | [PCIE-046 — Assess on-chip CDR feasibility and lock-time budget before PHY layout](PCIE-046.md) | baseline | PCIE-003, PCIE-006, PCIE-050 |
 | [PCIE-047 — Build data-link partner models: DLLP, CRC, ACK/NAK replay and flow control](PCIE-047.md) | baseline | PCIE-005 |
@@ -55,13 +54,12 @@ Generated initial backlog; no tickets are claimed or implemented. See [workflow]
 | [PCIE-049 — Qualify the extracted PLL and deliver the clock macro](PCIE-049.md) | baseline | PCIE-064, PCIE-059 |
 | [PCIE-050 — Reproduce SKY130 PDK, OpenROAD and OpenLane implementation environment](PCIE-050.md) | baseline | PCIE-002 |
 | [PCIE-051 — Define technology wrappers for memories, synchronizers and clock gating](PCIE-051.md) | baseline | PCIE-004 |
-| [PCIE-052 — Design high-speed I/O pads, ESD protection and package model](PCIE-052.md) | baseline | PCIE-003, PCIE-006, PCIE-050 |
+| [PCIE-052 — Define pad, ESD, package and channel models for PHY verification](PCIE-052.md) | baseline | PCIE-003, PCIE-006, PCIE-050 |
 | [PCIE-053 — Select SKY130 memories and map endpoint buffers](PCIE-053.md) | baseline | PCIE-050, PCIE-051 |
 | [PCIE-054 — Harden early PHY logic blocks in SKY130 to calibrate timing](PCIE-054.md) | baseline | PCIE-012, PCIE-050 |
 | [PCIE-055 — Harden the full endpoint core with OpenLane and sign off physical checks](PCIE-055.md) | baseline | PCIE-003, PCIE-041, PCIE-053, PCIE-054 |
 | [PCIE-056 — Verify gate-level ASIC netlist and RTL equivalence](PCIE-056.md) | baseline | PCIE-042, PCIE-055 |
-| [PCIE-057 — Integrate chip top: pad ring, harness, test access and fabrication route](PCIE-057.md) | baseline | PCIE-040, PCIE-052 |
-| [PCIE-058 — Prepare ASIC tapeout signoff and post-silicon test plan](PCIE-058.md) | conditional | PCIE-043, PCIE-056, PCIE-057 |
+| [PCIE-058 — Assemble the verified core signoff and integration package](PCIE-058.md) | baseline | PCIE-040, PCIE-042, PCIE-043, PCIE-056 |
 | [PCIE-059 — Design bias, reference and termination-calibration circuits](PCIE-059.md) | baseline | PCIE-003, PCIE-004, PCIE-006, PCIE-050 |
 | [PCIE-060 — Build an early PHY loopback top with logical PHY and PMA placeholders](PCIE-060.md) | baseline | PCIE-003, PCIE-013, PCIE-045, PCIE-054 |
 | [PCIE-061 — Design SKY130 PHY building-block schematics](PCIE-061.md) | baseline | PCIE-003, PCIE-006, PCIE-009, PCIE-050 |

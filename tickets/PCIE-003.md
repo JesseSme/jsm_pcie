@@ -1,6 +1,6 @@
 ---
 id: PCIE-003
-title: "Freeze SKY130 chip architecture, clocking, pins and PHY partition"
+title: "Freeze SKY130 core architecture, clocking, interfaces and PHY partition"
 status: todo
 owner: null
 branch: null
@@ -12,7 +12,7 @@ depends_on: ["PCIE-001", "PCIE-002"]
 spec_sections: ["4.3", "4.3.1.1", "4.3.1.8", "4.3.2.2", "6.6"]
 ---
 
-# PCIE-003 — Freeze SKY130 chip architecture, clocking, pins and PHY partition
+# PCIE-003 — Freeze SKY130 core architecture, clocking, interfaces and PHY partition
 
 ## Agent handoff and scope
 
@@ -30,15 +30,14 @@ Primary ownership: 0 sections; [section/candidate traceability](../specification
 
 ## Deliverables and behavior
 
-- [ ] Freeze docs/asic-target.md and docs/phy-architecture.md: digital core (transaction layer, data link layer and logical PHY including scrambling and 8b/10b) plus an on-chip SKY130 PMA (PLL, serializer, TX driver, RX front end, CDR and deserializer) on one die.
+- [ ] Freeze docs/asic-target.md and docs/phy-architecture.md: digital core (transaction layer, data link layer and logical PHY including scrambling and 8b/10b) plus on-chip SKY130 PMA macros (PLL, serializer, TX driver, RX front end, CDR and deserializer) integrated as one hard core macro; the deliverable is a fully verified core, not a taped-out chip.
 - [ ] Own the reference-clock architecture under the PCIE-001 policy: host 100 MHz REFCLK input, PLL multiplication to the serializer clock, CDR reference and digital clocks; budget jitter, SSC tracking and phase relations.
 - [ ] Choose the PMA rate architecture (full-rate 2.5 GHz clocks, or half-rate 1.25 GHz clocks with a double-edge final stage) and the split of serializer/deserializer stages between standard cells and custom current-mode logic, as hypotheses for PCIE-045 to qualify.
 - [ ] Choose the digital-to-PMA parallel width consistent with the PCIE-001 datapath (proposed 20 encoded bits per 125 MHz cycle) and list the required PMA controls (electrical idle, receiver detect, polarity, lock, power states, reset); PCIE-004 owns the detailed interface contract and timing.
-- [ ] Budget chip pins (PCIe TX/RX pairs, REFCLK, PERST#, any wake signal, supplies, test access); select standard-cell library (sky130_fd_sc_hd by default), operating corners, supplies and a preliminary die area.
-- [ ] Take area and pad assumptions from docs/fabrication-routes.md (checked 2026-11-07): about 10-15 mm² user area on ChipFoundry harnesses, or a 3.588 x 5.188 mm full-custom box on the Cadence aggregation route; PCIE-057 re-verifies and chooses the route, and no commitment or cost is implied.
-- [ ] Define the digital-only fallback: if PCIE-045/046/007/008/049 reject the on-chip PHY, the chip proceeds as a digital core with PHY-boundary loopback and the PHY failure is reported, not hidden.
+- [ ] Define the core boundary: PCIe TX/RX pad connections, REFCLK input, PERST# and any wake signal, supplies, application and test interfaces; select standard-cell library (sky130_fd_sc_hd by default), operating corners, supplies and a core area budget.
+- [ ] Define the digital-only fallback: if PCIE-045/046/007/008/049 reject the on-chip PHY, the deliverable becomes the verified digital core with its PHY interface and behavioral PMA model, and the PHY failure is reported, not hidden.
 - [ ] Assign every PHY support block an owner: bias and references (PCIE-059), REFCLK input receiver and PLL (PCIE-049), pads and ESD (PCIE-052).
-- [ ] Record off-chip parts the PHY relies on: TX AC-coupling capacitors (receiver detection depends on them), any precision calibration resistor, REFCLK termination and supply decoupling; the PCIE-044 test board must provide them.
+- [ ] Record integration requirements outside the core: TX AC-coupling capacitors (receiver detection depends on them), pads and ESD within the PCIE-052 limits, any precision calibration resistor, REFCLK termination and supply decoupling; they go into the PCIE-058 integration guide.
 - [ ] Decide beacon support for wake from L2 versus a WAKE# signal, because it affects both PCIE-017 and the PCIE-007 transmitter.
 
 ## pyuvm verification
@@ -53,7 +52,7 @@ No circuit qualification here. Record circuit hypotheses, rates and budgets that
 
 ## Acceptance criteria
 
-- [ ] Chip architecture, clocking, PMA rate architecture, pins and corners are recorded with sources and rationale.
+- [ ] Core architecture, clocking, PMA rate architecture, interfaces and corners are recorded with sources and rationale.
 - [ ] No PHY feasibility is asserted before PCIE-045/046/007/008/049 evidence; the fallback boundary is explicit.
 - [ ] Reviewed requirements have implementation/test links and dispositions; relevant checks pass and limitations are recorded.
 - [ ] Update graph with `graphify update .` after code changes; record any tool failure explicitly.

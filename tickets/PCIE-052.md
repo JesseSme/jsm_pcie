@@ -1,6 +1,6 @@
 ---
 id: PCIE-052
-title: "Design high-speed I/O pads, ESD protection and package model"
+title: "Define pad, ESD, package and channel models for PHY verification"
 status: todo
 owner: null
 branch: null
@@ -12,7 +12,7 @@ depends_on: ["PCIE-003", "PCIE-006", "PCIE-050"]
 spec_sections: ["4.3.1.8", "4.3.3", "4.3.4"]
 ---
 
-# PCIE-052 — Design high-speed I/O pads, ESD protection and package model
+# PCIE-052 — Define pad, ESD, package and channel models for PHY verification
 
 ## Agent handoff and scope
 
@@ -28,11 +28,10 @@ Primary ownership: 0 sections; [section/candidate traceability](../specification
 
 ## Deliverables and behavior
 
-- [ ] Select or design pads for the PCIe TX/RX pairs and REFCLK with ESD protection whose capacitance and series resistance suit 2.5 Gb/s; standard SKY130 GPIO pads are not assumed adequate; the REFCLK input receiver circuit itself belongs to PCIE-049.
-- [ ] Evaluate ChipFoundry Caravan bare pads and OpenFrame GPIO pads as PCIe TX/RX/REFCLK pad options, and custom high-speed pads for bare-die routes (docs/fabrication-routes.md); model QFN or bare-die bond-wire packaging accordingly.
-- [ ] Model bond-wire or package, pad and ESD parasitics for PCIE-007/008/043 simulations, with provenance.
-- [ ] Check ESD structures against PDK rules and document protection as modeled, not certified.
-- [ ] Deliver pad cells with DRC/LVS and abstracts for PCIE-057.
+- [ ] Define the electrical environment the PHY macros drive and receive through: representative high-speed pad and ESD capacitance and resistance, bond-wire or package parasitics, AC-coupling capacitors and channel, with documented provenance and ranges.
+- [ ] Provide a nominal and a worst-case integrator environment so PCIE-007/008/043 results state which environment they assume.
+- [ ] Specify the pad and package limits an integrator must meet for the verified results to hold; these go into the PCIE-058 integration guide.
+- [ ] Pad cells, ESD design and a pad ring are outside the core and are not designed here.
 
 ## pyuvm verification
 
@@ -42,12 +41,12 @@ Primary ownership: 0 sections; [section/candidate traceability](../specification
 
 ## ngspice verification
 
-Simulate pad, ESD and package loading in transient with SKY130 models and extracted parasitics at corners; report the effect on the TX eye and the RX input.
+Simulate the pad, ESD, package and channel models in transient with SKY130 driver and receiver loads at corners; report the effect on the TX eye and the RX input for the nominal and worst-case environments.
 
 ## Acceptance criteria
 
-- [ ] Pad and package models used by PCIE-007/008/043 have documented provenance.
-- [ ] Pads pass DRC/LVS with abstracts delivered.
+- [ ] Pad, ESD, package and channel models used by PCIE-007/008/043 have documented provenance and ranges.
+- [ ] Integrator pad and package requirements are stated quantitatively.
 - [ ] Reviewed requirements have implementation/test links and dispositions; relevant checks pass and limitations are recorded.
 - [ ] Update graph with `graphify update .` after code changes; record any tool failure explicitly.
 
