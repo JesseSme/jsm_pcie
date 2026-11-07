@@ -10,8 +10,8 @@ Generated initial backlog; no tickets are claimed or implemented. See [workflow]
 | [PCIE-004 — Create PHY boundary and cycle-accurate simulation contract](PCIE-004.md) | baseline | PCIE-001, PCIE-003 |
 | [PCIE-005 — Build pyuvm framework, symbol-level root-port agent and PHY reference models](PCIE-005.md) | baseline | PCIE-002, PCIE-004 |
 | [PCIE-006 — Extract electrical limits and ngspice model assumptions](PCIE-006.md) | baseline | PCIE-001, PCIE-002, PCIE-050 |
-| [PCIE-007 — Design on-chip SKY130 TX serializer and PCIe transmitter](PCIE-007.md) | baseline | PCIE-003, PCIE-006, PCIE-045, PCIE-046, PCIE-049, PCIE-052, PCIE-059 |
-| [PCIE-008 — Design on-chip SKY130 receiver, clock and data recovery and deserializer](PCIE-008.md) | baseline | PCIE-003, PCIE-006, PCIE-045, PCIE-046, PCIE-049, PCIE-059 |
+| [PCIE-007 — Qualify the extracted TX and deliver the transmitter macro](PCIE-007.md) | baseline | PCIE-066, PCIE-049, PCIE-052, PCIE-059 |
+| [PCIE-008 — Qualify the extracted RX and deliver the receiver macro](PCIE-008.md) | baseline | PCIE-068, PCIE-049, PCIE-052, PCIE-059 |
 | [PCIE-009 — Bridge digital patterns to ngspice and produce electrical evidence](PCIE-009.md) | baseline | PCIE-005, PCIE-006 |
 | [PCIE-010 — Implement 8b/10b encoder and decoder with running disparity](PCIE-010.md) | baseline | PCIE-004, PCIE-005 |
 | [PCIE-011 — Implement scrambling and descrambling](PCIE-011.md) | baseline | PCIE-004, PCIE-005 |
@@ -48,11 +48,11 @@ Generated initial backlog; no tickets are claimed or implemented. See [workflow]
 | [PCIE-042 — Close digital protocol coverage and stress recovery](PCIE-042.md) | baseline | PCIE-039, PCIE-041, PCIE-033, PCIE-034, PCIE-037 |
 | [PCIE-043 — Qualify electrical path across corners and expose limits of simulation](PCIE-043.md) | baseline | PCIE-007, PCIE-008, PCIE-009, PCIE-040, PCIE-049, PCIE-052 |
 | [PCIE-044 — Validate silicon bring-up and host interoperability](PCIE-044.md) | conditional | PCIE-058 |
-| [PCIE-045 — Qualify SKY130 transistor-level PHY building blocks first](PCIE-045.md) | baseline | PCIE-003, PCIE-006, PCIE-009, PCIE-050 |
+| [PCIE-045 — Qualify extracted SKY130 PHY building blocks](PCIE-045.md) | baseline | PCIE-062 |
 | [PCIE-046 — Assess on-chip CDR feasibility and lock-time budget before PHY layout](PCIE-046.md) | baseline | PCIE-003, PCIE-006, PCIE-050 |
 | [PCIE-047 — Build data-link partner models: DLLP, CRC, ACK/NAK replay and flow control](PCIE-047.md) | baseline | PCIE-005 |
 | [PCIE-048 — Build TLP, configuration and enumeration reference models](PCIE-048.md) | baseline | PCIE-005 |
-| [PCIE-049 — Design on-chip PLL and clock distribution from the 100 MHz reference](PCIE-049.md) | baseline | PCIE-003, PCIE-006, PCIE-045, PCIE-059 |
+| [PCIE-049 — Qualify the extracted PLL and deliver the clock macro](PCIE-049.md) | baseline | PCIE-064, PCIE-059 |
 | [PCIE-050 — Reproduce SKY130 PDK, OpenROAD and OpenLane implementation environment](PCIE-050.md) | baseline | PCIE-002 |
 | [PCIE-051 — Define technology wrappers for memories, synchronizers and clock gating](PCIE-051.md) | baseline | PCIE-004 |
 | [PCIE-052 — Design high-speed I/O pads, ESD protection and package model](PCIE-052.md) | baseline | PCIE-003, PCIE-006, PCIE-050 |
@@ -64,3 +64,11 @@ Generated initial backlog; no tickets are claimed or implemented. See [workflow]
 | [PCIE-058 — Prepare ASIC tapeout signoff and post-silicon test plan](PCIE-058.md) | conditional | PCIE-043, PCIE-056, PCIE-057 |
 | [PCIE-059 — Design bias, reference and termination-calibration circuits](PCIE-059.md) | baseline | PCIE-003, PCIE-004, PCIE-006, PCIE-050 |
 | [PCIE-060 — Build an early PHY loopback top with logical PHY and PMA placeholders](PCIE-060.md) | baseline | PCIE-003, PCIE-013, PCIE-045, PCIE-054 |
+| [PCIE-061 — Design SKY130 PHY building-block schematics](PCIE-061.md) | baseline | PCIE-003, PCIE-006, PCIE-009, PCIE-050 |
+| [PCIE-062 — Lay out and extract the SKY130 PHY building blocks](PCIE-062.md) | baseline | PCIE-061 |
+| [PCIE-063 — Design PLL and REFCLK receiver schematics](PCIE-063.md) | baseline | PCIE-003, PCIE-006, PCIE-045 |
+| [PCIE-064 — Lay out and extract the PLL and REFCLK receiver](PCIE-064.md) | baseline | PCIE-063 |
+| [PCIE-065 — Design SKY130 TX serializer and driver schematics](PCIE-065.md) | baseline | PCIE-003, PCIE-006, PCIE-045, PCIE-046 |
+| [PCIE-066 — Lay out and extract the TX serializer and driver](PCIE-066.md) | baseline | PCIE-065 |
+| [PCIE-067 — Design SKY130 receiver, CDR and deserializer schematics](PCIE-067.md) | baseline | PCIE-003, PCIE-006, PCIE-045, PCIE-046 |
+| [PCIE-068 — Lay out and extract the receiver, CDR and deserializer](PCIE-068.md) | baseline | PCIE-067 |

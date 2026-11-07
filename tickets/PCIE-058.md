@@ -27,6 +27,7 @@ Primary ownership: 0 sections; [section/candidate traceability](../specification
 ## Deliverables and behavior
 
 - [ ] Assemble final GDS, signoff reports, versions, waivers and documentation for the chosen fabrication route.
+- [ ] Confirm the chosen route's submission format (GDS or OASIS), required DRC deck (open tools or Cadence Pegasus), legal agreement, price and commitment deadline well before tapeout.
 - [ ] Write a post-silicon bring-up and test plan: board, supplies, clocks, test interface, loopback, and later link tests.
 - [ ] Do not submit for fabrication or incur cost without explicit user approval.
 

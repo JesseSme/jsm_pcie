@@ -1,6 +1,6 @@
 ---
 id: PCIE-045
-title: "Qualify SKY130 transistor-level PHY building blocks first"
+title: "Qualify extracted SKY130 PHY building blocks"
 status: todo
 owner: null
 branch: null
@@ -8,11 +8,11 @@ claimed_at: null
 base_commit: null
 priority: P1
 gate: baseline
-depends_on: ["PCIE-003", "PCIE-006", "PCIE-009", "PCIE-050"]
+depends_on: ["PCIE-062"]
 spec_sections: ["4.2.1.1", "4.3.2.2", "4.3.3"]
 ---
 
-# PCIE-045 — Qualify SKY130 transistor-level PHY building blocks first
+# PCIE-045 — Qualify extracted SKY130 PHY building blocks
 
 ## Agent handoff and scope
 
@@ -28,13 +28,10 @@ Primary ownership: 0 sections; [section/candidate traceability](../specification
 
 ## Deliverables and behavior
 
-- [ ] Following docs/phy-architecture.md, design and qualify building blocks before full TX/RX integration: current-mode buffer, latch and 2:1 mux, clock divider, standard-cell-to-current-mode level conversion, sampler/comparator and a VCO candidate.
-- [ ] Use the pinned SKY130 ngspice models and corners; choose device flavors (1.8 V core, 3.3 V or other devices where needed) with documented reasons; transition frequency is not a guaranteed digital toggle rate.
-- [ ] Lay out each cell in Magic, pass DRC/LVS and simulate extracted netlists; schematic-only results do not qualify a cell.
-- [ ] Measure the maximum reliable rate of standard-cell serializer stages versus custom current-mode stages and report the partition evidence to PCIE-003/007/008.
-- [ ] Deliver an edge-by-edge timing budget for the final serializer stages, including retiming and race avoidance.
-- [ ] Record quantitative pass/fail or a documented rejection; a rejection is reported to the user under the PCIE-003 fallback, never silently worked around.
+- [ ] Simulate every extracted PCIE-062 cell across all corners, temperature, supply and mismatch; iterate schematic or layout where margins fail.
+- [ ] Deliver an edge-by-edge timing budget for the final serializer stages, including retiming and race avoidance, and report the standard-cell/current-mode partition evidence to PCIE-003/007/008.
 - [ ] Qualify cells with ideal bias sources; PCIE-007/008/049 re-qualify them with the PCIE-059 bias circuits and record any difference.
+- [ ] Record quantitative pass/fail or a documented rejection; a rejection is reported to the user under the PCIE-003 fallback, never silently worked around.
 
 ## pyuvm verification
 

@@ -16,7 +16,7 @@ Status: **selected by the user, 2026-11-07.** The project targets the SkyWater S
 |---|---|
 | Profile, architecture, environment | PCIE-001, 002, 003, 004, 050 |
 | Protocol stack and verification models | PCIE-005, 010–039, 042, 047, 048 |
-| On-chip PHY | PCIE-045 building blocks, 046 CDR feasibility, 059 bias/references/calibration, 049 PLL and REFCLK receiver, 007 TX, 008 RX, 052 pads/ESD/package, 006/009/043 electrical limits, stimulus bridge and qualification |
+| On-chip PHY | Building blocks 061 schematic → 062 layout → 045 qualification; 046 CDR feasibility; 059 bias/references/calibration; PLL and REFCLK receiver 063 → 064 → 049; TX 065 → 066 → 007; RX 067 → 068 → 008; 052 pads/ESD/package, 006/009/043 electrical limits, stimulus bridge and qualification |
 | Digital implementation | PCIE-051 wrappers, 053 memories, 054 early hardening, 041 logic signoff, 055 physical hardening, 056 gate level and equivalence |
 | Chip integration | PCIE-060 early PHY loopback top (intermediate milestone, co-simulation method), PCIE-040 mixed-signal top, 057 pad ring, harness, test access and fabrication route |
 | Tapeout and silicon (conditional) | PCIE-058 tapeout package, 044 silicon bring-up and host interoperability |
@@ -43,5 +43,5 @@ If PCIE-045, 046, 049, 007 or 008 reject the on-chip PHY with quantitative evide
 - Timing closes at every selected corner, or the failure and attempted optimizations are documented. Typical-corner results alone are not signoff.
 - Custom cells are qualified on extracted layout, not schematic alone. SKY130 foundry models are the device-model authority; record model and corner names.
 - Gate-level, equivalence and extracted-layout results are distinct from silicon measurements. No fabrication submission or cost is incurred without explicit user approval.
-- Fabrication-route availability changes over time; PCIE-057 checks what is currently available rather than assuming a particular shuttle program.
+- Fabrication-route availability changes over time. [Fabrication routes](fabrication-routes.md) records what was available on 2026-11-07; PCIE-057 re-verifies before choosing.
 - Machine limits (16 cores, 14 GB RAM observed on 2026-11-07) may constrain full-core runs; record resource failures as such, not as design failures.

@@ -37,7 +37,9 @@ flowchart LR
 
 ## Method
 
-1. **Building blocks first (PCIE-045):** CML buffer, latch, 2:1 mux, divider, level converter, sampler and VCO candidate, each laid out, extracted and simulated across corners before integration. This carries forward the transistor-first approach of the earlier discrete plan, now on-chip.
+Each analog block runs in three tickets: schematic design, layout and extraction, then extracted-layout qualification and macro delivery (building blocks 061/062/045, PLL 063/064/049, TX 065/066/007, RX 067/068/008).
+
+1. **Building blocks first (PCIE-061/062/045):** CML buffer, latch, 2:1 mux, divider, level converter, sampler and VCO candidate, each laid out, extracted and simulated across corners before integration. This carries forward the transistor-first approach of the earlier discrete plan, now on-chip.
 2. **CDR feasibility before layout (PCIE-046):** behavioral plus critical-block transistor studies, with a go / no-go / unknown recommendation reported to the user.
 3. **Early loopback top (PCIE-060):** hardened logical PHY with PMA placeholders and early cells, so interface, clocking and floorplan problems surface early; also sets up mixed-signal co-simulation.
 4. **Integration:** bias (PCIE-059), PLL (PCIE-049), TX (PCIE-007), RX (PCIE-008), pads and package (PCIE-052), mixed-signal top (PCIE-040), electrical qualification (PCIE-043). Fast-wake parameters (N_FTS, L0s exit latency) are bound to the measured relock budget in PCIE-040.

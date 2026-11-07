@@ -58,3 +58,9 @@ A review of the retargeted plan found structural gaps, which were fixed in `tool
 - REFCLK input receiver assigned to PCIE-049, with the CEM specification recorded as a required input; off-chip AC-coupling capacitors and other board parts recorded in PCIE-003; the beacon-versus-WAKE# decision moved to PCIE-003 for both PCIE-017 and PCIE-007; ticket template no longer mentions PCB evidence.
 
 `tickets.py check` passes for 60 tickets; a dependency scan shows no remaining backward references other than intended forward hand-offs.
+
+## Analog ticket split and fabrication-route check, 2026-11-07
+
+The four large analog tickets were split into schematic, layout/extraction and qualification phases. The original IDs remain the final qualification and macro-delivery tickets so downstream dependencies are unchanged: building blocks 061 → 062 → 045, PLL and REFCLK receiver 063 → 064 → 049, TX 065 → 066 → 007, RX 067 → 068 → 008. Layout tickets deliver preliminary abstracts to the PCIE-060 loopback top.
+
+Fabrication routes were checked against primary sources and recorded in `docs/fabrication-routes.md`: ChipFoundry chipIgnite (next commitment 2027-03-20 for CI2705; Caravel, Caravan with bare pads, OpenFrame), Cadence's SKY130 aggregation (custom pad ring, bare die, no run after the 2026-01-16 deadline published), SkyWater direct MPW and Tiny Tapeout. PCIE-003, 050, 052, 057 and 058 now reference those findings. `tickets.py check` passes for 68 tickets.

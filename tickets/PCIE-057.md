@@ -27,8 +27,8 @@ Primary ownership: 0 sections; [section/candidate traceability](../specification
 
 ## Deliverables and behavior
 
-- [ ] Identify a currently available SKY130 fabrication route and its harness, area, I/O and deadline constraints; record clearly if none is available.
-- [ ] Integrate the hardened core into the chosen harness or pad frame with clock, reset (PERST#), power and I/O assignments that match the PCIE-003 chip architecture.
+- [ ] Re-verify the fabrication routes in docs/fabrication-routes.md (checked 2026-11-07) and choose one; record clearly if none fits the design, schedule or budget.
+- [ ] Integrate the design into the harness or pad frame of the chosen route (ChipFoundry Caravel, Caravan or OpenFrame, or a custom pad ring for bare-die routes) with clock, reset (PERST#), power and I/O assignments matching the PCIE-003 chip architecture.
 - [ ] Add test access: PHY-boundary loopback, pattern generator and checker, and status registers reachable through a slow interface, so the core can be exercised without a working 2.5 Gb/s link.
 - [ ] Re-run full-chip DRC, LVS, STA and the route-specific precheck.
 

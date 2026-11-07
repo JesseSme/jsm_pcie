@@ -29,6 +29,7 @@ Primary ownership: 0 sections; [section/candidate traceability](../specification
 ## Deliverables and behavior
 
 - [ ] Select or design pads for the PCIe TX/RX pairs and REFCLK with ESD protection whose capacitance and series resistance suit 2.5 Gb/s; standard SKY130 GPIO pads are not assumed adequate; the REFCLK input receiver circuit itself belongs to PCIE-049.
+- [ ] Evaluate ChipFoundry Caravan bare pads and OpenFrame GPIO pads as PCIe TX/RX/REFCLK pad options, and custom high-speed pads for bare-die routes (docs/fabrication-routes.md); model QFN or bare-die bond-wire packaging accordingly.
 - [ ] Model bond-wire or package, pad and ESD parasitics for PCIE-007/008/043 simulations, with provenance.
 - [ ] Check ESD structures against PDK rules and document protection as modeled, not certified.
 - [ ] Deliver pad cells with DRC/LVS and abstracts for PCIE-057.

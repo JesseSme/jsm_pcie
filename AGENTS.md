@@ -97,8 +97,9 @@ The user-selected target is the **SkyWater SKY130 process with an on-chip PHY**
 FPGA target, external serializer and discrete-transistor board plan are retired;
 `docs/superseded/` is history, not guidance.
 
-The PHY follows a transistor-level, building-blocks-first method: PCIE-045 qualifies
-SKY130 cells on extracted layout, PCIE-046 assesses CDR feasibility and lock time
+The PHY follows a transistor-level, building-blocks-first method. Each analog block
+has schematic, layout and qualification tickets (see [docs/asic-target.md](docs/asic-target.md)).
+PCIE-045 qualifies SKY130 cells on extracted layout, PCIE-046 assesses CDR feasibility and lock time
 before PHY layout, PCIE-059 supplies bias and references, then PCIE-049 (PLL and
 REFCLK receiver), PCIE-007 (TX), PCIE-008 (RX) and PCIE-052 (pads, ESD, package)
 integrate. PCIE-060 joins logical PHY and PMA early in a loopback top. If these reject the on-chip PHY with quantitative
@@ -110,6 +111,8 @@ Technology-specific memories, synchronizers, reset synchronizers and clock gates
 live only behind the PCIE-051 wrappers; shared RTL has no initial-value resets or
 technology primitives. Timing signoff covers every selected corner, not only typical.
 Never submit a design for fabrication or incur cost without explicit user approval.
+[docs/fabrication-routes.md](docs/fabrication-routes.md) records the shuttle options checked on
+2026-11-07; re-verify them before relying on dates, prices or pad options.
 
 An agent **must sign a ticket and create its own branch before implementation**:
 

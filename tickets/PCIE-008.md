@@ -1,6 +1,6 @@
 ---
 id: PCIE-008
-title: "Design on-chip SKY130 receiver, clock and data recovery and deserializer"
+title: "Qualify the extracted RX and deliver the receiver macro"
 status: todo
 owner: null
 branch: null
@@ -8,11 +8,11 @@ claimed_at: null
 base_commit: null
 priority: P0
 gate: baseline
-depends_on: ["PCIE-003", "PCIE-006", "PCIE-045", "PCIE-046", "PCIE-049", "PCIE-059"]
+depends_on: ["PCIE-068", "PCIE-049", "PCIE-052", "PCIE-059"]
 spec_sections: ["4.3.1.8", "4.3.1.9", "4.3.4"]
 ---
 
-# PCIE-008 — Design on-chip SKY130 receiver, clock and data recovery and deserializer
+# PCIE-008 — Qualify the extracted RX and deliver the receiver macro
 
 ## Agent handoff and scope
 
@@ -28,11 +28,9 @@ Primary ownership: 0 sections; [section/candidate traceability](../specification
 
 ## Deliverables and behavior
 
-- [ ] Implement the RX path recommended by PCIE-046: termination and common mode, input amplifier or equalization if needed, samplers, CDR, deserializer to the PCIE-004 parallel interface and recovered-clock delivery.
-- [ ] Implement electrical-idle (squelch) detection, lock detection and loss-of-lock reporting through the PMA contract.
-- [ ] Meet section 4.3.4 receiver limits and the N_FTS/lock-time budget, and keep that budget current for PCIE-017/031.
-- [ ] Lay out in Magic, extract and pass DRC/LVS; deliver a macro with abstracts for PCIE-040.
-- [ ] Deliver preliminary RX macro abstracts (size, pin placement, supplies) early to the PCIE-060 loopback top and keep them current.
+- [ ] Simulate the extracted RX with PCIE-049 clocks, PCIE-059 bias and PCIE-052 pad and package models across all corners; iterate where margins fail.
+- [ ] Confirm section 4.3.4 receiver limits and the N_FTS/lock-time budget, and keep that budget current for PCIE-017/031 and PCIE-040.
+- [ ] Deliver a DRC/LVS-clean macro with abstracts for PCIE-040.
 
 ## pyuvm verification
 

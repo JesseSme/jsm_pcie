@@ -1,6 +1,6 @@
 ---
 id: PCIE-049
-title: "Design on-chip PLL and clock distribution from the 100 MHz reference"
+title: "Qualify the extracted PLL and deliver the clock macro"
 status: todo
 owner: null
 branch: null
@@ -8,11 +8,11 @@ claimed_at: null
 base_commit: null
 priority: P1
 gate: baseline
-depends_on: ["PCIE-003", "PCIE-006", "PCIE-045", "PCIE-059"]
+depends_on: ["PCIE-064", "PCIE-059"]
 spec_sections: ["4.3.1.1", "4.3.3", "4.3.4"]
 ---
 
-# PCIE-049 — Design on-chip PLL and clock distribution from the 100 MHz reference
+# PCIE-049 — Qualify the extracted PLL and deliver the clock macro
 
 ## Agent handoff and scope
 
@@ -28,12 +28,10 @@ Primary ownership: 0 sections; [section/candidate traceability](../specification
 
 ## Deliverables and behavior
 
-- [ ] Design a SKY130 PLL from the host 100 MHz REFCLK to the PCIE-003 serializer clock (2.5 GHz full-rate or 1.25 GHz half-rate), the digital core clock and any CDR reference.
-- [ ] Own the REFCLK input receiver from pad to PLL; its electrical requirements (levels, jitter) are defined in the PCI Express CEM specification, not the Base specification, so obtain the matching CEM revision or record the gap as a blocker.
-- [ ] Budget output jitter against section 4.3.3 transmitter jitter limits, SSC tracking bandwidth and lock time; define lock detect and reset.
-- [ ] Design clock distribution and duty-cycle control to the serializer and deserializer.
-- [ ] Lay out, extract, pass DRC/LVS and deliver a macro with abstracts for PCIE-040.
-- [ ] Deliver preliminary PLL macro abstracts (size, pin placement, supplies) early to the PCIE-060 loopback top and keep them current.
+- [ ] Simulate the extracted PLL and REFCLK receiver with the PCIE-059 bias circuits across all corners; iterate where margins fail.
+- [ ] Confirm output jitter against section 4.3.3 transmitter jitter limits, SSC tracking and lock time; define lock detect and reset behavior.
+- [ ] Design and verify clock distribution and duty-cycle control to the serializer and deserializer.
+- [ ] Deliver a DRC/LVS-clean macro with GDS, LEF and timing abstracts for PCIE-040.
 
 ## pyuvm verification
 

@@ -1,6 +1,6 @@
 ---
 id: PCIE-007
-title: "Design on-chip SKY130 TX serializer and PCIe transmitter"
+title: "Qualify the extracted TX and deliver the transmitter macro"
 status: todo
 owner: null
 branch: null
@@ -8,11 +8,11 @@ claimed_at: null
 base_commit: null
 priority: P0
 gate: baseline
-depends_on: ["PCIE-003", "PCIE-006", "PCIE-045", "PCIE-046", "PCIE-049", "PCIE-052", "PCIE-059"]
+depends_on: ["PCIE-066", "PCIE-049", "PCIE-052", "PCIE-059"]
 spec_sections: ["4.2.1.1", "4.3.2.3", "4.3.3"]
 ---
 
-# PCIE-007 — Design on-chip SKY130 TX serializer and PCIe transmitter
+# PCIE-007 — Qualify the extracted TX and deliver the transmitter macro
 
 ## Agent handoff and scope
 
@@ -28,12 +28,9 @@ Primary ownership: 0 sections; [section/candidate traceability](../specification
 
 ## Deliverables and behavior
 
-- [ ] Integrate qualified PCIE-045 cells into the complete TX path: parallel-to-serial tree from the PCIE-004 interface to 2.5 Gb/s, retiming, and clocks from the PCIE-049 PLL.
-- [ ] Design the TX driver per PCIE-006 section 4.3.3 limits: differential swing, -3.5 dB de-emphasis, common mode, termination (calibrated if needed), electrical idle and receiver detection.
-- [ ] Prevent serializer update races across parallel-word and group boundaries; record pipeline latency and the deterministic reset and phase start.
-- [ ] Lay out in Magic, extract parasitics and pass DRC/LVS; deliver a macro (GDS, LEF and timing abstract) for PCIE-040 integration.
-- [ ] If PCIE-003 selects beacon for wake from L2, generate it in the transmitter; otherwise record its absence.
-- [ ] Deliver preliminary TX macro abstracts (size, pin placement, supplies) early to the PCIE-060 loopback top and keep them current.
+- [ ] Simulate the extracted TX with PCIE-049 clocks, PCIE-059 bias and PCIE-052 pad and package models across all corners; iterate where margins fail.
+- [ ] Record pipeline latency and the deterministic reset and phase start for PCIE-004 and PCIE-040.
+- [ ] Deliver a DRC/LVS-clean macro with GDS, LEF and timing abstract for PCIE-040.
 
 ## pyuvm verification
 

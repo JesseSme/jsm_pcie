@@ -62,7 +62,7 @@ ticket(3, 'Freeze SKY130 chip architecture, clocking, pins and PHY partition',
            'Choose the PMA rate architecture (full-rate 2.5 GHz clocks, or half-rate 1.25 GHz clocks with a double-edge final stage) and the split of serializer/deserializer stages between standard cells and custom current-mode logic, as hypotheses for PCIE-045 to qualify',
            'Choose the digital-to-PMA parallel width consistent with the PCIE-001 datapath (proposed 20 encoded bits per 125 MHz cycle) and list the required PMA controls (electrical idle, receiver detect, polarity, lock, power states, reset); PCIE-004 owns the detailed interface contract and timing',
            'Budget chip pins (PCIe TX/RX pairs, REFCLK, PERST#, any wake signal, supplies, test access); select standard-cell library (sky130_fd_sc_hd by default), operating corners, supplies and a preliminary die area',
-           'Record fabrication-route assumptions as unverified until PCIE-057; no fabrication commitment or cost is implied',
+           'Take area and pad assumptions from docs/fabrication-routes.md (checked 2026-11-07): about 10-15 mm² user area on ChipFoundry harnesses, or a 3.588 x 5.188 mm full-custom box on the Cadence aggregation route; PCIE-057 re-verifies and chooses the route, and no commitment or cost is implied',
            'Define the digital-only fallback: if PCIE-045/046/007/008/049 reject the on-chip PHY, the chip proceeds as a digital core with PHY-boundary loopback and the PHY failure is reported, not hidden',
            'Assign every PHY support block an owner: bias and references (PCIE-059), REFCLK input receiver and PLL (PCIE-049), pads and ESD (PCIE-052)',
            'Record off-chip parts the PHY relies on: TX AC-coupling capacitors (receiver detection depends on them), any precision calibration resistor, REFCLK termination and supply decoupling; the PCIE-044 test board must provide them',
@@ -141,15 +141,12 @@ ticket(6, 'Extract electrical limits and ngspice model assumptions',
        spice='Provide parameterized differential source, coupling capacitors, termination and channel loads; verify units, DC bias and convergence at nominal conditions.')
 
 
-ticket(7, 'Design on-chip SKY130 TX serializer and PCIe transmitter',
-       '4.2.1.1 4.3.2.3 4.3.3', [3, 6, 45, 46, 49, 52, 59],
+ticket(7, 'Qualify the extracted TX and deliver the transmitter macro',
+       '4.2.1.1 4.3.2.3 4.3.3', [66, 49, 52, 59],
        work=[
-           'Integrate qualified PCIE-045 cells into the complete TX path: parallel-to-serial tree from the PCIE-004 interface to 2.5 Gb/s, retiming, and clocks from the PCIE-049 PLL',
-           'Design the TX driver per PCIE-006 section 4.3.3 limits: differential swing, -3.5 dB de-emphasis, common mode, termination (calibrated if needed), electrical idle and receiver detection',
-           'Prevent serializer update races across parallel-word and group boundaries; record pipeline latency and the deterministic reset and phase start',
-           'Lay out in Magic, extract parasitics and pass DRC/LVS; deliver a macro (GDS, LEF and timing abstract) for PCIE-040 integration',
-           'If PCIE-003 selects beacon for wake from L2, generate it in the transmitter; otherwise record its absence',
-           'Deliver preliminary TX macro abstracts (size, pin placement, supplies) early to the PCIE-060 loopback top and keep them current',
+           'Simulate the extracted TX with PCIE-049 clocks, PCIE-059 bias and PCIE-052 pad and package models across all corners; iterate where margins fail',
+           'Record pipeline latency and the deterministic reset and phase start for PCIE-004 and PCIE-040',
+           'Deliver a DRC/LVS-clean macro with GDS, LEF and timing abstract for PCIE-040',
        ],
        tests=[
            'Drive the extracted TX netlist with pyuvm-generated 8b/10b streams, compliance patterns, electrical-idle entry/exit and receiver-detect sequences through PCIE-009',
@@ -162,14 +159,12 @@ ticket(7, 'Design on-chip SKY130 TX serializer and PCIe transmitter',
        spice='Run schematic and extracted-layout transients at all PVT corners with SKY130 models plus pad, package and channel loads from PCIE-052; report eye mask, swing, de-emphasis, jitter, common mode, idle and detection behavior; verify timestep convergence.')
 
 
-ticket(8, 'Design on-chip SKY130 receiver, clock and data recovery and deserializer',
-       '4.3.1.8 4.3.1.9 4.3.4', [3, 6, 45, 46, 49, 59],
+ticket(8, 'Qualify the extracted RX and deliver the receiver macro',
+       '4.3.1.8 4.3.1.9 4.3.4', [68, 49, 52, 59],
        work=[
-           'Implement the RX path recommended by PCIE-046: termination and common mode, input amplifier or equalization if needed, samplers, CDR, deserializer to the PCIE-004 parallel interface and recovered-clock delivery',
-           'Implement electrical-idle (squelch) detection, lock detection and loss-of-lock reporting through the PMA contract',
-           'Meet section 4.3.4 receiver limits and the N_FTS/lock-time budget, and keep that budget current for PCIE-017/031',
-           'Lay out in Magic, extract and pass DRC/LVS; deliver a macro with abstracts for PCIE-040',
-           'Deliver preliminary RX macro abstracts (size, pin placement, supplies) early to the PCIE-060 loopback top and keep them current',
+           'Simulate the extracted RX with PCIE-049 clocks, PCIE-059 bias and PCIE-052 pad and package models across all corners; iterate where margins fail',
+           'Confirm section 4.3.4 receiver limits and the N_FTS/lock-time budget, and keep that budget current for PCIE-017/031 and PCIE-040',
+           'Deliver a DRC/LVS-clean macro with abstracts for PCIE-040',
        ],
        tests=[
            'Drive recovered clock drift, polarity reversal, loss of signal, idle exit and false lock through the pyuvm PHY model',
@@ -832,16 +827,13 @@ ticket(44, 'Validate silicon bring-up and host interoperability',
        gate='conditional')
 
 
-ticket(45, 'Qualify SKY130 transistor-level PHY building blocks first',
-       '4.2.1.1 4.3.2.2 4.3.3', [3, 6, 9, 50],
+ticket(45, 'Qualify extracted SKY130 PHY building blocks',
+       '4.2.1.1 4.3.2.2 4.3.3', [62],
        work=[
-           'Following docs/phy-architecture.md, design and qualify building blocks before full TX/RX integration: current-mode buffer, latch and 2:1 mux, clock divider, standard-cell-to-current-mode level conversion, sampler/comparator and a VCO candidate',
-           'Use the pinned SKY130 ngspice models and corners; choose device flavors (1.8 V core, 3.3 V or other devices where needed) with documented reasons; transition frequency is not a guaranteed digital toggle rate',
-           'Lay out each cell in Magic, pass DRC/LVS and simulate extracted netlists; schematic-only results do not qualify a cell',
-           'Measure the maximum reliable rate of standard-cell serializer stages versus custom current-mode stages and report the partition evidence to PCIE-003/007/008',
-           'Deliver an edge-by-edge timing budget for the final serializer stages, including retiming and race avoidance',
-           'Record quantitative pass/fail or a documented rejection; a rejection is reported to the user under the PCIE-003 fallback, never silently worked around',
+           'Simulate every extracted PCIE-062 cell across all corners, temperature, supply and mismatch; iterate schematic or layout where margins fail',
+           'Deliver an edge-by-edge timing budget for the final serializer stages, including retiming and race avoidance, and report the standard-cell/current-mode partition evidence to PCIE-003/007/008',
            'Qualify cells with ideal bias sources; PCIE-007/008/049 re-qualify them with the PCIE-059 bias circuits and record any difference',
+           'Record quantitative pass/fail or a documented rejection; a rejection is reported to the user under the PCIE-003 fallback, never silently worked around',
        ],
        tests=[
            'Generate independent expected bit sequences through PCIE-009; compare sampled mux and latch outputs, exercising persistent opposite inputs and phase boundaries',
@@ -911,15 +903,13 @@ ticket(48, 'Build TLP, configuration and enumeration reference models',
        ])
 
 
-ticket(49, 'Design on-chip PLL and clock distribution from the 100 MHz reference',
-       '4.3.1.1 4.3.3 4.3.4', [3, 6, 45, 59],
+ticket(49, 'Qualify the extracted PLL and deliver the clock macro',
+       '4.3.1.1 4.3.3 4.3.4', [64, 59],
        work=[
-           'Design a SKY130 PLL from the host 100 MHz REFCLK to the PCIE-003 serializer clock (2.5 GHz full-rate or 1.25 GHz half-rate), the digital core clock and any CDR reference',
-           'Own the REFCLK input receiver from pad to PLL; its electrical requirements (levels, jitter) are defined in the PCI Express CEM specification, not the Base specification, so obtain the matching CEM revision or record the gap as a blocker',
-           'Budget output jitter against section 4.3.3 transmitter jitter limits, SSC tracking bandwidth and lock time; define lock detect and reset',
-           'Design clock distribution and duty-cycle control to the serializer and deserializer',
-           'Lay out, extract, pass DRC/LVS and deliver a macro with abstracts for PCIE-040',
-           'Deliver preliminary PLL macro abstracts (size, pin placement, supplies) early to the PCIE-060 loopback top and keep them current',
+           'Simulate the extracted PLL and REFCLK receiver with the PCIE-059 bias circuits across all corners; iterate where margins fail',
+           'Confirm output jitter against section 4.3.3 transmitter jitter limits, SSC tracking and lock time; define lock detect and reset behavior',
+           'Design and verify clock distribution and duty-cycle control to the serializer and deserializer',
+           'Deliver a DRC/LVS-clean macro with GDS, LEF and timing abstracts for PCIE-040',
        ],
        tests=[
            'Drive the PLL behavioral model with REFCLK including SSC and frequency offset through pyuvm; assert no TX traffic before lock and correct lock-loss handling',
@@ -940,6 +930,7 @@ ticket(50, 'Reproduce SKY130 PDK, OpenROAD and OpenLane implementation environme
            'Install standalone OpenROAD and OpenSTA at the version bundled by the selected OpenLane release for interactive floorplan, timing and debug work; document any version difference',
            'Install signoff tools used by the flow (Magic, KLayout, netgen) and xschem for SKY130 schematics; keep OpenLane-bundled Yosys separate from oss-cad-suite Yosys and record both versions',
            'Add documented one-command launchers, git-ignore run directories and PDK caches, and record machine limits (16 cores, 14 GB RAM) that may constrain full-core runs',
+           'If a ChipFoundry harness is the likely route, set up its user-project template (Caravel, Caravan or OpenFrame) with the OpenLane version it requires and record any conflict with the pinned versions',
        ],
        tests=[
            'Harden a trivial registered SystemVerilog block through the full flow and run a pyuvm test against both its RTL and its gate-level netlist',
@@ -974,6 +965,7 @@ ticket(52, 'Design high-speed I/O pads, ESD protection and package model',
        '4.3.1.8 4.3.3 4.3.4', [3, 6, 50],
        work=[
            'Select or design pads for the PCIe TX/RX pairs and REFCLK with ESD protection whose capacitance and series resistance suit 2.5 Gb/s; standard SKY130 GPIO pads are not assumed adequate; the REFCLK input receiver circuit itself belongs to PCIE-049',
+           'Evaluate ChipFoundry Caravan bare pads and OpenFrame GPIO pads as PCIe TX/RX/REFCLK pad options, and custom high-speed pads for bare-die routes (docs/fabrication-routes.md); model QFN or bare-die bond-wire packaging accordingly',
            'Model bond-wire or package, pad and ESD parasitics for PCIE-007/008/043 simulations, with provenance',
            'Check ESD structures against PDK rules and document protection as modeled, not certified',
            'Deliver pad cells with DRC/LVS and abstracts for PCIE-057',
@@ -1062,8 +1054,8 @@ ticket(56, 'Verify gate-level ASIC netlist and RTL equivalence',
 ticket(57, 'Integrate chip top: pad ring, harness, test access and fabrication route',
        '4.3 6.6', [40, 52],
        work=[
-           'Identify a currently available SKY130 fabrication route and its harness, area, I/O and deadline constraints; record clearly if none is available',
-           'Integrate the hardened core into the chosen harness or pad frame with clock, reset (PERST#), power and I/O assignments that match the PCIE-003 chip architecture',
+           'Re-verify the fabrication routes in docs/fabrication-routes.md (checked 2026-11-07) and choose one; record clearly if none fits the design, schedule or budget',
+           'Integrate the design into the harness or pad frame of the chosen route (ChipFoundry Caravel, Caravan or OpenFrame, or a custom pad ring for bare-die routes) with clock, reset (PERST#), power and I/O assignments matching the PCIE-003 chip architecture',
            'Add test access: PHY-boundary loopback, pattern generator and checker, and status registers reachable through a slow interface, so the core can be exercised without a working 2.5 Gb/s link',
            'Re-run full-chip DRC, LVS, STA and the route-specific precheck',
        ],
@@ -1081,6 +1073,7 @@ ticket(58, 'Prepare ASIC tapeout signoff and post-silicon test plan',
        '4.3', [43, 56, 57],
        work=[
            'Assemble final GDS, signoff reports, versions, waivers and documentation for the chosen fabrication route',
+           "Confirm the chosen route's submission format (GDS or OASIS), required DRC deck (open tools or Cadence Pegasus), legal agreement, price and commitment deadline well before tapeout",
            'Write a post-silicon bring-up and test plan: board, supplies, clocks, test interface, loopback, and later link tests',
            'Do not submit for fabrication or incur cost without explicit user approval',
        ],
@@ -1117,7 +1110,7 @@ ticket(59, 'Design bias, reference and termination-calibration circuits',
 ticket(60, 'Build an early PHY loopback top with logical PHY and PMA placeholders',
        '4.2 4.2.6.10 4.3', [3, 13, 45, 54],
        work=[
-           'Integrate the hardened logical-PHY blocks (8b/10b, scrambling, framing, elastic buffer) with behavioral PMA models and placeholder macro abstracts from PCIE-007/008/049/059 in a loopback test top',
+           'Integrate the hardened logical-PHY blocks (8b/10b, scrambling, framing, elastic buffer) with behavioral PMA models and placeholder macro abstracts from PCIE-064/066/068 and PCIE-059 in a loopback test top',
            'Floorplan the top with analog macro placeholders, analog and digital supply domains and the digital-to-PMA interface; close timing on that interface with preliminary abstracts',
            'Select and set up the mixed-signal co-simulation method for PCIE-040 (for example ngspice d_cosim with Verilator) and record what it covers',
            'Swap qualified PCIE-045 cells or early PMA macros in as they become available; the same top must accept final macros by replacing abstracts, with final integration in PCIE-040',
@@ -1132,3 +1125,155 @@ ticket(60, 'Build an early PHY loopback top with logical PHY and PMA placeholder
            'Co-simulation method is demonstrated on loopback traffic with documented coverage limits',
        ],
        spice='Co-simulate the loopback path with any available transistor-level PMA blocks and confirm decoded bits match the independent expected stream; label behavioral results as such.')
+
+
+ticket(61, 'Design SKY130 PHY building-block schematics',
+       '4.2.1.1 4.3.2.2 4.3.3', [3, 6, 9, 50],
+       work=[
+           'Design xschem schematics for the PHY building blocks in docs/phy-architecture.md: current-mode buffer, latch and 2:1 mux, clock divider, standard-cell-to-current-mode level conversion, sampler/comparator and a VCO candidate',
+           'Size devices with the pinned SKY130 models and choose device flavors (1.8 V core, 3.3 V or others) with documented reasons; transition frequency is not a guaranteed toggle rate',
+           'Simulate each schematic across corners with ideal bias sources with an explicit parasitic margin, documented so the layout phase can check it; estimate the reliable rate of standard-cell versus current-mode serializer stages',
+           'Hand sized schematics and preliminary area estimates to PCIE-062',
+       ],
+       tests=[
+           'Generate independent expected bit sequences through PCIE-009 and compare sampled mux, latch and divider schematic outputs, exercising persistent opposite inputs and phase boundaries',
+           'Deliberately swap inputs or skew clocks once to prove the checker fails',
+       ],
+       accept=[
+           'Every cell meets its budget at schematic level across corners, with the parasitic margin documented',
+           'Schematics, testbenches and commands are reproducible',
+       ],
+       spice='Run DC, transient, fast-select, divider, sampler and VCO studies on schematics across tt/ff/ss/sf/fs, temperature, supply and mismatch with timestep convergence from <=10 ps; archive passing and deliberately failing fixtures.')
+
+
+ticket(62, 'Lay out and extract the SKY130 PHY building blocks',
+       '4.2.1.1 4.3.2.2 4.3.3', [61],
+       work=[
+           'Lay out the PCIE-061 SKY130 PHY building blocks schematics in Magic with symmetric differential routing, guard rings and well ties; pass DRC (Magic and KLayout) and LVS (netgen)',
+           'Extract parasitic netlists with documented extraction settings and the known limits of the open extraction flow',
+           'Re-run the typical-corner PCIE-061 testbenches on extracted netlists as a smoke check and report the gap to schematic results',
+           'Record cell sizes and pin locations for the PCIE-060 loopback top',
+       ],
+       tests=[
+           'Re-run the PCIE-061 bit-sequence checks on extracted netlists at the typical corner',
+           'Confirm an intentionally broken layout connection is caught by LVS',
+       ],
+       accept=[
+           'Layout is DRC/LVS clean with extracted netlists and extraction settings recorded',
+           'Typical-corner extracted results are compared with schematic results and the gap is explained',
+       ],
+       spice='Simulate extracted netlists at the typical corner with the schematic-phase testbenches and report delay, swing, jitter and power changes versus schematic; verify timestep convergence.')
+
+
+ticket(63, 'Design PLL and REFCLK receiver schematics',
+       '4.3.1.1 4.3.3 4.3.4', [3, 6, 45],
+       work=[
+           'Design xschem schematics for the REFCLK input receiver, VCO, dividers, phase-frequency detector, charge pump and loop filter using qualified PCIE-045 cells, targeting the PCIE-003 clock plan (2.5 GHz full-rate or 1.25 GHz half-rate)',
+           'Obtain REFCLK electrical requirements (levels, jitter) from the matching PCI Express CEM specification, which the Base specification does not define, or record the gap as a blocker',
+           'Verify loop stability, lock time and SSC tracking with behavioral loop models plus transistor-level blocks with an explicit parasitic margin, documented so the layout phase can check it; estimate jitter with a documented method',
+           'Provide preliminary PLL size and pin estimates to PCIE-060',
+       ],
+       tests=[
+           'Drive the PLL behavioral model with REFCLK including SSC and frequency offset through pyuvm; assert no TX traffic before lock and correct lock-loss handling',
+           'Deliberately exceed the jitter or lock budget and confirm the checks fail',
+       ],
+       accept=[
+           'Schematic PLL meets the clock, jitter and lock budget across corners, with the parasitic margin documented',
+           'REFCLK requirements are sourced from the CEM specification or recorded as a blocker',
+       ],
+       spice='Simulate VCO, dividers, phase-frequency detector and charge pump at transistor level across corners, and the closed loop with behavioral plus transistor-level blocks; verify timestep convergence.')
+
+
+ticket(64, 'Lay out and extract the PLL and REFCLK receiver',
+       '4.3.1.1 4.3.3 4.3.4', [63],
+       work=[
+           'Lay out the PCIE-063 PLL and REFCLK receiver schematics in Magic with symmetric differential routing, guard rings and well ties; pass DRC (Magic and KLayout) and LVS (netgen)',
+           'Extract parasitic netlists with documented extraction settings and the known limits of the open extraction flow',
+           'Re-run the typical-corner PCIE-063 testbenches on extracted netlists as a smoke check and report the gap to schematic results',
+           'Deliver preliminary PLL macro abstracts (size, pin placement, supplies) to the PCIE-060 loopback top',
+       ],
+       tests=[
+           'Re-run the PCIE-063 bit-sequence checks on extracted netlists at the typical corner',
+           'Confirm an intentionally broken layout connection is caught by LVS',
+       ],
+       accept=[
+           'Layout is DRC/LVS clean with extracted netlists and extraction settings recorded',
+           'Typical-corner extracted results are compared with schematic results and the gap is explained',
+       ],
+       spice='Simulate extracted netlists at the typical corner with the schematic-phase testbenches and report delay, swing, jitter and power changes versus schematic; verify timestep convergence.')
+
+
+ticket(65, 'Design SKY130 TX serializer and driver schematics',
+       '4.2.1.1 4.3.2.3 4.3.3', [3, 6, 45, 46],
+       work=[
+           'Design xschem schematics for the serializer tree from the PCIE-004 interface to 2.5 Gb/s using qualified PCIE-045 cells, with retiming and race-free group updates',
+           'Design the TX driver schematic per PCIE-006 section 4.3.3 limits: swing, -3.5 dB de-emphasis, common mode, termination, electrical idle and receiver detection; add beacon only if PCIE-003 selects it',
+           'Simulate the complete TX schematic with behavioral PLL clocks and preliminary pad and package loads across corners with an explicit parasitic margin, documented so the layout phase can check it',
+           'Provide preliminary TX size and pin estimates to PCIE-060',
+       ],
+       tests=[
+           'Drive the TX schematic with pyuvm-generated 8b/10b streams through PCIE-009 and reconstruct serial bits across 10-bit symbol and parallel-word boundaries',
+           'Swap one serializer input once and confirm the checker fails',
+       ],
+       accept=[
+           'Schematic TX meets transmitter limits across corners, with the parasitic margin documented',
+           'Electrical idle, receiver detection and de-emphasis are demonstrated at schematic level',
+       ],
+       spice='Run schematic transients across PVT with preliminary pad, package and channel loads; report eye, swing, de-emphasis, jitter, idle and detection behavior; verify timestep convergence.')
+
+
+ticket(66, 'Lay out and extract the TX serializer and driver',
+       '4.2.1.1 4.3.2.3 4.3.3', [65],
+       work=[
+           'Lay out the PCIE-065 TX serializer and driver schematics in Magic with symmetric differential routing, guard rings and well ties; pass DRC (Magic and KLayout) and LVS (netgen)',
+           'Extract parasitic netlists with documented extraction settings and the known limits of the open extraction flow',
+           'Re-run the typical-corner PCIE-065 testbenches on extracted netlists as a smoke check and report the gap to schematic results',
+           'Deliver preliminary TX macro abstracts (size, pin placement, supplies) to the PCIE-060 loopback top',
+       ],
+       tests=[
+           'Re-run the PCIE-065 bit-sequence checks on extracted netlists at the typical corner',
+           'Confirm an intentionally broken layout connection is caught by LVS',
+       ],
+       accept=[
+           'Layout is DRC/LVS clean with extracted netlists and extraction settings recorded',
+           'Typical-corner extracted results are compared with schematic results and the gap is explained',
+       ],
+       spice='Simulate extracted netlists at the typical corner with the schematic-phase testbenches and report delay, swing, jitter and power changes versus schematic; verify timestep convergence.')
+
+
+ticket(67, 'Design SKY130 receiver, CDR and deserializer schematics',
+       '4.3.1.8 4.3.1.9 4.3.4', [3, 6, 45, 46],
+       work=[
+           'Design xschem schematics for the RX path recommended by PCIE-046: termination and common mode, input amplifier or equalization if needed, samplers, CDR and deserializer to the PCIE-004 interface',
+           'Design electrical-idle (squelch) detection, lock detection and loss-of-lock reporting',
+           'Simulate the RX schematic with a behavioral PLL reference and preliminary pad and package loads with an explicit parasitic margin, documented so the layout phase can check it; measure lock time against the N_FTS budget and jitter tolerance',
+           'Provide preliminary RX size and pin estimates to PCIE-060',
+       ],
+       tests=[
+           'Drive the RX schematic with pyuvm-generated streams including drift, polarity reversal and idle exit through PCIE-009; compare recovered bits with the independent stream',
+           'Inject excessive jitter once and confirm the checks fail',
+       ],
+       accept=[
+           'Schematic RX meets receiver limits and the lock-time budget across corners, with the parasitic margin documented',
+           'Behavioral parts of the CDR loop are labeled as assumptions',
+       ],
+       spice='Sweep input amplitude, common mode, jitter, frequency offset and idle-detection thresholds on the schematic across corners; verify timestep convergence.')
+
+
+ticket(68, 'Lay out and extract the receiver, CDR and deserializer',
+       '4.3.1.8 4.3.1.9 4.3.4', [67],
+       work=[
+           'Lay out the PCIE-067 receiver, CDR and deserializer schematics in Magic with symmetric differential routing, guard rings and well ties; pass DRC (Magic and KLayout) and LVS (netgen)',
+           'Extract parasitic netlists with documented extraction settings and the known limits of the open extraction flow',
+           'Re-run the typical-corner PCIE-067 testbenches on extracted netlists as a smoke check and report the gap to schematic results',
+           'Deliver preliminary RX macro abstracts (size, pin placement, supplies) to the PCIE-060 loopback top',
+       ],
+       tests=[
+           'Re-run the PCIE-067 bit-sequence checks on extracted netlists at the typical corner',
+           'Confirm an intentionally broken layout connection is caught by LVS',
+       ],
+       accept=[
+           'Layout is DRC/LVS clean with extracted netlists and extraction settings recorded',
+           'Typical-corner extracted results are compared with schematic results and the gap is explained',
+       ],
+       spice='Simulate extracted netlists at the typical corner with the schematic-phase testbenches and report delay, swing, jitter and power changes versus schematic; verify timestep convergence.')
