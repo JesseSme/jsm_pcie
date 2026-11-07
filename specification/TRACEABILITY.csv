@@ -1,0 +1,781 @@
+section,title,source_page_start,source_page_end,candidate_id,primary_ticket,related_tickets,applicability,review_status
+front-matter,"Front matter, contents and introductory material",1,27,REQ-front-matter-001,PCIE-001,,pending-review,unreviewed
+front-matter,"Front matter, contents and introductory material",1,27,REQ-front-matter-002,PCIE-001,,pending-review,unreviewed
+front-matter,"Front matter, contents and introductory material",1,27,REQ-front-matter-003,PCIE-001,,pending-review,unreviewed
+front-matter,"Front matter, contents and introductory material",1,27,REQ-front-matter-004,PCIE-001,,pending-review,unreviewed
+front-matter,"Front matter, contents and introductory material",1,27,REQ-front-matter-005,PCIE-001,,pending-review,unreviewed
+front-matter,"Front matter, contents and introductory material",1,27,REQ-front-matter-006,PCIE-001,,pending-review,unreviewed
+front-matter,"Front matter, contents and introductory material",1,27,REQ-front-matter-007,PCIE-001,,pending-review,unreviewed
+front-matter,"Front matter, contents and introductory material",1,27,REQ-front-matter-008,PCIE-001,,pending-review,unreviewed
+front-matter,"Front matter, contents and introductory material",1,27,REQ-front-matter-009,PCIE-001,,pending-review,unreviewed
+1,Introduction,27,27,,PCIE-001,PCIE-001;PCIE-002;PCIE-004;PCIE-005;PCIE-037;PCIE-039;PCIE-041;PCIE-044,pending-review,unreviewed
+1.1,A Third Generation I/O Interconnect,27,29,REQ-1.1-001,PCIE-001,PCIE-001,pending-review,unreviewed
+1.2,PCI Express Link,29,30,REQ-1.2-001,PCIE-001,PCIE-001,pending-review,unreviewed
+1.2,PCI Express Link,29,30,REQ-1.2-002,PCIE-001,PCIE-001,pending-review,unreviewed
+1.3,PCI Express Fabric Topology,30,30,,PCIE-001,PCIE-001;PCIE-037,pending-review,unreviewed
+1.3.1,Root Complex,30,31,REQ-1.3.1-001,PCIE-001,PCIE-001;PCIE-037,pending-review,unreviewed
+1.3.1,Root Complex,30,31,REQ-1.3.1-002,PCIE-001,PCIE-001;PCIE-037,pending-review,unreviewed
+1.3.2,Endpoints,31,31,,PCIE-001,PCIE-001;PCIE-037,pending-review,unreviewed
+1.3.2.1,Legacy Endpoint Rules,31,32,REQ-1.3.2.1-001,PCIE-001,PCIE-001;PCIE-037,pending-review,unreviewed
+1.3.2.1,Legacy Endpoint Rules,31,32,REQ-1.3.2.1-002,PCIE-001,PCIE-001;PCIE-037,pending-review,unreviewed
+1.3.2.2,PCI Express Endpoint Rules,32,32,REQ-1.3.2.2-001,PCIE-001,PCIE-001;PCIE-037,pending-review,unreviewed
+1.3.2.3,Root Complex Integrated Endpoint Rules,32,34,REQ-1.3.2.3-001,PCIE-001,PCIE-001;PCIE-037,pending-review,unreviewed
+1.3.2.3,Root Complex Integrated Endpoint Rules,32,34,REQ-1.3.2.3-002,PCIE-001,PCIE-001;PCIE-037,pending-review,unreviewed
+1.3.3,Switch,34,35,REQ-1.3.3-001,PCIE-001,PCIE-001;PCIE-037,pending-review,unreviewed
+1.3.4,Root Complex Event Collector,35,35,REQ-1.3.4-001,PCIE-001,PCIE-001;PCIE-037,pending-review,unreviewed
+1.3.5,PCI Express-PCI Bridge,35,35,REQ-1.3.5-001,PCIE-001,PCIE-001;PCIE-037,pending-review,unreviewed
+1.4,PCI Express Fabric Topology Configuration,35,36,REQ-1.4-001,PCIE-001,PCIE-001;PCIE-044,pending-review,unreviewed
+1.5,PCI Express Layering Overview,36,37,,PCIE-004,PCIE-001;PCIE-002;PCIE-004;PCIE-005;PCIE-039;PCIE-041,pending-review,unreviewed
+1.5.1,Transaction Layer,37,37,REQ-1.5.1-001,PCIE-004,PCIE-001;PCIE-005;PCIE-039,pending-review,unreviewed
+1.5.2,Data Link Layer,37,38,,PCIE-004,PCIE-001;PCIE-005;PCIE-039,pending-review,unreviewed
+1.5.3,Physical Layer,38,38,REQ-1.5.3-001,PCIE-004,PCIE-001;PCIE-005;PCIE-039,pending-review,unreviewed
+1.5.4,Layer Functions and Services,38,38,,PCIE-004,PCIE-001;PCIE-002;PCIE-004;PCIE-005;PCIE-039;PCIE-041,pending-review,unreviewed
+1.5.4.1,Transaction Layer Services,38,39,,PCIE-004,PCIE-001;PCIE-005;PCIE-039;PCIE-041,pending-review,unreviewed
+1.5.4.2,Data Link Layer Services,39,40,,PCIE-004,PCIE-001;PCIE-005;PCIE-039;PCIE-041,pending-review,unreviewed
+1.5.4.3,Physical Layer Services,40,40,,PCIE-004,PCIE-001;PCIE-005;PCIE-039;PCIE-041,pending-review,unreviewed
+1.5.4.4,Inter-Layer Interfaces,40,40,,PCIE-004,PCIE-001;PCIE-002;PCIE-004;PCIE-005;PCIE-039;PCIE-041,pending-review,unreviewed
+1.5.4.4.1,Transaction/Data Link Interface,40,41,,PCIE-004,PCIE-001;PCIE-002;PCIE-004;PCIE-005;PCIE-039;PCIE-041,pending-review,unreviewed
+1.5.4.4.2,Data Link/Physical Interface,41,43,,PCIE-004,PCIE-001;PCIE-002;PCIE-004;PCIE-005;PCIE-039;PCIE-041,pending-review,unreviewed
+2,Transaction Layer Specification,43,43,,PCIE-022,PCIE-019;PCIE-022;PCIE-023;PCIE-024;PCIE-025;PCIE-026;PCIE-029;PCIE-032;PCIE-033;PCIE-035;PCIE-036;PCIE-038;PCIE-039;PCIE-042;PCIE-047;PCIE-048,pending-review,unreviewed
+2.1,Transaction Layer Overview,43,44,REQ-2.1-001,PCIE-022,PCIE-022;PCIE-036;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.1.1,"Address Spaces, Transaction Types, and Usage",44,45,,PCIE-022,PCIE-022;PCIE-036;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.1.1.1,Memory Transactions,45,45,,PCIE-022,PCIE-022;PCIE-036;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.1.1.2,I/O Transactions,45,45,,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.1.1.3,Configuration Transactions,45,45,,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.1.1.4,Message Transactions,45,46,,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.1.2,Packet Format Overview,46,47,REQ-2.1.2-001,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.1.2,Packet Format Overview,46,47,REQ-2.1.2-002,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.1.2,Packet Format Overview,46,47,REQ-2.1.2-003,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.1.2,Packet Format Overview,46,47,REQ-2.1.2-004,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2,Transaction Layer Protocol - Packet Definition,47,47,REQ-2.2-001,PCIE-022,PCIE-022;PCIE-024;PCIE-025;PCIE-029;PCIE-033;PCIE-038;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.1,Common Packet Header Fields,47,50,REQ-2.2.1-001,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.1,Common Packet Header Fields,47,50,REQ-2.2.1-002,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.2,TLPs with Data Payloads - Rules,50,52,REQ-2.2.2-001,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.2,TLPs with Data Payloads - Rules,50,52,REQ-2.2.2-002,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.3,TLP Digest Rules,52,52,REQ-2.2.3-001,PCIE-022,PCIE-022;PCIE-033;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.4,Routing and Addressing Rules,52,52,,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.4.1,Address Based Routing Rules,52,54,REQ-2.2.4.1-001,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.4.1,Address Based Routing Rules,52,54,REQ-2.2.4.1-002,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.4.2,ID Based Routing Rules,54,55,,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.5,First/Last DW Byte Enables Rules,55,57,REQ-2.2.5-001,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.5,First/Last DW Byte Enables Rules,55,57,REQ-2.2.5-002,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.5,First/Last DW Byte Enables Rules,55,57,REQ-2.2.5-003,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.5,First/Last DW Byte Enables Rules,55,57,REQ-2.2.5-004,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.5,First/Last DW Byte Enables Rules,55,57,REQ-2.2.5-005,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.6,Transaction Descriptor,57,57,,PCIE-022,PCIE-022;PCIE-025;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.6.1,Overview,57,58,REQ-2.2.6.1-001,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.6.2,Transaction Descriptor – Transaction ID Field,58,60,REQ-2.2.6.2-001,PCIE-022,PCIE-022;PCIE-025;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.6.2,Transaction Descriptor – Transaction ID Field,58,60,REQ-2.2.6.2-002,PCIE-022,PCIE-022;PCIE-025;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.6.2,Transaction Descriptor – Transaction ID Field,58,60,REQ-2.2.6.2-003,PCIE-022,PCIE-022;PCIE-025;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.6.3,Transaction Descriptor – Attributes Field,60,60,,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.6.4,Relaxed Ordering Attribute,60,61,REQ-2.2.6.4-001,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.6.5,No Snoop Attribute,61,61,REQ-2.2.6.5-001,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.6.6,Transaction Descriptor – Traffic Class Field,61,62,REQ-2.2.6.6-001,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.7,"Memory, I/O, and Configuration Request Rules",62,65,REQ-2.2.7-001,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.7,"Memory, I/O, and Configuration Request Rules",62,65,REQ-2.2.7-002,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.7,"Memory, I/O, and Configuration Request Rules",62,65,REQ-2.2.7-003,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.7,"Memory, I/O, and Configuration Request Rules",62,65,REQ-2.2.7-004,PCIE-022,PCIE-022;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.8,Message Request Rules,65,66,REQ-2.2.8-001,PCIE-038,PCIE-029;PCIE-038;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.8,Message Request Rules,65,66,REQ-2.2.8-002,PCIE-038,PCIE-029;PCIE-038;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.8.1,INTx Interrupt Signaling - Rules,66,70,REQ-2.2.8.1-001,PCIE-038,PCIE-029;PCIE-038;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.8.1,INTx Interrupt Signaling - Rules,66,70,REQ-2.2.8.1-002,PCIE-038,PCIE-029;PCIE-038;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.8.1,INTx Interrupt Signaling - Rules,66,70,REQ-2.2.8.1-003,PCIE-038,PCIE-029;PCIE-038;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.8.1,INTx Interrupt Signaling - Rules,66,70,REQ-2.2.8.1-004,PCIE-038,PCIE-029;PCIE-038;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.8.1,INTx Interrupt Signaling - Rules,66,70,REQ-2.2.8.1-005,PCIE-038,PCIE-029;PCIE-038;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.8.1,INTx Interrupt Signaling - Rules,66,70,REQ-2.2.8.1-006,PCIE-038,PCIE-029;PCIE-038;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.8.1,INTx Interrupt Signaling - Rules,66,70,REQ-2.2.8.1-007,PCIE-038,PCIE-029;PCIE-038;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.8.1,INTx Interrupt Signaling - Rules,66,70,REQ-2.2.8.1-008,PCIE-038,PCIE-029;PCIE-038;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.8.1,INTx Interrupt Signaling - Rules,66,70,REQ-2.2.8.1-009,PCIE-038,PCIE-029;PCIE-038;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.8.1,INTx Interrupt Signaling - Rules,66,70,REQ-2.2.8.1-010,PCIE-038,PCIE-029;PCIE-038;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.8.2,Power Management Messages,70,71,REQ-2.2.8.2-001,PCIE-038,PCIE-038;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.8.3,Error Signaling Messages,71,72,REQ-2.2.8.3-001,PCIE-038,PCIE-038;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.8.4,Locked Transactions Support,72,72,REQ-2.2.8.4-001,PCIE-038,PCIE-038;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.8.5,Slot Power Limit Support,72,73,REQ-2.2.8.5-001,PCIE-038,PCIE-038;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.8.5,Slot Power Limit Support,72,73,REQ-2.2.8.5-002,PCIE-038,PCIE-038;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.8.6,Vendor_Defined Messages,73,75,REQ-2.2.8.6-001,PCIE-038,PCIE-038;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.8.6,Vendor_Defined Messages,73,75,REQ-2.2.8.6-002,PCIE-038,PCIE-038;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.8.6,Vendor_Defined Messages,73,75,REQ-2.2.8.6-003,PCIE-038,PCIE-038;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.8.7,Ignored Messages,75,76,REQ-2.2.8.7-001,PCIE-038,PCIE-038;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.9,Completion Rules,76,78,REQ-2.2.9-001,PCIE-022,PCIE-022;PCIE-024;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.9,Completion Rules,76,78,REQ-2.2.9-002,PCIE-022,PCIE-022;PCIE-024;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.2.9,Completion Rules,76,78,REQ-2.2.9-003,PCIE-022,PCIE-022;PCIE-024;PCIE-039;PCIE-042;PCIE-048,pending-review,unreviewed
+2.3,Handling of Received TLPs,78,81,REQ-2.3-001,PCIE-023,PCIE-023;PCIE-024;PCIE-025;PCIE-036;PCIE-039;PCIE-042,pending-review,unreviewed
+2.3,Handling of Received TLPs,78,81,REQ-2.3-002,PCIE-023,PCIE-023;PCIE-024;PCIE-025;PCIE-036;PCIE-039;PCIE-042,pending-review,unreviewed
+2.3,Handling of Received TLPs,78,81,REQ-2.3-003,PCIE-023,PCIE-023;PCIE-024;PCIE-025;PCIE-036;PCIE-039;PCIE-042,pending-review,unreviewed
+2.3.1,Request Handling Rules,81,87,REQ-2.3.1-001,PCIE-023,PCIE-023;PCIE-024;PCIE-036;PCIE-039;PCIE-042,pending-review,unreviewed
+2.3.1,Request Handling Rules,81,87,REQ-2.3.1-002,PCIE-023,PCIE-023;PCIE-024;PCIE-036;PCIE-039;PCIE-042,pending-review,unreviewed
+2.3.1,Request Handling Rules,81,87,REQ-2.3.1-003,PCIE-023,PCIE-023;PCIE-024;PCIE-036;PCIE-039;PCIE-042,pending-review,unreviewed
+2.3.1,Request Handling Rules,81,87,REQ-2.3.1-004,PCIE-023,PCIE-023;PCIE-024;PCIE-036;PCIE-039;PCIE-042,pending-review,unreviewed
+2.3.1,Request Handling Rules,81,87,REQ-2.3.1-005,PCIE-023,PCIE-023;PCIE-024;PCIE-036;PCIE-039;PCIE-042,pending-review,unreviewed
+2.3.1,Request Handling Rules,81,87,REQ-2.3.1-006,PCIE-023,PCIE-023;PCIE-024;PCIE-036;PCIE-039;PCIE-042,pending-review,unreviewed
+2.3.1,Request Handling Rules,81,87,REQ-2.3.1-007,PCIE-023,PCIE-023;PCIE-024;PCIE-036;PCIE-039;PCIE-042,pending-review,unreviewed
+2.3.1.1,Data Return for Read Requests,87,93,REQ-2.3.1.1-001,PCIE-024,PCIE-023;PCIE-024;PCIE-036;PCIE-039;PCIE-042,pending-review,unreviewed
+2.3.1.1,Data Return for Read Requests,87,93,REQ-2.3.1.1-002,PCIE-024,PCIE-023;PCIE-024;PCIE-036;PCIE-039;PCIE-042,pending-review,unreviewed
+2.3.1.1,Data Return for Read Requests,87,93,REQ-2.3.1.1-003,PCIE-024,PCIE-023;PCIE-024;PCIE-036;PCIE-039;PCIE-042,pending-review,unreviewed
+2.3.1.1,Data Return for Read Requests,87,93,REQ-2.3.1.1-004,PCIE-024,PCIE-023;PCIE-024;PCIE-036;PCIE-039;PCIE-042,pending-review,unreviewed
+2.3.1.1,Data Return for Read Requests,87,93,REQ-2.3.1.1-005,PCIE-024,PCIE-023;PCIE-024;PCIE-036;PCIE-039;PCIE-042,pending-review,unreviewed
+2.3.1.1,Data Return for Read Requests,87,93,REQ-2.3.1.1-006,PCIE-024,PCIE-023;PCIE-024;PCIE-036;PCIE-039;PCIE-042,pending-review,unreviewed
+2.3.1.1,Data Return for Read Requests,87,93,REQ-2.3.1.1-007,PCIE-024,PCIE-023;PCIE-024;PCIE-036;PCIE-039;PCIE-042,pending-review,unreviewed
+2.3.2,Completion Handling Rules,93,95,REQ-2.3.2-001,PCIE-025,PCIE-025;PCIE-036;PCIE-039;PCIE-042,pending-review,unreviewed
+2.3.2,Completion Handling Rules,93,95,REQ-2.3.2-002,PCIE-025,PCIE-025;PCIE-036;PCIE-039;PCIE-042,pending-review,unreviewed
+2.3.2,Completion Handling Rules,93,95,REQ-2.3.2-003,PCIE-025,PCIE-025;PCIE-036;PCIE-039;PCIE-042,pending-review,unreviewed
+2.4,Transaction Ordering,95,95,,PCIE-026,PCIE-026;PCIE-039;PCIE-042,pending-review,unreviewed
+2.4.1,Transaction Ordering Rules,95,99,REQ-2.4.1-001,PCIE-026,PCIE-026;PCIE-039;PCIE-042,pending-review,unreviewed
+2.4.1,Transaction Ordering Rules,95,99,REQ-2.4.1-002,PCIE-026,PCIE-026;PCIE-039;PCIE-042,pending-review,unreviewed
+2.4.1,Transaction Ordering Rules,95,99,REQ-2.4.1-003,PCIE-026,PCIE-026;PCIE-039;PCIE-042,pending-review,unreviewed
+2.4.1,Transaction Ordering Rules,95,99,REQ-2.4.1-004,PCIE-026,PCIE-026;PCIE-039;PCIE-042,pending-review,unreviewed
+2.4.1,Transaction Ordering Rules,95,99,REQ-2.4.1-005,PCIE-026,PCIE-026;PCIE-039;PCIE-042,pending-review,unreviewed
+2.4.1,Transaction Ordering Rules,95,99,REQ-2.4.1-006,PCIE-026,PCIE-026;PCIE-039;PCIE-042,pending-review,unreviewed
+2.4.2,Update Ordering and Granularity Observed by a Read Transaction,99,100,REQ-2.4.2-001,PCIE-026,PCIE-026;PCIE-039;PCIE-042,pending-review,unreviewed
+2.4.2,Update Ordering and Granularity Observed by a Read Transaction,99,100,REQ-2.4.2-002,PCIE-026,PCIE-026;PCIE-039;PCIE-042,pending-review,unreviewed
+2.4.3,Update Ordering and Granularity Provided by a Write Transaction,100,100,REQ-2.4.3-001,PCIE-026,PCIE-026;PCIE-039;PCIE-042,pending-review,unreviewed
+2.5,Virtual Channel (VC) Mechanism,100,103,REQ-2.5-001,PCIE-026,PCIE-026;PCIE-039;PCIE-042,pending-review,unreviewed
+2.5,Virtual Channel (VC) Mechanism,100,103,REQ-2.5-002,PCIE-026,PCIE-026;PCIE-039;PCIE-042,pending-review,unreviewed
+2.5,Virtual Channel (VC) Mechanism,100,103,REQ-2.5-003,PCIE-026,PCIE-026;PCIE-039;PCIE-042,pending-review,unreviewed
+2.5,Virtual Channel (VC) Mechanism,100,103,REQ-2.5-004,PCIE-026,PCIE-026;PCIE-039;PCIE-042,pending-review,unreviewed
+2.5,Virtual Channel (VC) Mechanism,100,103,REQ-2.5-005,PCIE-026,PCIE-026;PCIE-039;PCIE-042,pending-review,unreviewed
+2.5.1,Virtual Channel Identification (VC ID),103,103,REQ-2.5.1-001,PCIE-026,PCIE-026;PCIE-039;PCIE-042,pending-review,unreviewed
+2.5.2,TC to VC Mapping,103,105,REQ-2.5.2-001,PCIE-026,PCIE-026;PCIE-039;PCIE-042,pending-review,unreviewed
+2.5.3,VC and TC Rules,105,106,REQ-2.5.3-001,PCIE-026,PCIE-026;PCIE-039;PCIE-042,pending-review,unreviewed
+2.6,Ordering and Receive Buffer Flow Control,106,107,REQ-2.6-001,PCIE-026,PCIE-026;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+2.6.1,Flow Control Rules,107,111,REQ-2.6.1-001,PCIE-026,PCIE-026;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+2.6.1,Flow Control Rules,107,111,REQ-2.6.1-002,PCIE-026,PCIE-026;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+2.6.1,Flow Control Rules,107,111,REQ-2.6.1-003,PCIE-026,PCIE-026;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+2.6.1,Flow Control Rules,107,111,REQ-2.6.1-004,PCIE-026,PCIE-026;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+2.6.1,Flow Control Rules,107,111,REQ-2.6.1-005,PCIE-026,PCIE-026;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+2.6.1.1,FC Information Tracked by Transmitter,111,112,REQ-2.6.1.1-001,PCIE-026,PCIE-026;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+2.6.1.1,FC Information Tracked by Transmitter,111,112,REQ-2.6.1.1-002,PCIE-026,PCIE-026;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+2.6.1.2,FC Information Tracked by Receiver,112,116,REQ-2.6.1.2-001,PCIE-026,PCIE-026;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+2.6.1.2,FC Information Tracked by Receiver,112,116,REQ-2.6.1.2-002,PCIE-026,PCIE-026;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+2.6.1.2,FC Information Tracked by Receiver,112,116,REQ-2.6.1.2-003,PCIE-026,PCIE-026;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+2.6.1.2,FC Information Tracked by Receiver,112,116,REQ-2.6.1.2-004,PCIE-026,PCIE-026;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+2.7,Data Integrity,116,117,REQ-2.7-001,PCIE-032,PCIE-032;PCIE-033;PCIE-039;PCIE-042,pending-review,unreviewed
+2.7.1,ECRC Rules,117,121,REQ-2.7.1-001,PCIE-033,PCIE-033;PCIE-039;PCIE-042,pending-review,unreviewed
+2.7.2,Error Forwarding,121,121,,PCIE-032,PCIE-032;PCIE-039;PCIE-042,pending-review,unreviewed
+2.7.2.1,Error Forwarding Usage Model,121,122,REQ-2.7.2.1-001,PCIE-032,PCIE-032;PCIE-039;PCIE-042,pending-review,unreviewed
+2.7.2.1,Error Forwarding Usage Model,121,122,REQ-2.7.2.1-002,PCIE-032,PCIE-032;PCIE-039;PCIE-042,pending-review,unreviewed
+2.7.2.2,Rules For Use of Data Poisoning,122,123,REQ-2.7.2.2-001,PCIE-032,PCIE-032;PCIE-039;PCIE-042,pending-review,unreviewed
+2.8,Completion Timeout Mechanism,123,124,REQ-2.8-001,PCIE-025,PCIE-025;PCIE-039;PCIE-042,pending-review,unreviewed
+2.9,Link Status Dependencies,124,124,,PCIE-019,PCIE-019;PCIE-035;PCIE-039;PCIE-042,pending-review,unreviewed
+2.9.1,Transaction Layer Behavior in DL_Down Status,124,125,REQ-2.9.1-001,PCIE-019,PCIE-019;PCIE-035;PCIE-039;PCIE-042,pending-review,unreviewed
+2.9.2,Transaction Layer Behavior in DL_Up Status,125,127,REQ-2.9.2-001,PCIE-019,PCIE-019;PCIE-035;PCIE-039;PCIE-042,pending-review,unreviewed
+3,Data Link Layer Specification,127,127,,PCIE-019,PCIE-018;PCIE-019;PCIE-020;PCIE-021;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+3.1,Data Link Layer Overview,127,129,REQ-3.1-001,PCIE-019,PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+3.2,Data Link Control and Management State Machine,129,130,,PCIE-019,PCIE-019;PCIE-039;PCIE-042,pending-review,unreviewed
+3.2.1,Data Link Control and Management State Machine Rules,130,132,REQ-3.2.1-001,PCIE-019,PCIE-019;PCIE-039;PCIE-042,pending-review,unreviewed
+3.2.1,Data Link Control and Management State Machine Rules,130,132,REQ-3.2.1-002,PCIE-019,PCIE-019;PCIE-039;PCIE-042,pending-review,unreviewed
+3.2.1,Data Link Control and Management State Machine Rules,130,132,REQ-3.2.1-003,PCIE-019,PCIE-019;PCIE-039;PCIE-042,pending-review,unreviewed
+3.2.1,Data Link Control and Management State Machine Rules,130,132,REQ-3.2.1-004,PCIE-019,PCIE-019;PCIE-039;PCIE-042,pending-review,unreviewed
+3.3,Flow Control Initialization Protocol,132,132,REQ-3.3-001,PCIE-019,PCIE-019;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+3.3.1,Flow Control Initialization State Machine Rules,132,136,REQ-3.3.1-001,PCIE-019,PCIE-019;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+3.3.1,Flow Control Initialization State Machine Rules,132,136,REQ-3.3.1-002,PCIE-019,PCIE-019;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+3.3.1,Flow Control Initialization State Machine Rules,132,136,REQ-3.3.1-003,PCIE-019,PCIE-019;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+3.3.1,Flow Control Initialization State Machine Rules,132,136,REQ-3.3.1-004,PCIE-019,PCIE-019;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+3.3.1,Flow Control Initialization State Machine Rules,132,136,REQ-3.3.1-005,PCIE-019,PCIE-019;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+3.4,Data Link Layer Packets (DLLPs),136,136,,PCIE-018,PCIE-018;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+3.4.1,Data Link Layer Packet Rules,136,141,REQ-3.4.1-001,PCIE-018,PCIE-018;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+3.5,Data Integrity,141,141,,PCIE-020,PCIE-020;PCIE-021;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+3.5.1,Introduction,141,141,,PCIE-020,PCIE-020;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+3.5.2,"LCRC, Sequence Number, and Retry Management (TLP Transmitter)",141,142,,PCIE-021,PCIE-021;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+3.5.2.1,LCRC and Sequence Number Rules (TLP Transmitter),142,153,REQ-3.5.2.1-001,PCIE-021,PCIE-021;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+3.5.2.1,LCRC and Sequence Number Rules (TLP Transmitter),142,153,REQ-3.5.2.1-002,PCIE-021,PCIE-021;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+3.5.2.1,LCRC and Sequence Number Rules (TLP Transmitter),142,153,REQ-3.5.2.1-003,PCIE-021,PCIE-021;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+3.5.2.1,LCRC and Sequence Number Rules (TLP Transmitter),142,153,REQ-3.5.2.1-004,PCIE-021,PCIE-021;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+3.5.2.1,LCRC and Sequence Number Rules (TLP Transmitter),142,153,REQ-3.5.2.1-005,PCIE-021,PCIE-021;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+3.5.2.1,LCRC and Sequence Number Rules (TLP Transmitter),142,153,REQ-3.5.2.1-006,PCIE-021,PCIE-021;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+3.5.2.1,LCRC and Sequence Number Rules (TLP Transmitter),142,153,REQ-3.5.2.1-007,PCIE-021,PCIE-021;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+3.5.2.1,LCRC and Sequence Number Rules (TLP Transmitter),142,153,REQ-3.5.2.1-008,PCIE-021,PCIE-021;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+3.5.3,LCRC and Sequence Number (TLP Receiver),153,153,,PCIE-020,PCIE-020;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+3.5.3.1,LCRC and Sequence Number Rules (TLP Receiver),153,161,REQ-3.5.3.1-001,PCIE-020,PCIE-020;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+3.5.3.1,LCRC and Sequence Number Rules (TLP Receiver),153,161,REQ-3.5.3.1-002,PCIE-020,PCIE-020;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+3.5.3.1,LCRC and Sequence Number Rules (TLP Receiver),153,161,REQ-3.5.3.1-003,PCIE-020,PCIE-020;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+3.5.3.1,LCRC and Sequence Number Rules (TLP Receiver),153,161,REQ-3.5.3.1-004,PCIE-020,PCIE-020;PCIE-039;PCIE-042;PCIE-047,pending-review,unreviewed
+4,Physical Layer Specification,161,161,,PCIE-004,PCIE-001;PCIE-003;PCIE-004;PCIE-005;PCIE-006;PCIE-007;PCIE-008;PCIE-009;PCIE-010;PCIE-011;PCIE-012;PCIE-013;PCIE-014;PCIE-015;PCIE-016;PCIE-017;PCIE-031;PCIE-035;PCIE-039;PCIE-040;PCIE-041;PCIE-042;PCIE-043;PCIE-044;PCIE-045;PCIE-046,pending-review,unreviewed
+4.1,Introduction,161,161,,PCIE-004,PCIE-004;PCIE-039;PCIE-040,pending-review,unreviewed
+4.2,Logical Sub-block,161,162,,PCIE-012,PCIE-004;PCIE-005;PCIE-007;PCIE-009;PCIE-010;PCIE-011;PCIE-012;PCIE-013;PCIE-014;PCIE-015;PCIE-016;PCIE-017;PCIE-031;PCIE-035;PCIE-039;PCIE-041;PCIE-042;PCIE-045;PCIE-046,pending-review,unreviewed
+4.2.1,Symbol Encoding,162,162,,PCIE-010,PCIE-004;PCIE-005;PCIE-007;PCIE-010;PCIE-039;PCIE-041;PCIE-042;PCIE-045,pending-review,unreviewed
+4.2.1.1,Serialization and De-serialization of Data,162,163,,PCIE-010,PCIE-004;PCIE-005;PCIE-007;PCIE-010;PCIE-039;PCIE-041;PCIE-042;PCIE-045,pending-review,unreviewed
+4.2.1.2,Special Symbols for Framing and Link Management (K Codes),163,165,REQ-4.2.1.2-001,PCIE-010,PCIE-004;PCIE-005;PCIE-010;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.2,Framing and Application of Symbols to Lanes,165,165,REQ-4.2.2-001,PCIE-012,PCIE-004;PCIE-005;PCIE-012;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.2.1,Framing and Application of Symbols to Lanes – Rules,165,168,REQ-4.2.2.1-001,PCIE-012,PCIE-004;PCIE-005;PCIE-012;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.2.1,Framing and Application of Symbols to Lanes – Rules,165,168,REQ-4.2.2.1-002,PCIE-012,PCIE-004;PCIE-005;PCIE-012;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.3,Data Scrambling,168,169,REQ-4.2.3-001,PCIE-011,PCIE-004;PCIE-005;PCIE-011;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.4,Link Initialization and Training,169,170,,PCIE-014,PCIE-004;PCIE-005;PCIE-012;PCIE-013;PCIE-014;PCIE-015;PCIE-035;PCIE-039;PCIE-041;PCIE-042;PCIE-046,pending-review,unreviewed
+4.2.4.1,Training Sequence Ordered Sets,170,173,REQ-4.2.4.1-001,PCIE-014,PCIE-004;PCIE-005;PCIE-012;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.4.1,Training Sequence Ordered Sets,170,173,REQ-4.2.4.1-002,PCIE-014,PCIE-004;PCIE-005;PCIE-012;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.4.1,Training Sequence Ordered Sets,170,173,REQ-4.2.4.1-003,PCIE-014,PCIE-004;PCIE-005;PCIE-012;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.4.2,Lane Polarity Inversion,173,173,REQ-4.2.4.2-001,PCIE-014,PCIE-004;PCIE-005;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.4.3,Fast Training Sequence (FTS),173,174,REQ-4.2.4.3-001,PCIE-017,PCIE-004;PCIE-005;PCIE-012;PCIE-014;PCIE-039;PCIE-041;PCIE-042;PCIE-046,pending-review,unreviewed
+4.2.4.4,Link Error Recovery,174,174,REQ-4.2.4.4-001,PCIE-014,PCIE-004;PCIE-005;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.4.5,Reset,174,174,,PCIE-035,PCIE-004;PCIE-005;PCIE-014;PCIE-035;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.4.5.1,Fundamental Reset,174,175,REQ-4.2.4.5.1-001,PCIE-035,PCIE-004;PCIE-005;PCIE-014;PCIE-035;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.4.5.2,Hot Reset,175,175,,PCIE-035,PCIE-004;PCIE-005;PCIE-014;PCIE-035;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.4.6,Link Data Rate Negotiation,175,175,REQ-4.2.4.6-001,PCIE-014,PCIE-004;PCIE-005;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.4.7,Link Width and Lane Sequence Negotiation,175,175,REQ-4.2.4.7-001,PCIE-015,PCIE-004;PCIE-005;PCIE-014;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.4.7.1,Required and Optional Port Behavior,175,176,REQ-4.2.4.7.1-001,PCIE-015,PCIE-004;PCIE-005;PCIE-014;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.4.7.1,Required and Optional Port Behavior,175,176,REQ-4.2.4.7.1-002,PCIE-015,PCIE-004;PCIE-005;PCIE-014;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.4.7.1,Required and Optional Port Behavior,175,176,REQ-4.2.4.7.1-003,PCIE-015,PCIE-004;PCIE-005;PCIE-014;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.4.8,Lane-to-Lane De-skew,176,176,REQ-4.2.4.8-001,PCIE-013,PCIE-004;PCIE-005;PCIE-013;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.4.9,Lane vs. Link Training,176,177,REQ-4.2.4.9-001,PCIE-014,PCIE-004;PCIE-005;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.5,Link Training and Status State Machine (LTSSM) Descriptions,177,177,REQ-4.2.5-001,PCIE-014,PCIE-004;PCIE-005;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.5.1,Detect,177,177,,PCIE-014,PCIE-004;PCIE-005;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.5.2,Polling,177,178,,PCIE-014,PCIE-004;PCIE-005;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.5.3,Configuration,178,178,REQ-4.2.5.3-001,PCIE-014,PCIE-004;PCIE-005;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.5.4,Recovery,178,178,,PCIE-014,PCIE-004;PCIE-005;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.5.5,L0,178,178,,PCIE-014,PCIE-004;PCIE-005;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.5.6,L0s,178,178,REQ-4.2.5.6-001,PCIE-014,PCIE-004;PCIE-005;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.5.7,L1,178,179,,PCIE-014,PCIE-004;PCIE-005;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.5.8,L2,179,179,REQ-4.2.5.8-001,PCIE-014,PCIE-004;PCIE-005;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.5.9,Disabled,179,179,,PCIE-014,PCIE-004;PCIE-005;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.5.10,Loopback,179,180,REQ-4.2.5.10-001,PCIE-014,PCIE-004;PCIE-005;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.5.10,Loopback,179,180,REQ-4.2.5.10-002,PCIE-014,PCIE-004;PCIE-005;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.5.11,Hot Reset,180,180,,PCIE-014,PCIE-004;PCIE-005;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6,Link Training and Status State Rules,180,182,REQ-4.2.6-001,PCIE-014,PCIE-004;PCIE-005;PCIE-014;PCIE-015;PCIE-016;PCIE-017;PCIE-031;PCIE-039;PCIE-041;PCIE-042;PCIE-046,pending-review,unreviewed
+4.2.6.1,Detect,182,182,,PCIE-014,PCIE-004;PCIE-005;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.1.1,Detect.Quiet,182,183,,PCIE-014,PCIE-004;PCIE-005;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.1.2,Detect.Active,183,184,REQ-4.2.6.1.2-001,PCIE-014,PCIE-004;PCIE-005;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.2,Polling,184,184,,PCIE-014,PCIE-004;PCIE-005;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.2.1,Polling.Active,184,184,,PCIE-014,PCIE-004;PCIE-005;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.2.2,Polling.Compliance,184,185,,PCIE-014,PCIE-004;PCIE-005;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.2.3,Polling.Configuration,185,185,REQ-4.2.6.2.3-001,PCIE-014,PCIE-004;PCIE-005;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.2.4,Polling.Speed,185,186,REQ-4.2.6.2.4-001,PCIE-014,PCIE-004;PCIE-005;PCIE-014;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.3,Configuration,186,186,,PCIE-015,PCIE-004;PCIE-005;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.3.1,Configuration.Linkwidth.Start,186,186,,PCIE-015,PCIE-004;PCIE-005;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.3.1.1,Downstream Lanes,186,188,REQ-4.2.6.3.1.1-001,PCIE-015,PCIE-004;PCIE-005;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.3.1.1,Downstream Lanes,186,188,REQ-4.2.6.3.1.1-002,PCIE-015,PCIE-004;PCIE-005;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.3.1.1,Downstream Lanes,186,188,REQ-4.2.6.3.1.1-003,PCIE-015,PCIE-004;PCIE-005;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.3.1.2,Upstream Lanes,188,189,REQ-4.2.6.3.1.2-001,PCIE-015,PCIE-004;PCIE-005;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.3.1.2,Upstream Lanes,188,189,REQ-4.2.6.3.1.2-002,PCIE-015,PCIE-004;PCIE-005;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.3.2,Configuration.Linkwidth.Accept,189,189,,PCIE-015,PCIE-004;PCIE-005;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.3.2.1,Downstream Lanes,189,190,REQ-4.2.6.3.2.1-001,PCIE-015,PCIE-004;PCIE-005;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.3.2.1,Downstream Lanes,189,190,REQ-4.2.6.3.2.1-002,PCIE-015,PCIE-004;PCIE-005;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.3.2.2,Upstream Lanes,190,192,REQ-4.2.6.3.2.2-001,PCIE-015,PCIE-004;PCIE-005;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.3.2.2,Upstream Lanes,190,192,REQ-4.2.6.3.2.2-002,PCIE-015,PCIE-004;PCIE-005;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.3.3,Configuration.Lanenum.Accept,192,192,,PCIE-015,PCIE-004;PCIE-005;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.3.3.1,Downstream Lanes,192,192,REQ-4.2.6.3.3.1-001,PCIE-015,PCIE-004;PCIE-005;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.3.3.2,Upstream Lanes,192,193,REQ-4.2.6.3.3.2-001,PCIE-015,PCIE-004;PCIE-005;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.3.4,Configuration.Lanenum.Wait,193,193,,PCIE-015,PCIE-004;PCIE-005;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.3.4.1,Downstream Lanes,193,194,REQ-4.2.6.3.4.1-001,PCIE-015,PCIE-004;PCIE-005;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.3.4.2,Upstream Lanes,194,194,,PCIE-015,PCIE-004;PCIE-005;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.3.5,Configuration.Complete,194,194,,PCIE-015,PCIE-004;PCIE-005;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.3.5.1,Downstream Lanes,194,195,REQ-4.2.6.3.5.1-001,PCIE-015,PCIE-004;PCIE-005;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.3.5.1,Downstream Lanes,194,195,REQ-4.2.6.3.5.1-002,PCIE-015,PCIE-004;PCIE-005;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.3.5.2,Upstream Lanes,195,196,REQ-4.2.6.3.5.2-001,PCIE-015,PCIE-004;PCIE-005;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.3.6,Configuration.Idle,196,197,,PCIE-015,PCIE-004;PCIE-005;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.4,Recovery,197,197,,PCIE-016,PCIE-004;PCIE-005;PCIE-016;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.4.1,Recovery.RcvrLock,197,197,REQ-4.2.6.4.1-001,PCIE-016,PCIE-004;PCIE-005;PCIE-016;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.4.2,Recovery.RcvrCfg,197,198,REQ-4.2.6.4.2-001,PCIE-016,PCIE-004;PCIE-005;PCIE-016;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.4.3,Recovery.Idle,198,199,REQ-4.2.6.4.3-001,PCIE-016,PCIE-004;PCIE-005;PCIE-016;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.5,L0,199,201,REQ-4.2.6.5-001,PCIE-015,PCIE-004;PCIE-005;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.5,L0,199,201,REQ-4.2.6.5-002,PCIE-015,PCIE-004;PCIE-005;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.5,L0,199,201,REQ-4.2.6.5-003,PCIE-015,PCIE-004;PCIE-005;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.5,L0,199,201,REQ-4.2.6.5-004,PCIE-015,PCIE-004;PCIE-005;PCIE-015;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.6,L0s,201,201,,PCIE-017,PCIE-004;PCIE-005;PCIE-017;PCIE-031;PCIE-039;PCIE-041;PCIE-042;PCIE-046,pending-review,unreviewed
+4.2.6.6.1,Receiver L0s,201,201,,PCIE-017,PCIE-004;PCIE-005;PCIE-017;PCIE-031;PCIE-039;PCIE-041;PCIE-042;PCIE-046,pending-review,unreviewed
+4.2.6.6.1.1,Rx_L0s.Entry,201,201,REQ-4.2.6.6.1.1-001,PCIE-017,PCIE-004;PCIE-005;PCIE-017;PCIE-031;PCIE-039;PCIE-041;PCIE-042;PCIE-046,pending-review,unreviewed
+4.2.6.6.1.2,Rx_L0s.Idle,201,201,,PCIE-017,PCIE-004;PCIE-005;PCIE-017;PCIE-031;PCIE-039;PCIE-041;PCIE-042;PCIE-046,pending-review,unreviewed
+4.2.6.6.1.3,Rx_L0s.FTS,201,202,REQ-4.2.6.6.1.3-001,PCIE-017,PCIE-004;PCIE-005;PCIE-017;PCIE-031;PCIE-039;PCIE-041;PCIE-042;PCIE-046,pending-review,unreviewed
+4.2.6.6.2,Transmitter L0s,202,202,,PCIE-017,PCIE-004;PCIE-005;PCIE-017;PCIE-031;PCIE-039;PCIE-041;PCIE-042;PCIE-046,pending-review,unreviewed
+4.2.6.6.2.1,Tx_L0s.Entry,202,202,REQ-4.2.6.6.2.1-001,PCIE-017,PCIE-004;PCIE-005;PCIE-017;PCIE-031;PCIE-039;PCIE-041;PCIE-042;PCIE-046,pending-review,unreviewed
+4.2.6.6.2.2,Tx_L0s.Idle,202,202,,PCIE-017,PCIE-004;PCIE-005;PCIE-017;PCIE-031;PCIE-039;PCIE-041;PCIE-042;PCIE-046,pending-review,unreviewed
+4.2.6.6.2.3,Tx_L0s.FTS,202,204,REQ-4.2.6.6.2.3-001,PCIE-017,PCIE-004;PCIE-005;PCIE-017;PCIE-031;PCIE-039;PCIE-041;PCIE-042;PCIE-046,pending-review,unreviewed
+4.2.6.6.2.3,Tx_L0s.FTS,202,204,REQ-4.2.6.6.2.3-002,PCIE-017,PCIE-004;PCIE-005;PCIE-017;PCIE-031;PCIE-039;PCIE-041;PCIE-042;PCIE-046,pending-review,unreviewed
+4.2.6.7,L1,204,204,,PCIE-017,PCIE-004;PCIE-005;PCIE-017;PCIE-031;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.7.1,L1.Entry,204,204,REQ-4.2.6.7.1-001,PCIE-017,PCIE-004;PCIE-005;PCIE-017;PCIE-031;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.7.2,L1.Idle,204,205,REQ-4.2.6.7.2-001,PCIE-017,PCIE-004;PCIE-005;PCIE-017;PCIE-031;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.7.2,L1.Idle,204,205,REQ-4.2.6.7.2-002,PCIE-017,PCIE-004;PCIE-005;PCIE-017;PCIE-031;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.8,L2,205,205,,PCIE-017,PCIE-004;PCIE-005;PCIE-017;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.8.1,L2.Idle,205,205,REQ-4.2.6.8.1-001,PCIE-017,PCIE-004;PCIE-005;PCIE-017;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.8.2,L2.TransmitWake,205,206,REQ-4.2.6.8.2-001,PCIE-017,PCIE-004;PCIE-005;PCIE-017;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.9,Disabled,206,207,REQ-4.2.6.9-001,PCIE-016,PCIE-004;PCIE-005;PCIE-016;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.10,Loopback,207,207,,PCIE-016,PCIE-004;PCIE-005;PCIE-016;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.10.1,Loopback.Entry,207,207,REQ-4.2.6.10.1-001,PCIE-016,PCIE-004;PCIE-005;PCIE-016;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.10.2,Loopback.Active,207,208,REQ-4.2.6.10.2-001,PCIE-016,PCIE-004;PCIE-005;PCIE-016;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.10.2,Loopback.Active,207,208,REQ-4.2.6.10.2-002,PCIE-016,PCIE-004;PCIE-005;PCIE-016;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.10.3,Loopback.Exit,208,209,REQ-4.2.6.10.3-001,PCIE-016,PCIE-004;PCIE-005;PCIE-016;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.6.11,Hot Reset,209,210,REQ-4.2.6.11-001,PCIE-016,PCIE-004;PCIE-005;PCIE-016;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.7,Clock Tolerance Compensation,210,210,REQ-4.2.7-001,PCIE-013,PCIE-004;PCIE-005;PCIE-013;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.7.1,Rules for Transmitters,210,211,REQ-4.2.7.1-001,PCIE-013,PCIE-004;PCIE-005;PCIE-013;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.7.1,Rules for Transmitters,210,211,REQ-4.2.7.1-002,PCIE-013,PCIE-004;PCIE-005;PCIE-013;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.7.2,Rules for Receivers,211,211,REQ-4.2.7.2-001,PCIE-013,PCIE-004;PCIE-005;PCIE-013;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.2.8,Compliance Pattern,211,213,REQ-4.2.8-001,PCIE-012,PCIE-004;PCIE-005;PCIE-009;PCIE-012;PCIE-016;PCIE-039;PCIE-041;PCIE-042,pending-review,unreviewed
+4.3,Electrical Sub-block,213,213,,PCIE-006,PCIE-001;PCIE-003;PCIE-006;PCIE-007;PCIE-008;PCIE-009;PCIE-039;PCIE-040;PCIE-041;PCIE-043;PCIE-044;PCIE-045;PCIE-046,pending-review,unreviewed
+4.3.1,Electrical Sub-Block Requirements,213,213,,PCIE-006,PCIE-001;PCIE-003;PCIE-006;PCIE-008;PCIE-039;PCIE-040;PCIE-041;PCIE-043;PCIE-044;PCIE-046,pending-review,unreviewed
+4.3.1.1,Clocking Dependencies,213,213,REQ-4.3.1.1-001,PCIE-006,PCIE-001;PCIE-003;PCIE-006;PCIE-039;PCIE-040;PCIE-041;PCIE-043;PCIE-044;PCIE-046,pending-review,unreviewed
+4.3.1.1.1,Spread Spectrum Clock (SSC) Sources,213,213,,PCIE-006,PCIE-001;PCIE-003;PCIE-006;PCIE-039;PCIE-040;PCIE-041;PCIE-043;PCIE-044;PCIE-046,pending-review,unreviewed
+4.3.1.2,AC Coupling,213,213,REQ-4.3.1.2-001,PCIE-006,PCIE-003;PCIE-006;PCIE-039;PCIE-040;PCIE-043;PCIE-044,pending-review,unreviewed
+4.3.1.3,Interconnect,213,214,REQ-4.3.1.3-001,PCIE-006,PCIE-003;PCIE-006;PCIE-039;PCIE-040;PCIE-043;PCIE-044,pending-review,unreviewed
+4.3.1.4,Termination,214,214,REQ-4.3.1.4-001,PCIE-006,PCIE-003;PCIE-006;PCIE-039;PCIE-040;PCIE-043;PCIE-044,pending-review,unreviewed
+4.3.1.5,DC Common Mode Voltage,214,214,,PCIE-006,PCIE-003;PCIE-006;PCIE-039;PCIE-040;PCIE-043;PCIE-044,pending-review,unreviewed
+4.3.1.6,ESD,214,214,REQ-4.3.1.6-001,PCIE-006,PCIE-003;PCIE-006;PCIE-039;PCIE-040;PCIE-043;PCIE-044,pending-review,unreviewed
+4.3.1.7,Short Circuit Requirements,214,215,REQ-4.3.1.7-001,PCIE-006,PCIE-003;PCIE-006;PCIE-039;PCIE-040;PCIE-043;PCIE-044,pending-review,unreviewed
+4.3.1.8,Receiver Detection,215,216,REQ-4.3.1.8-001,PCIE-006,PCIE-003;PCIE-006;PCIE-008;PCIE-039;PCIE-040;PCIE-043;PCIE-044;PCIE-046,pending-review,unreviewed
+4.3.1.8,Receiver Detection,215,216,REQ-4.3.1.8-002,PCIE-006,PCIE-003;PCIE-006;PCIE-008;PCIE-039;PCIE-040;PCIE-043;PCIE-044;PCIE-046,pending-review,unreviewed
+4.3.1.9,Electrical Idle,216,217,REQ-4.3.1.9-001,PCIE-006,PCIE-003;PCIE-006;PCIE-008;PCIE-039;PCIE-040;PCIE-043;PCIE-044,pending-review,unreviewed
+4.3.1.9,Electrical Idle,216,217,REQ-4.3.1.9-002,PCIE-006,PCIE-003;PCIE-006;PCIE-008;PCIE-039;PCIE-040;PCIE-043;PCIE-044,pending-review,unreviewed
+4.3.2,Electrical Signal Specifications,217,218,,PCIE-006,PCIE-003;PCIE-006;PCIE-007;PCIE-039;PCIE-040;PCIE-043;PCIE-044;PCIE-045,pending-review,unreviewed
+4.3.2.1,Loss,218,219,REQ-4.3.2.1-001,PCIE-006,PCIE-003;PCIE-006;PCIE-039;PCIE-040;PCIE-043;PCIE-044,pending-review,unreviewed
+4.3.2.2,Jitter and BER,219,219,REQ-4.3.2.2-001,PCIE-006,PCIE-003;PCIE-006;PCIE-039;PCIE-040;PCIE-043;PCIE-044;PCIE-045,pending-review,unreviewed
+4.3.2.3,De-emphasis,219,220,REQ-4.3.2.3-001,PCIE-006,PCIE-003;PCIE-006;PCIE-007;PCIE-039;PCIE-040;PCIE-043;PCIE-044,pending-review,unreviewed
+4.3.2.4,Beacon,220,221,REQ-4.3.2.4-001,PCIE-006,PCIE-003;PCIE-006;PCIE-039;PCIE-040;PCIE-043;PCIE-044,pending-review,unreviewed
+4.3.2.4,Beacon,220,221,REQ-4.3.2.4-002,PCIE-006,PCIE-003;PCIE-006;PCIE-039;PCIE-040;PCIE-043;PCIE-044,pending-review,unreviewed
+4.3.2.4.1,Beacon Example,221,222,REQ-4.3.2.4.1-001,PCIE-006,PCIE-003;PCIE-006;PCIE-039;PCIE-040;PCIE-043;PCIE-044,pending-review,unreviewed
+4.3.3,Differential Transmitter (TX) Output Specifications,222,225,REQ-4.3.3-001,PCIE-006,PCIE-003;PCIE-006;PCIE-007;PCIE-009;PCIE-039;PCIE-040;PCIE-043;PCIE-044;PCIE-045,pending-review,unreviewed
+4.3.3,Differential Transmitter (TX) Output Specifications,222,225,REQ-4.3.3-002,PCIE-006,PCIE-003;PCIE-006;PCIE-007;PCIE-009;PCIE-039;PCIE-040;PCIE-043;PCIE-044;PCIE-045,pending-review,unreviewed
+4.3.3,Differential Transmitter (TX) Output Specifications,222,225,REQ-4.3.3-003,PCIE-006,PCIE-003;PCIE-006;PCIE-007;PCIE-009;PCIE-039;PCIE-040;PCIE-043;PCIE-044;PCIE-045,pending-review,unreviewed
+4.3.3,Differential Transmitter (TX) Output Specifications,222,225,REQ-4.3.3-004,PCIE-006,PCIE-003;PCIE-006;PCIE-007;PCIE-009;PCIE-039;PCIE-040;PCIE-043;PCIE-044;PCIE-045,pending-review,unreviewed
+4.3.3,Differential Transmitter (TX) Output Specifications,222,225,REQ-4.3.3-005,PCIE-006,PCIE-003;PCIE-006;PCIE-007;PCIE-009;PCIE-039;PCIE-040;PCIE-043;PCIE-044;PCIE-045,pending-review,unreviewed
+4.3.3.1,Transmitter Compliance Eye Diagrams,225,226,REQ-4.3.3.1-001,PCIE-006,PCIE-003;PCIE-006;PCIE-007;PCIE-009;PCIE-039;PCIE-040;PCIE-043;PCIE-044;PCIE-045,pending-review,unreviewed
+4.3.3.2,Eye Measurement Clock Recovery Function,226,227,REQ-4.3.3.2-001,PCIE-006,PCIE-003;PCIE-006;PCIE-007;PCIE-009;PCIE-039;PCIE-040;PCIE-043;PCIE-044;PCIE-045,pending-review,unreviewed
+4.3.3.2,Eye Measurement Clock Recovery Function,226,227,REQ-4.3.3.2-002,PCIE-006,PCIE-003;PCIE-006;PCIE-007;PCIE-009;PCIE-039;PCIE-040;PCIE-043;PCIE-044;PCIE-045,pending-review,unreviewed
+4.3.3.3,Transmitter PLL BW Limits,227,227,REQ-4.3.3.3-001,PCIE-006,PCIE-003;PCIE-006;PCIE-007;PCIE-039;PCIE-040;PCIE-043;PCIE-044;PCIE-045,pending-review,unreviewed
+4.3.3.4,Compliance Test and Measurement Load,227,228,REQ-4.3.3.4-001,PCIE-006,PCIE-003;PCIE-006;PCIE-007;PCIE-009;PCIE-039;PCIE-040;PCIE-043;PCIE-044;PCIE-045,pending-review,unreviewed
+4.3.3.4,Compliance Test and Measurement Load,227,228,REQ-4.3.3.4-002,PCIE-006,PCIE-003;PCIE-006;PCIE-007;PCIE-009;PCIE-039;PCIE-040;PCIE-043;PCIE-044;PCIE-045,pending-review,unreviewed
+4.3.4,Differential Receiver (RX) Input Specifications,228,231,REQ-4.3.4-001,PCIE-006,PCIE-003;PCIE-006;PCIE-008;PCIE-039;PCIE-040;PCIE-043;PCIE-044;PCIE-046,pending-review,unreviewed
+4.3.4,Differential Receiver (RX) Input Specifications,228,231,REQ-4.3.4-002,PCIE-006,PCIE-003;PCIE-006;PCIE-008;PCIE-039;PCIE-040;PCIE-043;PCIE-044;PCIE-046,pending-review,unreviewed
+4.3.4,Differential Receiver (RX) Input Specifications,228,231,REQ-4.3.4-003,PCIE-006,PCIE-003;PCIE-006;PCIE-008;PCIE-039;PCIE-040;PCIE-043;PCIE-044;PCIE-046,pending-review,unreviewed
+4.3.4,Differential Receiver (RX) Input Specifications,228,231,REQ-4.3.4-004,PCIE-006,PCIE-003;PCIE-006;PCIE-008;PCIE-039;PCIE-040;PCIE-043;PCIE-044;PCIE-046,pending-review,unreviewed
+4.3.4,Differential Receiver (RX) Input Specifications,228,231,REQ-4.3.4-005,PCIE-006,PCIE-003;PCIE-006;PCIE-008;PCIE-039;PCIE-040;PCIE-043;PCIE-044;PCIE-046,pending-review,unreviewed
+5,Power Management,231,231,,PCIE-030,PCIE-001;PCIE-017;PCIE-030;PCIE-031;PCIE-042,pending-review,unreviewed
+5.1,Overview,231,232,REQ-5.1-001,PCIE-030,PCIE-001;PCIE-030;PCIE-042,pending-review,unreviewed
+5.1,Overview,231,232,REQ-5.1-002,PCIE-030,PCIE-001;PCIE-030;PCIE-042,pending-review,unreviewed
+5.1.1,Statement of Requirements,232,232,REQ-5.1.1-001,PCIE-030,PCIE-001;PCIE-030;PCIE-042,pending-review,unreviewed
+5.2,Link State Power Management,232,237,REQ-5.2-001,PCIE-030,PCIE-017;PCIE-042,pending-review,unreviewed
+5.2,Link State Power Management,232,237,REQ-5.2-002,PCIE-030,PCIE-017;PCIE-042,pending-review,unreviewed
+5.2,Link State Power Management,232,237,REQ-5.2-003,PCIE-030,PCIE-017;PCIE-042,pending-review,unreviewed
+5.2,Link State Power Management,232,237,REQ-5.2-004,PCIE-030,PCIE-017;PCIE-042,pending-review,unreviewed
+5.2,Link State Power Management,232,237,REQ-5.2-005,PCIE-030,PCIE-017;PCIE-042,pending-review,unreviewed
+5.2,Link State Power Management,232,237,REQ-5.2-006,PCIE-030,PCIE-017;PCIE-042,pending-review,unreviewed
+5.2,Link State Power Management,232,237,REQ-5.2-007,PCIE-030,PCIE-017;PCIE-042,pending-review,unreviewed
+5.2,Link State Power Management,232,237,REQ-5.2-008,PCIE-030,PCIE-017;PCIE-042,pending-review,unreviewed
+5.3,PCI-PM Software Compatible Mechanisms,237,237,,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.1,Device Power Management States (D-States) of a Function,237,237,REQ-5.3.1-001,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.1.1,D0 State,237,237,REQ-5.3.1.1-001,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.1.2,D1 State,237,238,REQ-5.3.1.2-001,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.1.3,D2 State,238,238,REQ-5.3.1.3-001,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.1.4,D3 State,238,239,REQ-5.3.1.4-001,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.1.4,D3 State,238,239,REQ-5.3.1.4-002,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.1.4,D3 State,238,239,REQ-5.3.1.4-003,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.1.4.1,D3hot State,239,240,REQ-5.3.1.4.1-001,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.1.4.2,D3cold State,240,241,REQ-5.3.1.4.2-001,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.1.4.2,D3cold State,240,241,REQ-5.3.1.4.2-002,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.2,PM Software Control of the Link Power Management State,241,242,REQ-5.3.2-001,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.2,PM Software Control of the Link Power Management State,241,242,REQ-5.3.2-002,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.2.1,Entry into the L1 State,242,244,REQ-5.3.2.1-001,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.2.1,Entry into the L1 State,242,244,REQ-5.3.2.1-002,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.2.1,Entry into the L1 State,242,244,REQ-5.3.2.1-003,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.2.1,Entry into the L1 State,242,244,REQ-5.3.2.1-004,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.2.1,Entry into the L1 State,242,244,REQ-5.3.2.1-005,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.2.2,Exit from L1 State,244,245,REQ-5.3.2.2-001,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.2.3,Entry into the L2/L3 Ready State,245,246,REQ-5.3.2.3-001,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.3,Power Management Event Mechanisms,246,246,,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.3.1,Motivation,246,246,REQ-5.3.3.1-001,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.3.2,Link Wakeup,246,248,REQ-5.3.3.2-001,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.3.2,Link Wakeup,246,248,REQ-5.3.3.2-002,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.3.2,Link Wakeup,246,248,REQ-5.3.3.2-003,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.3.2.1,PME Synchronization,248,250,REQ-5.3.3.2.1-001,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.3.2.1,PME Synchronization,248,250,REQ-5.3.3.2.1-002,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.3.2.1,PME Synchronization,248,250,REQ-5.3.3.2.1-003,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.3.3,PM_PME Messages,250,250,REQ-5.3.3.3-001,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.3.3.1,PM_PME “Backpressure” Deadlock Avoidance,250,251,REQ-5.3.3.3.1-001,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.3.4,PME Rules,251,252,REQ-5.3.3.4-001,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.3.3.5,PM_PME Delivery State Machine,252,253,,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.4,Native PCI Express Power Management Mechanisms,253,253,,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1,Active State Power Management (ASPM),253,255,REQ-5.4.1-001,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1,Active State Power Management (ASPM),253,255,REQ-5.4.1-002,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1,Active State Power Management (ASPM),253,255,REQ-5.4.1-003,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1,Active State Power Management (ASPM),253,255,REQ-5.4.1-004,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1,Active State Power Management (ASPM),253,255,REQ-5.4.1-005,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.1,L0s ASPM State,255,255,REQ-5.4.1.1-001,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.1,L0s ASPM State,255,255,REQ-5.4.1.1-002,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.1.1,Entry into the L0s State,255,256,REQ-5.4.1.1.1-001,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.1.1,Entry into the L0s State,255,256,REQ-5.4.1.1.1-002,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.1.2,Exit from the L0s State,256,257,REQ-5.4.1.1.2-001,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.1.2,Exit from the L0s State,256,257,REQ-5.4.1.1.2-002,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.1.2,Exit from the L0s State,256,257,REQ-5.4.1.1.2-003,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.2,L1 ASPM State,257,257,REQ-5.4.1.2-001,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.2.1,Entry into the L1 State,257,263,REQ-5.4.1.2.1-001,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.2.1,Entry into the L1 State,257,263,REQ-5.4.1.2.1-002,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.2.1,Entry into the L1 State,257,263,REQ-5.4.1.2.1-003,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.2.1,Entry into the L1 State,257,263,REQ-5.4.1.2.1-004,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.2.1,Entry into the L1 State,257,263,REQ-5.4.1.2.1-005,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.2.1,Entry into the L1 State,257,263,REQ-5.4.1.2.1-006,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.2.1,Entry into the L1 State,257,263,REQ-5.4.1.2.1-007,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.2.1,Entry into the L1 State,257,263,REQ-5.4.1.2.1-008,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.2.1,Entry into the L1 State,257,263,REQ-5.4.1.2.1-009,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.2.1,Entry into the L1 State,257,263,REQ-5.4.1.2.1-010,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.2.1,Entry into the L1 State,257,263,REQ-5.4.1.2.1-011,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.2.2,Exit from the L1 State,263,265,REQ-5.4.1.2.2-001,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.2.2,Exit from the L1 State,263,265,REQ-5.4.1.2.2-002,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.2.2,Exit from the L1 State,263,265,REQ-5.4.1.2.2-003,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.3,ASPM Configuration,265,269,REQ-5.4.1.3-001,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.3,ASPM Configuration,265,269,REQ-5.4.1.3-002,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.3,ASPM Configuration,265,269,REQ-5.4.1.3-003,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.3,ASPM Configuration,265,269,REQ-5.4.1.3-004,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.3,ASPM Configuration,265,269,REQ-5.4.1.3-005,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.4.1.3.1,Software Flow for Enabling or Disabling ASPM,269,269,REQ-5.4.1.3.1-001,PCIE-031,PCIE-031;PCIE-042,pending-review,unreviewed
+5.5,Auxiliary Power Support,269,269,,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.5.1,Auxiliary Power Enabling,269,270,REQ-5.5.1-001,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.5.1,Auxiliary Power Enabling,269,270,REQ-5.5.1-002,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.6,Power Management System Messages and DLLPs,270,273,REQ-5.6-001,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+5.6,Power Management System Messages and DLLPs,270,273,REQ-5.6-002,PCIE-030,PCIE-030;PCIE-042,pending-review,unreviewed
+6,System Architecture,273,273,,PCIE-037,PCIE-001;PCIE-023;PCIE-026;PCIE-029;PCIE-032;PCIE-035;PCIE-036;PCIE-037;PCIE-038;PCIE-040;PCIE-042;PCIE-044,pending-review,unreviewed
+6.1,Interrupt and PME Support,273,273,,PCIE-029,PCIE-001;PCIE-029;PCIE-042,pending-review,unreviewed
+6.1.1,Rationale for PCI Express Interrupt Model,273,274,REQ-6.1.1-001,PCIE-029,PCIE-001;PCIE-029;PCIE-042,pending-review,unreviewed
+6.1.2,PCI Compatible INTx Emulation,274,274,REQ-6.1.2-001,PCIE-029,PCIE-001;PCIE-029;PCIE-042,pending-review,unreviewed
+6.1.3,INTx Emulation Software Model,274,274,REQ-6.1.3-001,PCIE-029,PCIE-001;PCIE-029;PCIE-042,pending-review,unreviewed
+6.1.4,Message Signaled Interrupt (MSI/MSI-X) Support,274,276,REQ-6.1.4-001,PCIE-029,PCIE-001;PCIE-029;PCIE-042,pending-review,unreviewed
+6.1.4,Message Signaled Interrupt (MSI/MSI-X) Support,274,276,REQ-6.1.4-002,PCIE-029,PCIE-001;PCIE-029;PCIE-042,pending-review,unreviewed
+6.1.4,Message Signaled Interrupt (MSI/MSI-X) Support,274,276,REQ-6.1.4-003,PCIE-029,PCIE-001;PCIE-029;PCIE-042,pending-review,unreviewed
+6.1.4,Message Signaled Interrupt (MSI/MSI-X) Support,274,276,REQ-6.1.4-004,PCIE-029,PCIE-001;PCIE-029;PCIE-042,pending-review,unreviewed
+6.1.5,PME Support,276,276,,PCIE-029,PCIE-001;PCIE-029;PCIE-042,pending-review,unreviewed
+6.1.6,Native PME Software Model,276,277,REQ-6.1.6-001,PCIE-029,PCIE-001;PCIE-029;PCIE-042,pending-review,unreviewed
+6.1.7,Legacy PME Software Model,277,277,REQ-6.1.7-001,PCIE-029,PCIE-001;PCIE-029;PCIE-042,pending-review,unreviewed
+6.1.8,Operating System Power Management Notification,277,277,REQ-6.1.8-001,PCIE-029,PCIE-001;PCIE-029;PCIE-042,pending-review,unreviewed
+6.1.9,PME Routing Between PCI Express and PCI Hierarchies,277,278,REQ-6.1.9-001,PCIE-029,PCIE-001;PCIE-029;PCIE-042,pending-review,unreviewed
+6.2,Error Signaling and Logging,278,278,REQ-6.2-001,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.1,Scope,278,278,REQ-6.2.1-001,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.2,Error Classification,278,279,,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.2.1,Correctable Errors,279,279,REQ-6.2.2.1-001,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.2.2,Uncorrectable Errors,279,280,,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.2.2.1,Fatal Errors,280,280,REQ-6.2.2.2.1-001,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.2.2.2,Non-Fatal Errors,280,280,,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.3,Error Signaling,280,280,REQ-6.2.3-001,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.3.1,Completion Status,280,281,REQ-6.2.3.1-001,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.3.2,Error Messages,281,282,REQ-6.2.3.2-001,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.3.2,Error Messages,281,282,REQ-6.2.3.2-002,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.3.2.1,Uncorrectable Error Severity Programming (Advanced Error Reporting),282,283,,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.3.2.2,Masking Individual Errors,283,283,,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.3.2.3,Error Pollution,283,284,REQ-6.2.3.2.3-001,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.3.2.4,Advisory Non-Fatal Error Cases,284,284,REQ-6.2.3.2.4-001,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.3.2.4.1,Completer Sending a Completion with UR/CA Status,284,285,REQ-6.2.3.2.4.1-001,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.3.2.4.1,Completer Sending a Completion with UR/CA Status,284,285,REQ-6.2.3.2.4.1-002,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.3.2.4.2,Intermediate Receiver,285,285,REQ-6.2.3.2.4.2-001,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.3.2.4.3,Ultimate PCI Express Receiver of a Poisoned TLP,285,286,REQ-6.2.3.2.4.3-001,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.3.2.4.3,Ultimate PCI Express Receiver of a Poisoned TLP,285,286,REQ-6.2.3.2.4.3-002,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.3.2.4.3,Ultimate PCI Express Receiver of a Poisoned TLP,285,286,REQ-6.2.3.2.4.3-003,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.3.2.4.4,Requester with Completion Timeout,286,286,REQ-6.2.3.2.4.4-001,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.3.2.4.5,Receiver of an Unexpected Completion,286,286,REQ-6.2.3.2.4.5-001,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.3.2.5,Requester Receiving a Completion with UR/CA Status,286,287,REQ-6.2.3.2.5-001,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.3.2.5,Requester Receiving a Completion with UR/CA Status,286,287,REQ-6.2.3.2.5-002,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.3.2.5,Requester Receiving a Completion with UR/CA Status,286,287,REQ-6.2.3.2.5-003,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.3.3,Error Forwarding (Data Poisoning),287,287,REQ-6.2.3.3-001,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.4,Error Logging,287,288,REQ-6.2.4-001,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.4.1,Root Complex Considerations (Advanced Error Reporting),288,288,,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.4.1.1,Error Source Identification,288,289,REQ-6.2.4.1.1-001,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.4.1.2,Interrupt Generation,289,289,REQ-6.2.4.1.2-001,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.4.2,Multiple Error Handling (Advanced Error Reporting Capability),289,290,,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.4.3,Advisory Non-Fatal Error Logging,290,290,,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.5,Sequence of Device Error Signaling and Logging Operations,290,292,,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.6,Error Message Controls,292,293,REQ-6.2.6-001,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.7,Error Listing and Rules,293,296,REQ-6.2.7-001,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.7,Error Listing and Rules,293,296,REQ-6.2.7-002,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.7.1,PCI Mapping,296,297,REQ-6.2.7.1-001,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.8,Virtual PCI Bridge Error Handling,297,297,,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.8.1,Error Message Forwarding and PCI Mapping for Bridge - Rules,297,298,REQ-6.2.8.1-001,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.2.8.1,Error Message Forwarding and PCI Mapping for Bridge - Rules,297,298,REQ-6.2.8.1-002,PCIE-032,PCIE-001;PCIE-032;PCIE-042,pending-review,unreviewed
+6.3,Virtual Channel Support,298,298,,PCIE-026,PCIE-001;PCIE-026;PCIE-042,pending-review,unreviewed
+6.3.1,Introduction and Scope,298,299,REQ-6.3.1-001,PCIE-026,PCIE-001;PCIE-026;PCIE-042,pending-review,unreviewed
+6.3.2,TC/VC Mapping and Example Usage,299,301,REQ-6.3.2-001,PCIE-026,PCIE-001;PCIE-026;PCIE-042,pending-review,unreviewed
+6.3.2,TC/VC Mapping and Example Usage,299,301,REQ-6.3.2-002,PCIE-026,PCIE-001;PCIE-026;PCIE-042,pending-review,unreviewed
+6.3.3,VC Arbitration,301,302,,PCIE-026,PCIE-001;PCIE-026;PCIE-042,pending-review,unreviewed
+6.3.3.1,Traffic Flow and Switch Arbitration Model,302,304,REQ-6.3.3.1-001,PCIE-026,PCIE-001;PCIE-026;PCIE-042,pending-review,unreviewed
+6.3.3.1,Traffic Flow and Switch Arbitration Model,302,304,REQ-6.3.3.1-002,PCIE-026,PCIE-001;PCIE-026;PCIE-042,pending-review,unreviewed
+6.3.3.1,Traffic Flow and Switch Arbitration Model,302,304,REQ-6.3.3.1-003,PCIE-026,PCIE-001;PCIE-026;PCIE-042,pending-review,unreviewed
+6.3.3.1,Traffic Flow and Switch Arbitration Model,302,304,REQ-6.3.3.1-004,PCIE-026,PCIE-001;PCIE-026;PCIE-042,pending-review,unreviewed
+6.3.3.2,VC Arbitration − Arbitration Between VCs,304,305,REQ-6.3.3.2-001,PCIE-026,PCIE-001;PCIE-026;PCIE-042,pending-review,unreviewed
+6.3.3.2.1,Strict Priority Arbitration Model,305,306,REQ-6.3.3.2.1-001,PCIE-026,PCIE-001;PCIE-026;PCIE-042,pending-review,unreviewed
+6.3.3.2.2,Round Robin Arbitration Model,306,306,REQ-6.3.3.2.2-001,PCIE-026,PCIE-001;PCIE-026;PCIE-042,pending-review,unreviewed
+6.3.3.3,Port Arbitration − Arbitration Within VC,306,307,REQ-6.3.3.3-001,PCIE-026,PCIE-001;PCIE-026;PCIE-042,pending-review,unreviewed
+6.3.3.3,Port Arbitration − Arbitration Within VC,306,307,REQ-6.3.3.3-002,PCIE-026,PCIE-001;PCIE-026;PCIE-042,pending-review,unreviewed
+6.3.3.4,Multi-function Devices and Function Arbitration,307,309,REQ-6.3.3.4-001,PCIE-026,PCIE-001;PCIE-026;PCIE-042,pending-review,unreviewed
+6.3.3.4,Multi-function Devices and Function Arbitration,307,309,REQ-6.3.3.4-002,PCIE-026,PCIE-001;PCIE-026;PCIE-042,pending-review,unreviewed
+6.3.3.4,Multi-function Devices and Function Arbitration,307,309,REQ-6.3.3.4-003,PCIE-026,PCIE-001;PCIE-026;PCIE-042,pending-review,unreviewed
+6.3.3.4,Multi-function Devices and Function Arbitration,307,309,REQ-6.3.3.4-004,PCIE-026,PCIE-001;PCIE-026;PCIE-042,pending-review,unreviewed
+6.3.3.4,Multi-function Devices and Function Arbitration,307,309,REQ-6.3.3.4-005,PCIE-026,PCIE-001;PCIE-026;PCIE-042,pending-review,unreviewed
+6.3.4,Isochronous Support,309,310,REQ-6.3.4-001,PCIE-026,PCIE-001;PCIE-026;PCIE-042,pending-review,unreviewed
+6.3.4.1,Rules for Software Configuration,310,310,REQ-6.3.4.1-001,PCIE-026,PCIE-001;PCIE-026;PCIE-042,pending-review,unreviewed
+6.3.4.2,Rules for Requesters,310,310,REQ-6.3.4.2-001,PCIE-026,PCIE-001;PCIE-026;PCIE-042,pending-review,unreviewed
+6.3.4.3,Rules for Completers,310,311,REQ-6.3.4.3-001,PCIE-026,PCIE-001;PCIE-026;PCIE-042,pending-review,unreviewed
+6.3.4.3,Rules for Completers,310,311,REQ-6.3.4.3-002,PCIE-026,PCIE-001;PCIE-026;PCIE-042,pending-review,unreviewed
+6.3.4.4,Rules for Switch and Root Complex Components,311,311,REQ-6.3.4.4-001,PCIE-026,PCIE-001;PCIE-026;PCIE-042,pending-review,unreviewed
+6.3.4.5,Rules for Multi-function Devices,311,312,REQ-6.3.4.5-001,PCIE-026,PCIE-001;PCIE-026;PCIE-042,pending-review,unreviewed
+6.4,Device Synchronization,312,313,REQ-6.4-001,PCIE-036,PCIE-001;PCIE-036;PCIE-042,pending-review,unreviewed
+6.4,Device Synchronization,312,313,REQ-6.4-002,PCIE-036,PCIE-001;PCIE-036;PCIE-042,pending-review,unreviewed
+6.4,Device Synchronization,312,313,REQ-6.4-003,PCIE-036,PCIE-001;PCIE-036;PCIE-042,pending-review,unreviewed
+6.5,Locked Transactions,313,313,,PCIE-037,PCIE-001;PCIE-023;PCIE-037;PCIE-042,pending-review,unreviewed
+6.5.1,Introduction,313,314,REQ-6.5.1-001,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.5.2,Initiation and Propagation of Locked Transactions - Rules,314,315,REQ-6.5.2-001,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.5.2,Initiation and Propagation of Locked Transactions - Rules,314,315,REQ-6.5.2-002,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.5.3,Switches and Lock - Rules,315,315,REQ-6.5.3-001,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.5.4,PCI Express/PCI Bridges and Lock - Rules,315,316,,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.5.5,Root Complex and Lock - Rules,316,316,REQ-6.5.5-001,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.5.6,Legacy Endpoints,316,316,REQ-6.5.6-001,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.5.7,PCI Express Endpoints,316,316,REQ-6.5.7-001,PCIE-037,PCIE-001;PCIE-023;PCIE-037;PCIE-042,pending-review,unreviewed
+6.6,PCI Express Reset - Rules,316,319,REQ-6.6-001,PCIE-035,PCIE-001;PCIE-035;PCIE-040;PCIE-042;PCIE-044,pending-review,unreviewed
+6.6,PCI Express Reset - Rules,316,319,REQ-6.6-002,PCIE-035,PCIE-001;PCIE-035;PCIE-040;PCIE-042;PCIE-044,pending-review,unreviewed
+6.6,PCI Express Reset - Rules,316,319,REQ-6.6-003,PCIE-035,PCIE-001;PCIE-035;PCIE-040;PCIE-042;PCIE-044,pending-review,unreviewed
+6.6,PCI Express Reset - Rules,316,319,REQ-6.6-004,PCIE-035,PCIE-001;PCIE-035;PCIE-040;PCIE-042;PCIE-044,pending-review,unreviewed
+6.6,PCI Express Reset - Rules,316,319,REQ-6.6-005,PCIE-035,PCIE-001;PCIE-035;PCIE-040;PCIE-042;PCIE-044,pending-review,unreviewed
+6.7,PCI Express Hot-Plug Support,319,319,REQ-6.7-001,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.1,Elements of Hot-Plug,319,320,REQ-6.7.1-001,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.1.1,Indicators,320,320,REQ-6.7.1.1-001,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.1.1.1,Attention Indicator,320,321,REQ-6.7.1.1.1-001,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.1.1.1,Attention Indicator,320,321,REQ-6.7.1.1.1-002,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.1.1.2,Power Indicator,321,322,REQ-6.7.1.1.2-001,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.1.1.2,Power Indicator,321,322,REQ-6.7.1.1.2-002,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.1.1.2,Power Indicator,321,322,REQ-6.7.1.1.2-003,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.1.1.2,Power Indicator,321,322,REQ-6.7.1.1.2-004,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.1.1.2,Power Indicator,321,322,REQ-6.7.1.1.2-005,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.1.2,Manually-operated Retention Latch (MRL),322,322,REQ-6.7.1.2-001,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.1.3,MRL Sensor,322,323,REQ-6.7.1.3-001,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.1.3,MRL Sensor,322,323,REQ-6.7.1.3-002,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.1.4,Electromechanical Interlock,323,323,REQ-6.7.1.4-001,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.1.5,Attention Button,323,323,REQ-6.7.1.5-001,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.1.6,Software User Interface,323,324,REQ-6.7.1.6-001,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.1.7,Slot Numbering,324,324,REQ-6.7.1.7-001,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.1.8,Power Controller,324,325,REQ-6.7.1.8-001,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.1.8,Power Controller,324,325,REQ-6.7.1.8-002,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.2,Registers Grouped by Hot-Plug Element Association,325,325,,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.2.1,Attention Button Registers,325,325,,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.2.2,Attention Indicator Registers,325,325,,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.2.3,Power Indicator Registers,325,326,,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.2.4,Power Controller Registers,326,326,,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.2.5,Presence Detect Registers,326,326,,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.2.6,MRL Sensor Registers,326,326,,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.2.7,Electromechanical Interlock Registers,326,327,,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.2.8,Command Completed Registers,327,327,,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.2.9,Port Capabilities and Slot Information Registers,327,327,REQ-6.7.2.9-001,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.2.10,Hot-Plug Interrupt Control Register,327,327,,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.3,PCI Express Hot-Plug Events,327,328,,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.3.1,Slot Events,328,328,REQ-6.7.3.1-001,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.3.2,Command Completed Events,328,329,REQ-6.7.3.2-001,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.3.2,Command Completed Events,328,329,REQ-6.7.3.2-002,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.3.3,Data Link Layer State Changed Events,329,329,REQ-6.7.3.3-001,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.3.4,Software Notification of Hot-Plug Events,329,330,REQ-6.7.3.4-001,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.3.4,Software Notification of Hot-Plug Events,329,330,REQ-6.7.3.4-002,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.7.4,Firmware Support for Hot-Plug,330,330,REQ-6.7.4-001,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.8,Power Budgeting Capability,330,331,REQ-6.8-001,PCIE-038,PCIE-001;PCIE-037;PCIE-038;PCIE-042,pending-review,unreviewed
+6.8,Power Budgeting Capability,330,331,REQ-6.8-002,PCIE-038,PCIE-001;PCIE-037;PCIE-038;PCIE-042,pending-review,unreviewed
+6.8.1,System Power Budgeting Process Recommendations,331,331,REQ-6.8.1-001,PCIE-038,PCIE-001;PCIE-037;PCIE-038;PCIE-042,pending-review,unreviewed
+6.9,Slot Power Limit Control,331,334,REQ-6.9-001,PCIE-038,PCIE-001;PCIE-037;PCIE-038;PCIE-042,pending-review,unreviewed
+6.9,Slot Power Limit Control,331,334,REQ-6.9-002,PCIE-038,PCIE-001;PCIE-037;PCIE-038;PCIE-042,pending-review,unreviewed
+6.9,Slot Power Limit Control,331,334,REQ-6.9-003,PCIE-038,PCIE-001;PCIE-037;PCIE-038;PCIE-042,pending-review,unreviewed
+6.9,Slot Power Limit Control,331,334,REQ-6.9-004,PCIE-038,PCIE-001;PCIE-037;PCIE-038;PCIE-042,pending-review,unreviewed
+6.9,Slot Power Limit Control,331,334,REQ-6.9-005,PCIE-038,PCIE-001;PCIE-037;PCIE-038;PCIE-042,pending-review,unreviewed
+6.9,Slot Power Limit Control,331,334,REQ-6.9-006,PCIE-038,PCIE-001;PCIE-037;PCIE-038;PCIE-042,pending-review,unreviewed
+6.10,Root Complex Topology Discovery,334,337,REQ-6.10-001,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+6.10,Root Complex Topology Discovery,334,337,REQ-6.10-002,PCIE-037,PCIE-001;PCIE-037;PCIE-042,pending-review,unreviewed
+7,Software Initialization and Configuration,337,337,,PCIE-027,PCIE-001;PCIE-027;PCIE-028;PCIE-029;PCIE-030;PCIE-034;PCIE-037;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.1,Configuration Topology,337,338,REQ-7.1-001,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.1,Configuration Topology,337,338,REQ-7.1-002,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.2,PCI Express Configuration Mechanisms,338,339,REQ-7.2-001,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.2.1,PCI 3.0 Compatible Configuration Mechanism,339,340,REQ-7.2.1-001,PCIE-027,PCIE-001;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.2.2,PCI Express Enhanced Configuration Mechanism,340,343,REQ-7.2.2-001,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.2.2,PCI Express Enhanced Configuration Mechanism,340,343,REQ-7.2.2-002,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.2.2,PCI Express Enhanced Configuration Mechanism,340,343,REQ-7.2.2-003,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.2.2,PCI Express Enhanced Configuration Mechanism,340,343,REQ-7.2.2-004,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.2.2,PCI Express Enhanced Configuration Mechanism,340,343,REQ-7.2.2-005,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.2.2.1,Host Bridge Requirements,343,343,REQ-7.2.2.1-001,PCIE-027,PCIE-001;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.2.2.2,PCI Express Device Requirements,343,344,REQ-7.2.2.2-001,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.2.2.2,PCI Express Device Requirements,343,344,REQ-7.2.2.2-002,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.2.3,Root Complex Register Block,344,345,REQ-7.2.3-001,PCIE-027,PCIE-001;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.2.3,Root Complex Register Block,344,345,REQ-7.2.3-002,PCIE-027,PCIE-001;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.3,Configuration Transaction Rules,345,345,,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.3.1,Device Number,345,346,REQ-7.3.1-001,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.3.2,Configuration Transaction Addressing,346,346,,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.3.3,Configuration Request Routing Rules,346,347,REQ-7.3.3-001,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.3.4,PCI Special Cycles,347,348,REQ-7.3.4-001,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.4,Configuration Register Types,348,349,REQ-7.4-001,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.4,Configuration Register Types,348,349,REQ-7.4-002,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.4,Configuration Register Types,348,349,REQ-7.4-003,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.5,PCI-Compatible Configuration Registers,349,349,REQ-7.5-001,PCIE-027,PCIE-001;PCIE-027;PCIE-037;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.5.1,Type 0/1 Common Configuration Space,349,351,,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.5.1.1,Command Register (Offset 04h),351,353,REQ-7.5.1.1-001,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.5.1.1,Command Register (Offset 04h),351,353,REQ-7.5.1.1-002,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.5.1.2,Status Register (Offset 06h),353,354,REQ-7.5.1.2-001,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.5.1.3,Cache Line Size Register (Offset 0Ch),354,354,REQ-7.5.1.3-001,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.5.1.4,Master Latency Timer Register (Offset 0Dh),354,355,REQ-7.5.1.4-001,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.5.1.5,Interrupt Line Register (Offset 3Ch),355,355,REQ-7.5.1.5-001,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.5.1.6,Interrupt Pin Register (Offset 3Dh),355,355,,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.5.1.7,Error Registers,355,356,REQ-7.5.1.7-001,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.5.2,Type 0 Configuration Space Header,356,357,,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.5.2.1,Base Address Registers (Offset 10h - 24h),357,357,REQ-7.5.2.1-001,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.5.2.2,Min_Gnt/Max_Lat Registers (Offset 3Eh/3Fh),357,357,REQ-7.5.2.2-001,PCIE-027,PCIE-001;PCIE-027;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.5.3,Type 1 Configuration Space Header,357,358,,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.5.3.1,Base Address Registers (Offset 10h/14h),358,358,REQ-7.5.3.1-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.5.3.2,Primary Bus Number (Offset 18h),358,358,REQ-7.5.3.2-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.5.3.3,Secondary Latency Timer (Offset 1Bh),358,359,REQ-7.5.3.3-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.5.3.4,Secondary Status Register (Offset 1Eh),359,360,REQ-7.5.3.4-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.5.3.5,Prefetchable Memory Base/Limit (Offset 24h),360,360,REQ-7.5.3.5-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.5.3.6,Bridge Control Register (Offset 3Eh),360,361,REQ-7.5.3.6-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.5.3.6,Bridge Control Register (Offset 3Eh),360,361,REQ-7.5.3.6-002,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044;PCIE-048,pending-review,unreviewed
+7.6,PCI Power Management Capability Structure,361,363,REQ-7.6-001,PCIE-030,PCIE-001;PCIE-030;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.6,PCI Power Management Capability Structure,361,363,REQ-7.6-002,PCIE-030,PCIE-001;PCIE-030;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.6,PCI Power Management Capability Structure,361,363,REQ-7.6-003,PCIE-030,PCIE-001;PCIE-030;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.7,MSI and MSI-X Capability Structures,363,363,REQ-7.7-001,PCIE-029,PCIE-001;PCIE-029;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8,PCI Express Capability Structure,363,364,REQ-7.8-001,PCIE-028,PCIE-001;PCIE-028;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.1,PCI Express Capability List Register (Offset 00h),364,365,REQ-7.8.1-001,PCIE-028,PCIE-001;PCIE-028;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.2,PCI Express Capabilities Register (Offset 02h),365,367,REQ-7.8.2-001,PCIE-028,PCIE-001;PCIE-028;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.2,PCI Express Capabilities Register (Offset 02h),365,367,REQ-7.8.2-002,PCIE-028,PCIE-001;PCIE-028;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.2,PCI Express Capabilities Register (Offset 02h),365,367,REQ-7.8.2-003,PCIE-028,PCIE-001;PCIE-028;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.3,Device Capabilities Register (Offset 04h),367,372,REQ-7.8.3-001,PCIE-028,PCIE-001;PCIE-028;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.3,Device Capabilities Register (Offset 04h),367,372,REQ-7.8.3-002,PCIE-028,PCIE-001;PCIE-028;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.3,Device Capabilities Register (Offset 04h),367,372,REQ-7.8.3-003,PCIE-028,PCIE-001;PCIE-028;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.3,Device Capabilities Register (Offset 04h),367,372,REQ-7.8.3-004,PCIE-028,PCIE-001;PCIE-028;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.4,Device Control Register (Offset 08h),372,378,REQ-7.8.4-001,PCIE-028,PCIE-001;PCIE-028;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.4,Device Control Register (Offset 08h),372,378,REQ-7.8.4-002,PCIE-028,PCIE-001;PCIE-028;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.4,Device Control Register (Offset 08h),372,378,REQ-7.8.4-003,PCIE-028,PCIE-001;PCIE-028;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.4,Device Control Register (Offset 08h),372,378,REQ-7.8.4-004,PCIE-028,PCIE-001;PCIE-028;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.4,Device Control Register (Offset 08h),372,378,REQ-7.8.4-005,PCIE-028,PCIE-001;PCIE-028;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.4,Device Control Register (Offset 08h),372,378,REQ-7.8.4-006,PCIE-028,PCIE-001;PCIE-028;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.4,Device Control Register (Offset 08h),372,378,REQ-7.8.4-007,PCIE-028,PCIE-001;PCIE-028;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.4,Device Control Register (Offset 08h),372,378,REQ-7.8.4-008,PCIE-028,PCIE-001;PCIE-028;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.5,Device Status Register (Offset 0Ah),378,380,REQ-7.8.5-001,PCIE-028,PCIE-001;PCIE-028;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.6,Link Capabilities Register (Offset 0Ch),380,383,REQ-7.8.6-001,PCIE-028,PCIE-001;PCIE-028;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.6,Link Capabilities Register (Offset 0Ch),380,383,REQ-7.8.6-002,PCIE-028,PCIE-001;PCIE-028;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.7,Link Control Register (Offset 10h),383,388,REQ-7.8.7-001,PCIE-028,PCIE-001;PCIE-028;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.7,Link Control Register (Offset 10h),383,388,REQ-7.8.7-002,PCIE-028,PCIE-001;PCIE-028;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.7,Link Control Register (Offset 10h),383,388,REQ-7.8.7-003,PCIE-028,PCIE-001;PCIE-028;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.7,Link Control Register (Offset 10h),383,388,REQ-7.8.7-004,PCIE-028,PCIE-001;PCIE-028;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.8,Link Status Register (Offset 12h),388,390,REQ-7.8.8-001,PCIE-028,PCIE-001;PCIE-028;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.9,Slot Capabilities Register (Offset 14h),390,392,REQ-7.8.9-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.9,Slot Capabilities Register (Offset 14h),390,392,REQ-7.8.9-002,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.10,Slot Control Register (Offset 18h),392,396,REQ-7.8.10-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.10,Slot Control Register (Offset 18h),392,396,REQ-7.8.10-002,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.10,Slot Control Register (Offset 18h),392,396,REQ-7.8.10-003,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.10,Slot Control Register (Offset 18h),392,396,REQ-7.8.10-004,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.11,Slot Status Register (Offset 1Ah),396,398,REQ-7.8.11-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.11,Slot Status Register (Offset 1Ah),396,398,REQ-7.8.11-002,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.11,Slot Status Register (Offset 1Ah),396,398,REQ-7.8.11-003,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.12,Root Control Register (Offset 1Ch),398,400,REQ-7.8.12-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.12,Root Control Register (Offset 1Ch),398,400,REQ-7.8.12-002,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.13,Root Capabilities Register (Offset 1 Eh),400,400,,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.8.14,Root Status Register (Offset 20h),400,401,,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.9,PCI Express Extended Capabilities,401,402,REQ-7.9-001,PCIE-034,PCIE-001;PCIE-034;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.9.1,Extended Capabilities in Configuration Space,402,402,REQ-7.9.1-001,PCIE-034,PCIE-001;PCIE-034;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.9.2,Extended Capabilities in the Root Complex Register Block,402,402,REQ-7.9.2-001,PCIE-034,PCIE-001;PCIE-034;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.9.3,PCI Express Enhanced Capability Header,402,403,REQ-7.9.3-001,PCIE-034,PCIE-001;PCIE-034;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.9.3,PCI Express Enhanced Capability Header,402,403,REQ-7.9.3-002,PCIE-034,PCIE-001;PCIE-034;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.10,Advanced Error Reporting Capability,403,405,REQ-7.10-001,PCIE-034,PCIE-001;PCIE-034;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.10.1,Advanced Error Reporting Enhanced Capability Header (Offset 00h),405,406,REQ-7.10.1-001,PCIE-034,PCIE-001;PCIE-034;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.10.2,Uncorrectable Error Status Register (Offset 04h),406,407,REQ-7.10.2-001,PCIE-034,PCIE-001;PCIE-034;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.10.2,Uncorrectable Error Status Register (Offset 04h),406,407,REQ-7.10.2-002,PCIE-034,PCIE-001;PCIE-034;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.10.2,Uncorrectable Error Status Register (Offset 04h),406,407,REQ-7.10.2-003,PCIE-034,PCIE-001;PCIE-034;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.10.2,Uncorrectable Error Status Register (Offset 04h),406,407,REQ-7.10.2-004,PCIE-034,PCIE-001;PCIE-034;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.10.3,Uncorrectable Error Mask Register (Offset 08h),407,408,REQ-7.10.3-001,PCIE-034,PCIE-001;PCIE-034;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.10.3,Uncorrectable Error Mask Register (Offset 08h),407,408,REQ-7.10.3-002,PCIE-034,PCIE-001;PCIE-034;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.10.4,Uncorrectable Error Severity Register (Offset 0Ch),408,410,REQ-7.10.4-001,PCIE-034,PCIE-001;PCIE-034;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.10.4,Uncorrectable Error Severity Register (Offset 0Ch),408,410,REQ-7.10.4-002,PCIE-034,PCIE-001;PCIE-034;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.10.4,Uncorrectable Error Severity Register (Offset 0Ch),408,410,REQ-7.10.4-003,PCIE-034,PCIE-001;PCIE-034;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.10.5,Correctable Error Status Register (Offset 10h),410,411,REQ-7.10.5-001,PCIE-034,PCIE-001;PCIE-034;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.10.5,Correctable Error Status Register (Offset 10h),410,411,REQ-7.10.5-002,PCIE-034,PCIE-001;PCIE-034;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.10.6,Correctable Error Mask Register (Offset 14h),411,412,REQ-7.10.6-001,PCIE-034,PCIE-001;PCIE-034;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.10.7,Advanced Error Capabilities and Control Register (Offset 18h),412,413,,PCIE-034,PCIE-001;PCIE-034;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.10.8,Header Log Register (Offset 1Ch),413,414,,PCIE-034,PCIE-001;PCIE-034;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.10.9,Root Error Command Register (Offset 2Ch),414,415,REQ-7.10.9-001,PCIE-034,PCIE-001;PCIE-034;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.10.9,Root Error Command Register (Offset 2Ch),414,415,REQ-7.10.9-002,PCIE-034,PCIE-001;PCIE-034;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.10.10,Root Error Status Register (Offset 30h),415,418,REQ-7.10.10-001,PCIE-034,PCIE-001;PCIE-034;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.10.10,Root Error Status Register (Offset 30h),415,418,REQ-7.10.10-002,PCIE-034,PCIE-001;PCIE-034;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.10.11,Error Source Identification Register (Offset 34h),418,419,,PCIE-034,PCIE-001;PCIE-034;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.11,Virtual Channel Capability,419,421,REQ-7.11-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.11.1,Virtual Channel Enhanced Capability Header,421,422,REQ-7.11.1-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.11.1,Virtual Channel Enhanced Capability Header,421,422,REQ-7.11.1-002,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.11.2,Port VC Capability Register 1,422,423,REQ-7.11.2-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.11.2,Port VC Capability Register 1,422,423,REQ-7.11.2-002,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.11.3,Port VC Capability Register 2,423,424,REQ-7.11.3-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.11.4,Port VC Control Register,424,425,,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.11.5,Port VC Status Register,425,426,,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.11.6,VC Resource Capability Register,426,428,REQ-7.11.6-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.11.7,VC Resource Control Register,428,431,REQ-7.11.7-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.11.7,VC Resource Control Register,428,431,REQ-7.11.7-002,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.11.7,VC Resource Control Register,428,431,REQ-7.11.7-003,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.11.8,VC Resource Status Register,431,432,REQ-7.11.8-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.11.9,VC Arbitration Table,432,433,REQ-7.11.9-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.11.10,Port Arbitration Table,433,434,REQ-7.11.10-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.12,Device Serial Number Capability,434,435,REQ-7.12-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.12.1,Device Serial Number Enhanced Capability Header (Offset 00h),435,436,REQ-7.12.1-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.12.1,Device Serial Number Enhanced Capability Header (Offset 00h),435,436,REQ-7.12.1-002,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.12.2,Serial Number Register (Offset 04h),436,437,,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.13,PCI Express Root Complex Link Declaration Capability,437,438,REQ-7.13-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.13,PCI Express Root Complex Link Declaration Capability,437,438,REQ-7.13-002,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.13,PCI Express Root Complex Link Declaration Capability,437,438,REQ-7.13-003,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.13,PCI Express Root Complex Link Declaration Capability,437,438,REQ-7.13-004,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.13.1,Root Complex Link Declaration Enhanced Capability Header,438,439,REQ-7.13.1-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.13.2,Element Self Description,439,440,REQ-7.13.2-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.13.3,Link Entries,440,441,,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.13.3.1,Link Description,441,442,REQ-7.13.3.1-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.13.3.2,Link Address,442,442,,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.13.3.2.1,Link Address for Link Type 0,442,442,,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.13.3.2.2,Link Address for Link Type 1,442,444,REQ-7.13.3.2.2-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.14,PCI Express Root Complex Internal Link Control Capability,444,444,REQ-7.14-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.14.1,Root Complex Internal Link Control Enhanced Capability Header,444,445,REQ-7.14.1-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.14.2,Root Complex Link Capabilities Register,445,447,REQ-7.14.2-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.14.3,Root Complex Link Control Register,447,449,REQ-7.14.3-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.14.4,Root Complex Link Status Register,449,450,REQ-7.14.4-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.15,Power Budgeting Capability,450,450,REQ-7.15-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.15.1,Power Budgeting Enhanced Capability Header (Offset 00h),450,451,REQ-7.15.1-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.15.2,Data Select Register (Offset 04h),451,451,REQ-7.15.2-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.15.3,Data Register (Offset 08h),451,454,REQ-7.15.3-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.15.3,Data Register (Offset 08h),451,454,REQ-7.15.3-002,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.15.3,Data Register (Offset 08h),451,454,REQ-7.15.3-003,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.15.4,Power Budget Capability Register (Offset 0Ch),454,454,REQ-7.15.4-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.16,PCI Express Root Complex Event Collector Endpoint Association Capability,454,455,REQ-7.16-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.16.1,Root Complex Event Collector Endpoint Association Enhanced Capability Header,455,456,REQ-7.16.1-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.16.1,Root Complex Event Collector Endpoint Association Enhanced Capability Header,455,456,REQ-7.16.1-002,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.16.2,Association Bitmap for Root Complex Integrated Endpoint Devices,456,456,REQ-7.16.2-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.17,Multi-Function Virtual Channel Capability,456,457,REQ-7.17-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.17.1,MFVC Enhanced Capability Header,457,458,REQ-7.17.1-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.17.2,Port VC Capability Register 1,458,460,,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.17.3,Port VC Capability Register 2,460,461,,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.17.4,Port VC Control Register,461,462,,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.17.5,Port VC Status Register,462,462,,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.17.6,VC Resource Capability Register,462,464,,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.17.7,VC Resource Control Register,464,466,REQ-7.17.7-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.17.7,VC Resource Control Register,464,466,REQ-7.17.7-002,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.17.7,VC Resource Control Register,464,466,REQ-7.17.7-003,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.17.8,VC Resource Status Register,466,467,REQ-7.17.8-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.17.9,VC Arbitration Table,467,467,,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.17.10,Function Arbitration Table,467,469,REQ-7.17.10-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.17.10,Function Arbitration Table,467,469,REQ-7.17.10-002,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.18,Vendor-Specific Capability,469,470,REQ-7.18-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.18.1,Vendor-Specific Enhanced Capability Header (Offset 00h),470,471,REQ-7.18.1-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.18.2,Vendor-Specific Header (Offset 04h),471,472,REQ-7.18.2-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.18.2,Vendor-Specific Header (Offset 04h),471,472,REQ-7.18.2-002,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.19,RCRB Header Capability,472,472,REQ-7.19-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.19.1,RCRB Header Enhanced Capability Header (Offset 00h),472,473,REQ-7.19.1-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.19.2,Vendor ID (Offset 04h) and Device ID (Offset 06h),473,474,,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.19.3,RCRB Capabilities (Offset 08h),474,474,,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+7.19.4,RCRB Control (Offset 0Ch),474,475,REQ-7.19.4-001,PCIE-037,PCIE-001;PCIE-037;PCIE-039;PCIE-042;PCIE-044,pending-review,unreviewed
+A,Isochronous Applications,475,475,,PCIE-037,PCIE-037,pending-review,unreviewed
+A.1,Introduction,475,477,REQ-A.1-001,PCIE-037,PCIE-037,pending-review,unreviewed
+A.1,Introduction,475,477,REQ-A.1-002,PCIE-037,PCIE-037,pending-review,unreviewed
+A.2,Isochronous Contract and Contract Parameters,477,478,REQ-A.2-001,PCIE-037,PCIE-037,pending-review,unreviewed
+A.2,Isochronous Contract and Contract Parameters,477,478,REQ-A.2-002,PCIE-037,PCIE-037,pending-review,unreviewed
+A.2,Isochronous Contract and Contract Parameters,477,478,REQ-A.2-003,PCIE-037,PCIE-037,pending-review,unreviewed
+A.2.1,Isochronous Time Period and Isochronous Virtual Timeslot,478,479,,PCIE-037,PCIE-037,pending-review,unreviewed
+A.2.2,Isochronous Payload Size,479,479,REQ-A.2.2-001,PCIE-037,PCIE-037,pending-review,unreviewed
+A.2.3,Isochronous Bandwidth Allocation,479,480,REQ-A.2.3-001,PCIE-037,PCIE-037,pending-review,unreviewed
+A.2.4,Isochronous Transaction Latency,480,481,REQ-A.2.4-001,PCIE-037,PCIE-037,pending-review,unreviewed
+A.2.5,An Example Illustrating Isochronous Parameters,481,482,,PCIE-037,PCIE-037,pending-review,unreviewed
+A.3,Isochronous Transaction Rules,482,482,REQ-A.3-001,PCIE-037,PCIE-037,pending-review,unreviewed
+A.4,Transaction Ordering,482,482,REQ-A.4-001,PCIE-037,PCIE-037,pending-review,unreviewed
+A.5,Isochronous Data Coherency,482,483,REQ-A.5-001,PCIE-037,PCIE-037,pending-review,unreviewed
+A.6,Flow Control,483,483,REQ-A.6-001,PCIE-037,PCIE-037,pending-review,unreviewed
+A.7,Considerations for Bandwidth Allocation,483,483,,PCIE-037,PCIE-037,pending-review,unreviewed
+A.7.1,Isochronous Bandwidth of PCI Express Links,483,483,REQ-A.7.1-001,PCIE-037,PCIE-037,pending-review,unreviewed
+A.7.2,Isochronous Bandwidth of Endpoint Devices,483,483,REQ-A.7.2-001,PCIE-037,PCIE-037,pending-review,unreviewed
+A.7.3,Isochronous Bandwidth of Switches,483,484,REQ-A.7.3-001,PCIE-037,PCIE-037,pending-review,unreviewed
+A.7.4,Isochronous Bandwidth of Root Complex,484,484,,PCIE-037,PCIE-037,pending-review,unreviewed
+A.8,Considerations for PCI Express Components,484,484,,PCIE-037,PCIE-037,pending-review,unreviewed
+A.8.1,A PCI Express Endpoint Device as a Requester,484,484,REQ-A.8.1-001,PCIE-037,PCIE-037,pending-review,unreviewed
+A.8.2,A PCI Express Endpoint Device as a Completer,484,485,REQ-A.8.2-001,PCIE-037,PCIE-037,pending-review,unreviewed
+A.8.3,Switches,485,486,REQ-A.8.3-001,PCIE-037,PCIE-037,pending-review,unreviewed
+A.8.4,Root Complex,486,487,REQ-A.8.4-001,PCIE-037,PCIE-037,pending-review,unreviewed
+B,Symbol Encoding,487,497,,PCIE-010,PCIE-005;PCIE-010,pending-review,unreviewed
+C,Physical Layer Appendix,497,497,,PCIE-011,PCIE-005;PCIE-011,pending-review,unreviewed
+C.1,Data Scrambling,497,503,REQ-C.1-001,PCIE-011,PCIE-005;PCIE-011,pending-review,unreviewed
+C.1,Data Scrambling,497,503,REQ-C.1-002,PCIE-011,PCIE-005;PCIE-011,pending-review,unreviewed
+D,Request Dependencies,503,506,REQ-D-001,PCIE-026,PCIE-026,pending-review,unreviewed
+D,Request Dependencies,503,506,REQ-D-002,PCIE-026,PCIE-026,pending-review,unreviewed
+back-matter,Acknowledgements,507,508,,PCIE-001,,pending-review,unreviewed

@@ -1,0 +1,17 @@
+__pycache__/
+# Bundled toolchain is third-party infrastructure, not endpoint source.
+oss-cad-suite/
+
+# The PCI-SIG specification is copyrighted and this repository is public.
+# Keep the source files and all text derived from them local-only; track only
+# metadata (section titles, pages, hashes, ticket mapping) the workflow needs.
+/54321492-PCI-Express-Base-11.pdf
+/54321492-PCI-Express-Base-11.txt
+/specification/**
+!/specification/README.md
+!/specification/INDEX.md
+!/specification/manifest.json
+!/specification/TRACEABILITY.csv
+
+# Generated knowledge graph; built from the specification text, so local-only too.
+/graphify-out/
